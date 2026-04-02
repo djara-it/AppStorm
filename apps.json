@@ -4,79 +4,98 @@
     "name": "YouTube",
     "desc": "La plataforma de vídeo más grande del mundo.",
     "descLarga": "YouTube es la plataforma de streaming con más de 2.000 millones de usuarios activos. Vídeos en HD, 4K, Shorts y mucho más completamente gratis.",
-    "cat": "Entretenimiento", "ver": "19.45", "size": "120MB", "android": "5.0+",
+    "cat": "Entretenimiento",
+    "ver": "19.45", "size": "120MB", "android": "5.0+",
     "mega": "#",
     "play": "https://play.google.com/store/apps/details?id=com.google.android.youtube",
-    "tags": ["vídeo", "streaming", "entretenimiento"]
+    "tags": ["vídeo", "streaming", "entretenimiento"],
+    "capturas": [
+      "https://play-lh.googleusercontent.com/FAs8zbC5OoYNqXLYlxkPXgPCJqnAjHzq3RFHWp1w8jUoxL5sCdvwq3f5LMhN06_piw=w526-h296-rw",
+      "https://play-lh.googleusercontent.com/T8H4JnhaqBj5nuJgGaOG9Fqy1RrL8X5WxB6vNfFG_2GFvNj2z6dGaXjFGpBgIh5Nk=w526-h296-rw"
+    ]
   },
   {
     "id": 2, "icon": "✦",
     "name": "CapCut",
     "desc": "Editor de vídeo profesional y fácil de usar.",
     "descLarga": "Crea reels, stories y vídeos con efectos de IA, transiciones automáticas y música integrada. Sin marca de agua.",
-    "cat": "Edición", "ver": "11.2", "size": "98MB", "android": "5.0+",
+    "cat": "Edición",
+    "ver": "11.2", "size": "98MB", "android": "5.0+",
     "mega": "#",
     "play": "https://play.google.com/store/apps/details?id=com.lemon.lvoverseas",
-    "tags": ["edición", "vídeo", "reels"]
+    "tags": ["edición", "vídeo", "reels"],
+    "capturas": []
   },
   {
     "id": 3, "icon": "◈",
     "name": "PicsArt",
     "desc": "Editor de fotos con IA y comunidad creativa.",
     "descLarga": "Edición de fotos con recorte IA, efectos, stickers y comunidad millonaria de creadores.",
-    "cat": "Fotografía", "ver": "24.1", "size": "85MB", "android": "6.0+",
+    "cat": "Fotografía",
+    "ver": "24.1", "size": "85MB", "android": "6.0+",
     "mega": "#",
     "play": "https://play.google.com/store/apps/details?id=com.picsart.studio",
-    "tags": ["fotos", "edición", "diseño"]
+    "tags": ["fotos", "edición", "diseño"],
+    "capturas": []
   },
   {
     "id": 4, "icon": "♫",
     "name": "YouTube Music",
     "desc": "Música y podcasts con el catálogo de YouTube.",
-    "descLarga": "Toda la música de YouTube con recomendaciones inteligentes y modo sin conexión.",
-    "cat": "Música", "ver": "6.51", "size": "45MB", "android": "5.0+",
+    "descLarga": "Toda la música de YouTube con recomendaciones inteligentes y modo sin conexión para escuchar donde quieras.",
+    "cat": "Música",
+    "ver": "6.51", "size": "45MB", "android": "5.0+",
     "mega": "#",
     "play": "https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music",
-    "tags": ["música", "streaming", "youtube"]
+    "tags": ["música", "streaming", "youtube"],
+    "capturas": []
   },
   {
     "id": 5, "icon": "●",
     "name": "Spotify",
     "desc": "Streaming de música y podcasts líder mundial.",
     "descLarga": "Más de 100 millones de canciones y podcasts. Recomendaciones personalizadas y listas editoriales.",
-    "cat": "Música", "ver": "8.9", "size": "38MB", "android": "5.0+",
+    "cat": "Música",
+    "ver": "8.9", "size": "38MB", "android": "5.0+",
     "mega": "#",
     "play": "https://play.google.com/store/apps/details?id=com.spotify.music",
-    "tags": ["música", "podcasts", "streaming"]
+    "tags": ["música", "podcasts", "streaming"],
+    "capturas": []
   },
   {
     "id": 6, "icon": "⬡",
     "name": "Wallcraft",
     "desc": "Fondos de pantalla en 4K y HD para Android.",
     "descLarga": "Miles de fondos en 4K actualizados semanalmente. Anime, naturaleza, abstracto y mucho más.",
-    "cat": "Personalización", "ver": "3.8", "size": "22MB", "android": "5.0+",
+    "cat": "Personalización",
+    "ver": "3.8", "size": "22MB", "android": "5.0+",
     "mega": "#",
     "play": "https://play.google.com/store/apps/details?id=com.wallcraft.app",
-    "tags": ["fondos", "4K", "personalización"]
+    "tags": ["fondos", "4K", "personalización"],
+    "capturas": []
   },
   {
     "id": 7, "icon": "◉",
     "name": "Smart Launcher",
     "desc": "Launcher minimalista e inteligente para Android.",
     "descLarga": "Agrupa apps automáticamente por categoría. Interfaz limpia, widgets modernos y personalización total.",
-    "cat": "Personalización", "ver": "6.3", "size": "19MB", "android": "5.0+",
+    "cat": "Personalización",
+    "ver": "6.3", "size": "19MB", "android": "5.0+",
     "mega": "#",
     "play": "https://play.google.com/store/apps/details?id=ginlemon.flowerpro",
-    "tags": ["launcher", "personalización", "minimalista"]
+    "tags": ["launcher", "personalización", "minimalista"],
+    "capturas": []
   },
   {
     "id": 8, "icon": "▣",
     "name": "PPCine",
     "desc": "Reproductor de películas y series online.",
     "descLarga": "Miles de películas y series en streaming desde tu Android. Calidad HD y actualización constante.",
-    "cat": "Entretenimiento", "ver": "2.1", "size": "31MB", "android": "5.0+",
+    "cat": "Entretenimiento",
+    "ver": "2.1", "size": "31MB", "android": "5.0+",
     "mega": "#",
     "play": "#",
-    "tags": ["películas", "series", "streaming"]
+    "tags": ["películas", "series", "streaming"],
+    "capturas": []
   }
 ]
