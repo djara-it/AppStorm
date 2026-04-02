@@ -5,19 +5,18 @@
     "imagen": "https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc",
     "name": "YouTube",
     "desc": "La plataforma de vídeo más grande del mundo.",
-    "descLarga": "YouTube es la plataforma de streaming de vídeo más utilizada del mundo con más de 2.000 millones de usuarios activos. Disfruta de vídeos en HD, 4K, Shorts, música y mucho más completamente gratis.",
+    "descLarga": "YouTube es la plataforma de streaming de vídeo más utilizada del mundo con más de 2.000 millones de usuarios activos. Disfruta de vídeos en HD, 4K, Shorts y mucho más completamente gratis.",
     "cat": "Entretenimiento",
     "ver": "19.45",
     "size": "120MB",
     "android": "5.0+",
     "mega": "#",
     "play": "https://play.google.com/store/apps/details?id=com.google.android.youtube",
-    "tags": ["vídeo", "streaming", "entretenimiento"],
-    "seccion": "aplicaciones"
+    "tags": ["vídeo", "streaming", "entretenimiento"]
   },
   {
     "id": 2,
-    "icon": "✂",
+    "icon": "✦",
     "imagen": "https://play-lh.googleusercontent.com/Os3hNYCsGxJHoR1qS7Q4R5P8PFqMBqj3Dqg_Y3UZlWnVMRyDFDUxCdPLqhNlLhA2IA",
     "name": "CapCut",
     "desc": "Editor de vídeo profesional y fácil de usar.",
@@ -28,12 +27,11 @@
     "android": "5.0+",
     "mega": "#",
     "play": "https://play.google.com/store/apps/details?id=com.lemon.lvoverseas",
-    "tags": ["edición", "vídeo", "reels"],
-    "seccion": "aplicaciones"
+    "tags": ["edición", "vídeo", "reels"]
   },
   {
     "id": 3,
-    "icon": "◑",
+    "icon": "◈",
     "imagen": "https://play-lh.googleusercontent.com/BiIna7FGsDoB86-pTloJFkjMLSIQhHqDEOeQwzB2Vp8sBBBmFVCjkVXmJRb_Ui1nxA",
     "name": "PicsArt",
     "desc": "Editor de fotos con IA y comunidad creativa.",
@@ -44,8 +42,7 @@
     "android": "6.0+",
     "mega": "#",
     "play": "https://play.google.com/store/apps/details?id=com.picsart.studio",
-    "tags": ["fotos", "edición", "diseño"],
-    "seccion": "aplicaciones"
+    "tags": ["fotos", "edición", "diseño"]
   },
   {
     "id": 4,
@@ -60,8 +57,7 @@
     "android": "5.0+",
     "mega": "#",
     "play": "https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music",
-    "tags": ["música", "streaming", "youtube"],
-    "seccion": "musica"
+    "tags": ["música", "streaming", "youtube"]
   },
   {
     "id": 5,
@@ -76,12 +72,11 @@
     "android": "5.0+",
     "mega": "#",
     "play": "https://play.google.com/store/apps/details?id=com.spotify.music",
-    "tags": ["música", "podcasts", "streaming"],
-    "seccion": "musica"
+    "tags": ["música", "podcasts", "streaming"]
   },
   {
     "id": 6,
-    "icon": "◈",
+    "icon": "⬡",
     "imagen": "https://play-lh.googleusercontent.com/VZCpLkGaeo4uT8DSz6fSHxjSWkivEqINv5gQ3P_8a3P0L0MQwBwOq2yQWuMx7SbSYQ",
     "name": "Wallcraft",
     "desc": "Fondos de pantalla en 4K y HD para Android.",
@@ -92,12 +87,11 @@
     "android": "5.0+",
     "mega": "#",
     "play": "https://play.google.com/store/apps/details?id=com.wallcraft.app",
-    "tags": ["fondos", "4K", "personalización"],
-    "seccion": "aplicaciones"
+    "tags": ["fondos", "4K", "personalización"]
   },
   {
     "id": 7,
-    "icon": "⬡",
+    "icon": "◉",
     "imagen": "https://play-lh.googleusercontent.com/7a3QbxXtbvgEEmqNyuSHkz5HXRwRQF7PxWAWwM6VFQHkl8q8B_JD8RDvf9xJrqPHVA",
     "name": "Smart Launcher",
     "desc": "Launcher minimalista e inteligente para Android.",
@@ -108,12 +102,11 @@
     "android": "5.0+",
     "mega": "#",
     "play": "https://play.google.com/store/apps/details?id=ginlemon.flowerpro",
-    "tags": ["launcher", "personalización", "minimalista"],
-    "seccion": "aplicaciones"
+    "tags": ["launcher", "personalización", "minimalista"]
   },
   {
     "id": 8,
-    "icon": "◻",
+    "icon": "▣",
     "imagen": "",
     "name": "PPCine",
     "desc": "Reproductor de películas y series online.",
@@ -124,7 +117,6 @@
     "android": "5.0+",
     "mega": "#",
     "play": "#",
-    "tags": ["películas", "series", "streaming"],
-    "seccion": "aplicaciones"
+    "tags": ["películas", "series", "streaming"]
   }
 ]
