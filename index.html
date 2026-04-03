@@ -24,7 +24,7 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;transition:background .3s,color .3s;}
 
-/* ── SPLASH ── */
+/* SPLASH */
 #splash{position:fixed;inset:0;z-index:9999;background:#07070f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transition:opacity .6s,transform .6s;}
 #splash.hide{opacity:0;transform:scale(1.04);pointer-events:none;}
 .sp-logo{display:flex;align-items:center;font-family:'Rajdhani',sans-serif;font-size:50px;font-weight:700;letter-spacing:5px;color:#fff;opacity:0;animation:spIn .6s .2s cubic-bezier(.22,1,.36,1) forwards;}
@@ -36,15 +36,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 @keyframes spBar{to{width:100%;}}
 @keyframes boltDraw{to{stroke-dashoffset:0;}}
 @keyframes boltFlash{0%,100%{opacity:0;}50%{opacity:1;}}
-
-/* ── RAYO POLÍGONO ── */
 .bsvg{display:inline-block;vertical-align:middle;}
 
-/* ── MAIN ── */
+/* MAIN */
 #app{opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s;}
 #app.visible{opacity:1;transform:translateY(0);}
 
-/* ── NAV ── */
+/* NAV */
 nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;height:54px;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:background .3s;}
 .nav-brand{display:flex;align-items:center;font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;letter-spacing:3px;color:var(--text);cursor:pointer;text-decoration:none;}
 .nav-r{display:flex;align-items:center;gap:4px;}
@@ -61,16 +59,16 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .mmenu a{font-size:14px;color:var(--muted2);padding:9px 14px;border-radius:8px;cursor:pointer;transition:background .2s,color .2s;}
 .mmenu a:hover,.mmenu a.on{background:rgba(42,159,255,.08);color:var(--accent);}
 
-/* ── SECCIONES ── */
+/* SECCIONES */
 .sec{display:none;}.sec.on{display:block;}
 
-/* ── HERO ── */
+/* HERO */
 .hero{text-align:center;padding:3rem 1.5rem 2.5rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;top:-30px;left:50%;transform:translateX(-50%);width:480px;height:240px;background:radial-gradient(ellipse,rgba(42,159,255,.06) 0%,transparent 70%);pointer-events:none;}
 .hero-brand{display:flex;align-items:center;justify-content:center;font-family:'Rajdhani',sans-serif;font-size:32px;font-weight:700;letter-spacing:4px;color:var(--text);margin-bottom:8px;}
 .hero p{font-size:14px;color:var(--muted);margin-bottom:1.8rem;}
 
-/* ── SEARCH ── */
+/* SEARCH */
 .srch-wrap{max-width:530px;margin:0 auto;background:var(--bg2);border:1px solid var(--bord2);border-radius:14px;padding:.95rem 1.2rem;}
 .srch-row{display:flex;gap:8px;}
 .srch-row input{flex:1;min-width:0;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 13px;color:var(--text);font-size:14px;outline:none;font-family:'Inter',sans-serif;transition:border-color .2s;}
@@ -81,16 +79,16 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .btn-ai:hover{background:var(--accent);}
 .btn-ai:disabled{opacity:.5;cursor:default;}
 .ai-out{margin-top:10px;font-size:13px;color:var(--muted2);min-height:18px;line-height:1.7;text-align:left;}
-.ai-out .ai-typing::after{content:'▌';animation:blink .7s infinite;}
+.ai-typing::after{content:'▌';animation:blink .7s infinite;}
 @keyframes blink{50%{opacity:0;}}
 
-/* ── BLOCK ── */
+/* BLOCK */
 .block{padding:1.5rem;}
 .block-title{font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:1.1rem;}
 .block-desc{font-size:14px;color:var(--muted2);line-height:1.8;margin-bottom:1.4rem;}
 .divider{height:1px;background:var(--border);margin:0 1.5rem;}
 
-/* ── STORIES ── */
+/* STORIES */
 .stories{display:flex;gap:1rem;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;}
 .stories::-webkit-scrollbar{display:none;}
 .story{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;}
@@ -100,7 +98,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .s-lbl{font-size:10px;color:var(--muted2);max-width:64px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .story.on .s-lbl{color:var(--accent);}
 
-/* ── PANEL ── */
+/* PANEL */
 .panel{background:var(--bg2);border:1px solid var(--bord2);border-radius:14px;padding:1.25rem;margin-top:1rem;display:none;animation:panIn .2s ease;}
 .panel.on{display:block;}
 @keyframes panIn{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
@@ -114,69 +112,42 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .m-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
 .m-val{font-size:12px;color:var(--text);}
 .pan-full{font-size:13px;color:var(--muted2);line-height:1.7;margin-bottom:.9rem;}
-
-/* ── CAPTURAS EN PANEL ── */
 .capturas-wrap{margin-bottom:1rem;}
 .capturas-title{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:.6rem;}
 .capturas-row{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;}
 .capturas-row::-webkit-scrollbar{display:none;}
 .captura{flex-shrink:0;width:160px;height:100px;border-radius:8px;object-fit:cover;border:1px solid var(--border);background:var(--bg3);cursor:pointer;transition:transform .2s,border-color .2s;}
 .captura:hover{transform:scale(1.03);border-color:var(--accent);}
-
-/* Lightbox para capturas */
 #lightbox{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;padding:1rem;}
 #lightbox.open{display:flex;}
-#lightbox img{max-width:90vw;max-height:85vh;border-radius:10px;box-shadow:0 8px 40px rgba(0,0,0,.6);}
-#lightbox-close{position:absolute;top:16px;right:20px;font-size:24px;color:#fff;cursor:pointer;background:none;border:none;opacity:.7;}
-#lightbox-close:hover{opacity:1;}
-
+#lightbox img{max-width:90vw;max-height:85vh;border-radius:10px;}
+#lb-close{position:absolute;top:16px;right:20px;font-size:24px;color:#fff;cursor:pointer;background:none;border:none;opacity:.7;}
+#lb-close:hover{opacity:1;}
 .pan-btns{display:flex;gap:9px;flex-wrap:wrap;}
 .btn-dl{flex:1;min-width:130px;padding:11px 14px;border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;text-align:center;background:var(--accent);border:none;color:#fff;font-family:'Inter',sans-serif;transition:opacity .2s;text-decoration:none;display:inline-block;}
 .btn-dl:hover{opacity:.85;}
 .btn-ps{flex:1;min-width:130px;padding:11px 14px;border-radius:9px;font-size:13px;cursor:pointer;text-align:center;background:transparent;border:1px solid var(--bord2);color:var(--muted2);font-family:'Inter',sans-serif;transition:border-color .2s,color .2s;text-decoration:none;display:inline-block;}
 .btn-ps:hover{border-color:var(--accent);color:var(--accent);}
 
-/* ── CATEGORÍAS INICIO — tiles visuales ── */
-.cat-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:1.5rem;}
-.cat-tile{
-  background:var(--bg2);border:1px solid var(--border);
-  border-radius:12px;padding:1.1rem 1rem;cursor:pointer;
-  display:flex;flex-direction:column;gap:6px;
-  transition:border-color .2s,transform .15s,background .2s;
-  position:relative;overflow:hidden;
-}
-.cat-tile::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:var(--tile-color,var(--accent));
-  border-radius:12px 12px 0 0;
-}
+/* CATEGORÍAS TILES */
+.cat-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px;margin-bottom:1rem;}
+.cat-tile{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1rem;cursor:pointer;display:flex;flex-direction:column;gap:6px;transition:border-color .2s,transform .15s,background .2s;position:relative;overflow:hidden;}
+.cat-tile::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--tile-color,var(--accent));border-radius:12px 12px 0 0;}
 .cat-tile:hover{border-color:var(--accent);transform:translateY(-3px);background:var(--bg3);}
-.cat-tile.active-tile{border-color:var(--accent);background:rgba(42,159,255,.06);}
+.cat-tile.on{border-color:var(--accent);background:rgba(42,159,255,.06);}
 .ct-icon{font-size:26px;line-height:1;}
 .ct-name{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:var(--text);}
 .ct-count{font-size:11px;color:var(--muted);}
-
-/* Apps desplegables de categoría */
-.cat-apps-panel{
-  background:var(--bg2);border:1px solid var(--bord2);
-  border-radius:12px;padding:1rem;
-  display:none;margin-top:-.5rem;margin-bottom:1rem;
-  animation:panIn .2s ease;
-}
+.cat-apps-panel{background:var(--bg2);border:1px solid var(--bord2);border-radius:12px;padding:1rem;display:none;margin-bottom:1rem;animation:panIn .2s ease;}
 .cat-apps-panel.on{display:block;}
 .cat-apps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;}
-.ca-card{
-  background:var(--bg3);border:1px solid var(--border);
-  border-radius:9px;padding:.75rem;cursor:pointer;
-  transition:border-color .2s,transform .15s;
-  display:flex;flex-direction:column;gap:5px;
-}
+.ca-card{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:.75rem;cursor:pointer;transition:border-color .2s,transform .15s;display:flex;flex-direction:column;gap:5px;}
 .ca-card:hover{border-color:var(--accent);transform:translateY(-2px);}
 .ca-ico{font-size:22px;line-height:1;}
 .ca-name{font-size:12px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .ca-ver{font-size:10px;color:var(--muted);}
 
-/* ── GRID (Aplicaciones) ── */
+/* GRID */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px;}
 .card{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:.9rem;cursor:pointer;transition:border-color .2s,transform .15s;}
 .card:hover{border-color:var(--accent);transform:translateY(-2px);}
@@ -184,13 +155,11 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .card h4{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px;}
 .card p{font-size:11px;color:var(--muted);line-height:1.4;margin-bottom:6px;}
 .ctag{font-size:10px;color:var(--accent);background:rgba(42,159,255,.08);border-radius:4px;padding:2px 6px;display:inline-block;}
-
-/* ── FILTROS ── */
 .filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1.1rem;}
 .fbtn{font-size:12px;padding:5px 13px;border-radius:20px;cursor:pointer;background:var(--bg3);border:1px solid var(--border);color:var(--muted2);font-family:'Inter',sans-serif;transition:all .2s;}
 .fbtn:hover,.fbtn.on{background:rgba(42,159,255,.11);border-color:var(--accent);color:var(--accent);}
 
-/* ── PLAYLISTS ── */
+/* PLAYLISTS */
 .pl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;}
 .pl-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s,transform .15s;}
 .pl-card:hover{border-color:var(--accent);transform:translateY(-2px);}
@@ -203,14 +172,16 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .pl-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--accent);text-decoration:none;transition:opacity .2s;}
 .pl-link:hover{opacity:.7;}
 
-/* ── TUTORIALES ── */
+/* TUTORIALES */
 .tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;}
-.tc{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:1.1rem;}
+.tc{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:1.1rem;cursor:pointer;transition:border-color .2s;}
+.tc:hover{border-color:var(--accent);}
 .tn{font-family:'Rajdhani',sans-serif;font-size:26px;font-weight:700;color:rgba(42,159,255,.18);margin-bottom:5px;}
 .tc h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px;}
 .tc p{font-size:12px;color:var(--muted2);line-height:1.6;}
+.tc-tag{display:inline-block;font-size:10px;color:var(--accent);background:rgba(42,159,255,.08);border-radius:4px;padding:2px 6px;margin-top:8px;}
 
-/* ── CONTACTO ── */
+/* CONTACTO */
 .ct-wrap{max-width:460px;}
 .ct-wrap p{font-size:14px;color:var(--muted2);line-height:1.8;margin-bottom:1.4rem;}
 .ct-links{display:flex;flex-direction:column;gap:9px;}
@@ -218,17 +189,22 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .ct-link:hover{border-color:var(--accent);}
 .ct-link .ci{font-size:17px;width:22px;text-align:center;}
 
-/* ── CHAT ── */
+/* CHAT */
 .chat-fab{position:fixed;bottom:20px;right:18px;z-index:500;}
 .chat-btn{width:48px;height:48px;border-radius:50%;background:var(--accent);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 16px rgba(42,159,255,.35);transition:transform .2s;}
 .chat-btn:hover{transform:scale(1.08);}
-.chat-win{position:fixed;bottom:78px;right:18px;width:285px;background:var(--bg2);border:1px solid var(--bord2);border-radius:14px;display:none;flex-direction:column;overflow:hidden;z-index:499;box-shadow:0 8px 30px var(--shadow);}
+.chat-win{position:fixed;bottom:78px;right:18px;width:300px;background:var(--bg2);border:1px solid var(--bord2);border-radius:14px;display:none;flex-direction:column;overflow:hidden;z-index:499;box-shadow:0 8px 30px var(--shadow);}
 .chat-win.open{display:flex;}
-.chat-head{padding:10px 13px;background:var(--bg3);border-bottom:1px solid var(--border);font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:600;color:var(--accent);}
-.chat-msgs{padding:10px;display:flex;flex-direction:column;gap:7px;max-height:200px;overflow-y:auto;}
-.msg{font-size:12px;line-height:1.6;padding:7px 10px;border-radius:8px;max-width:88%;}
-.msg.bot{background:var(--bg3);color:var(--muted2);align-self:flex-start;}
-.msg.user{background:var(--acc2);color:#fff;align-self:flex-end;}
+.chat-head{display:flex;align-items:center;justify-content:space-between;padding:10px 13px;background:var(--bg3);border-bottom:1px solid var(--border);}
+.chat-head span{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:600;color:var(--accent);}
+.chat-head small{font-size:10px;color:var(--muted);margin-top:1px;display:block;}
+.chat-msgs{padding:10px;display:flex;flex-direction:column;gap:7px;max-height:240px;overflow-y:auto;}
+.msg{font-size:12px;line-height:1.6;padding:8px 11px;border-radius:10px;max-width:90%;}
+.msg.bot{background:var(--bg3);color:var(--muted2);align-self:flex-start;border-radius:4px 10px 10px 10px;}
+.msg.user{background:var(--acc2);color:#fff;align-self:flex-end;border-radius:10px 4px 10px 10px;}
+.chat-sugs{display:flex;gap:5px;flex-wrap:wrap;padding:0 10px 8px;}
+.cs-btn{font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(42,159,255,.1);border:1px solid var(--bord2);color:var(--accent);cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:background .2s;}
+.cs-btn:hover{background:rgba(42,159,255,.2);}
 .chat-foot{display:flex;gap:6px;padding:9px;border-top:1px solid var(--border);}
 .chat-foot input{flex:1;min-width:0;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:7px 9px;color:var(--text);font-size:12px;outline:none;font-family:'Inter',sans-serif;transition:border-color .2s;}
 .chat-foot input:focus{border-color:var(--accent);}
@@ -238,7 +214,6 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 footer{text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);font-size:12px;color:var(--muted);margin-top:2rem;}
 footer strong{color:var(--accent);}
 
-/* ── RESPONSIVE ── */
 @media(max-width:640px){
   nav{padding:0 1rem;}
   .nav-links{display:none;}
@@ -262,9 +237,8 @@ footer strong{color:var(--accent);}
 </head>
 <body>
 
-<!-- LIGHTBOX -->
-<div id="lightbox" onclick="closeLightbox()">
-  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+<div id="lightbox" onclick="closeLB()">
+  <button id="lb-close" onclick="closeLB()">✕</button>
   <img id="lb-img" src="" alt=""/>
 </div>
 
@@ -283,9 +257,7 @@ footer strong{color:var(--accent);}
   <div class="sp-bar"><div class="sp-fill"></div></div>
 </div>
 
-<!-- APP -->
 <div id="app">
-
 <nav>
   <a class="nav-brand" onclick="goTo('inicio')">
     APP
@@ -309,7 +281,6 @@ footer strong{color:var(--accent);}
     </button>
   </div>
 </nav>
-
 <div class="mmenu" id="mmenu">
   <a id="ml-inicio" class="on" onclick="goTo('inicio');closeBurger()">Inicio</a>
   <a id="ml-apps" onclick="goTo('apps');closeBurger()">Aplicaciones</a>
@@ -332,14 +303,13 @@ footer strong{color:var(--accent);}
     <p>Busca con inteligencia artificial o explora el catálogo</p>
     <div class="srch-wrap">
       <div class="srch-row">
-        <input id="srch" type="text" placeholder="¿Qué tipo de app buscas hoy?"/>
+        <input id="srch" type="text" placeholder="¿Qué app buscas? Ej: mejor app de música, diferencias entre..."/>
         <button class="btn-ai" id="sbtn" onclick="buscarIA()">Buscar con IA</button>
       </div>
       <div class="ai-out" id="ai-out"></div>
     </div>
   </div>
 
-  <!-- Destacados -->
   <div class="block">
     <div class="block-title">Destacados</div>
     <div class="stories" id="stories"></div>
@@ -354,7 +324,7 @@ footer strong{color:var(--accent);}
       </div>
       <div class="pan-meta" id="pi-meta"></div>
       <p class="pan-full" id="pi-full"></p>
-      <div class="capturas-wrap" id="pi-capturas"></div>
+      <div id="pi-capturas"></div>
       <div class="pan-btns">
         <a class="btn-dl" id="pi-mega" target="_blank">⬇ Descargar APK</a>
         <a class="btn-ps" id="pi-play" target="_blank">▶ Play Store</a>
@@ -364,14 +334,12 @@ footer strong{color:var(--accent);}
 
   <div class="divider"></div>
 
-  <!-- Categorías como tiles -->
   <div class="block">
     <div class="block-title">Categorías</div>
     <div class="cat-tiles" id="cat-tiles"></div>
-    <div class="cat-apps-panel" id="cat-apps-panel">
-      <div class="cat-apps-grid" id="cat-apps-grid"></div>
+    <div class="cat-apps-panel" id="cat-panel">
+      <div class="cat-apps-grid" id="cat-grid"></div>
     </div>
-    <!-- Panel detalle desde categoría -->
     <div class="panel" id="pan-cat" style="margin-top:.8rem;">
       <div class="pan-top">
         <div class="pan-ico" id="pc-ico"></div>
@@ -383,7 +351,7 @@ footer strong{color:var(--accent);}
       </div>
       <div class="pan-meta" id="pc-meta"></div>
       <p class="pan-full" id="pc-full"></p>
-      <div class="capturas-wrap" id="pc-capturas"></div>
+      <div id="pc-capturas"></div>
       <div class="pan-btns">
         <a class="btn-dl" id="pc-mega" target="_blank">⬇ Descargar APK</a>
         <a class="btn-ps" id="pc-play" target="_blank">▶ Play Store</a>
@@ -410,7 +378,7 @@ footer strong{color:var(--accent);}
     </div>
     <div class="pan-meta" id="pa-meta"></div>
     <p class="pan-full" id="pa-full"></p>
-    <div class="capturas-wrap" id="pa-capturas"></div>
+    <div id="pa-capturas"></div>
     <div class="pan-btns">
       <a class="btn-dl" id="pa-mega" target="_blank">⬇ Descargar APK</a>
       <a class="btn-ps" id="pa-play" target="_blank">▶ Play Store</a>
@@ -422,14 +390,64 @@ footer strong{color:var(--accent);}
 <div id="sec-playlists" class="sec">
   <div class="block">
     <div class="block-title">Playlists curadas</div>
-    <div class="block-desc">Colecciones de música seleccionadas por género y estado de ánimo, con enlace directo a YouTube.</div>
-    <div class="pl-grid">
-      <div class="pl-card"><div class="pl-thumb">🎧</div><div class="pl-info"><h4>Trap &amp; Urban 2025</h4><p>Los mejores temas de trap y urban actualizados cada semana.</p><div class="pl-tags"><span class="pt">Trap</span><span class="pt">Urban</span></div><a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a></div></div>
-      <div class="pl-card"><div class="pl-thumb">🌙</div><div class="pl-info"><h4>Lo-Fi / Estudio</h4><p>Música instrumental para concentrarse o relajarse.</p><div class="pl-tags"><span class="pt">Lo-Fi</span><span class="pt">Chill</span></div><a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a></div></div>
-      <div class="pl-card"><div class="pl-thumb">🔥</div><div class="pl-info"><h4>Reggaeton Clásico</h4><p>Los himnos del reggaeton de 2004 a 2015.</p><div class="pl-tags"><span class="pt">Reggaeton</span><span class="pt">Clásicos</span></div><a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a></div></div>
-      <div class="pl-card"><div class="pl-thumb">⚡</div><div class="pl-info"><h4>Gym &amp; Workout</h4><p>Energía máxima para entrenar.</p><div class="pl-tags"><span class="pt">Gym</span><span class="pt">Electrónica</span></div><a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a></div></div>
-      <div class="pl-card"><div class="pl-thumb">🌅</div><div class="pl-info"><h4>Hits Verano</h4><p>Los temas del verano actualizados mensualmente.</p><div class="pl-tags"><span class="pt">Pop</span><span class="pt">Verano</span></div><a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a></div></div>
-      <div class="pl-card"><div class="pl-thumb">🎸</div><div class="pl-info"><h4>Rock en Español</h4><p>De Soda Stereo a Maná. Los clásicos de siempre.</p><div class="pl-tags"><span class="pt">Rock</span><span class="pt">Español</span></div><a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a></div></div>
+    <div class="block-desc">Colecciones de música seleccionadas por género y mood, con enlace directo a YouTube. Actualizadas regularmente.</div>
+    <div class="pl-grid" id="pl-grid">
+      <!-- Edita estas tarjetas para añadir tus playlists reales -->
+      <!-- Sustituye href="#" por el enlace real de YouTube -->
+      <div class="pl-card">
+        <div class="pl-thumb">🎧</div>
+        <div class="pl-info">
+          <h4>Trap &amp; Urban 2025</h4>
+          <p>Los mejores temas de trap, drill y urban. Actualizado cada semana.</p>
+          <div class="pl-tags"><span class="pt">Trap</span><span class="pt">Urban</span><span class="pt">2025</span></div>
+          <a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a>
+        </div>
+      </div>
+      <div class="pl-card">
+        <div class="pl-thumb">🌙</div>
+        <div class="pl-info">
+          <h4>Lo-Fi / Estudio</h4>
+          <p>Música instrumental para concentrarse o relajarse sin interrupciones.</p>
+          <div class="pl-tags"><span class="pt">Lo-Fi</span><span class="pt">Chill</span><span class="pt">Estudio</span></div>
+          <a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a>
+        </div>
+      </div>
+      <div class="pl-card">
+        <div class="pl-thumb">🔥</div>
+        <div class="pl-info">
+          <h4>Reggaeton Clásico</h4>
+          <p>Los himnos del reggaeton de 2004 a 2015 que nunca pasan de moda.</p>
+          <div class="pl-tags"><span class="pt">Reggaeton</span><span class="pt">Clásicos</span></div>
+          <a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a>
+        </div>
+      </div>
+      <div class="pl-card">
+        <div class="pl-thumb">⚡</div>
+        <div class="pl-info">
+          <h4>Gym &amp; Workout</h4>
+          <p>Energía máxima para entrenar. Electrónica, hip-hop y rock.</p>
+          <div class="pl-tags"><span class="pt">Gym</span><span class="pt">Electrónica</span></div>
+          <a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a>
+        </div>
+      </div>
+      <div class="pl-card">
+        <div class="pl-thumb">🌅</div>
+        <div class="pl-info">
+          <h4>Hits Verano</h4>
+          <p>Los temas del verano que todo el mundo tararea. Actualizados mensualmente.</p>
+          <div class="pl-tags"><span class="pt">Pop</span><span class="pt">Verano</span></div>
+          <a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a>
+        </div>
+      </div>
+      <div class="pl-card">
+        <div class="pl-thumb">🎸</div>
+        <div class="pl-info">
+          <h4>Rock en Español</h4>
+          <p>De Soda Stereo a Maná. El mejor rock en español de todos los tiempos.</p>
+          <div class="pl-tags"><span class="pt">Rock</span><span class="pt">Español</span></div>
+          <a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -440,12 +458,14 @@ footer strong{color:var(--accent);}
     <div class="block-title">Tutoriales</div>
     <div class="block-desc">Guías paso a paso para sacar el máximo partido a tu Android.</div>
     <div class="tg">
-      <div class="tc"><div class="tn">01</div><h4>Instalar un APK en Android</h4><p>Habilita fuentes desconocidas e instala cualquier APK de forma segura.</p></div>
-      <div class="tc"><div class="tn">02</div><h4>Personalizar con Smart Launcher</h4><p>Iconos, widgets y pantallas de inicio a tu gusto.</p></div>
-      <div class="tc"><div class="tn">03</div><h4>Editar vídeos con CapCut</h4><p>Cortes, efectos, música y exportación en HD.</p></div>
-      <div class="tc"><div class="tn">04</div><h4>Fondos 4K con Wallcraft</h4><p>Cómo encontrar y aplicar los mejores fondos.</p></div>
-      <div class="tc"><div class="tn">05</div><h4>Música sin conexión en Spotify</h4><p>Descarga listas y gestiona el almacenamiento.</p></div>
-      <div class="tc"><div class="tn">06</div><h4>Editar fotos con IA en PicsArt</h4><p>Eliminación de fondo, retoques y efectos con IA.</p></div>
+      <!-- Edita el texto de cada tarjeta libremente -->
+      <!-- Cambia el número, título, descripción y etiqueta -->
+      <div class="tc"><div class="tn">01</div><h4>Cómo instalar un APK en Android</h4><p>Habilita fuentes desconocidas e instala cualquier APK de forma segura en pocos pasos.</p><span class="tc-tag">Básico</span></div>
+      <div class="tc"><div class="tn">02</div><h4>Personalizar tu launcher con Smart Launcher</h4><p>Iconos, widgets y pantallas de inicio completamente a tu gusto desde cero.</p><span class="tc-tag">Personalización</span></div>
+      <div class="tc"><div class="tn">03</div><h4>Editar vídeos con CapCut desde cero</h4><p>Cortes, efectos, música y exportación en HD paso a paso para principiantes.</p><span class="tc-tag">Edición</span></div>
+      <div class="tc"><div class="tn">04</div><h4>Fondos de pantalla 4K con Wallcraft</h4><p>Cómo encontrar, aplicar y programar los mejores fondos en resolución 4K.</p><span class="tc-tag">Personalización</span></div>
+      <div class="tc"><div class="tn">05</div><h4>Descargar música sin conexión en Spotify</h4><p>Descarga tus listas favoritas y gestiona el espacio de almacenamiento.</p><span class="tc-tag">Música</span></div>
+      <div class="tc"><div class="tn">06</div><h4>Editar fotos con IA en PicsArt</h4><p>Eliminación de fondo, retoques automáticos y efectos con inteligencia artificial.</p><span class="tc-tag">Fotografía</span></div>
     </div>
   </div>
 </div>
@@ -455,26 +475,38 @@ footer strong{color:var(--accent);}
   <div class="block">
     <div class="block-title">Contacto</div>
     <div class="ct-wrap">
-      <p>¿Quieres sugerir una app, reportar un enlace o simplemente saludar? Respondo a todos los mensajes.</p>
+      <!-- Sustituye los href="#" y los textos por tus datos reales -->
+      <p>¿Quieres sugerir una app, reportar un enlace roto o simplemente saludar? Respondo a todos los mensajes.</p>
       <div class="ct-links">
-        <a class="ct-link" href="#"><span class="ci">📧</span> Email — appstorm@ejemplo.com</a>
-        <a class="ct-link" href="#"><span class="ci">📱</span> Instagram — @appstorm_android</a>
-        <a class="ct-link" href="#"><span class="ci">▶</span> YouTube — AppStorm</a>
-        <a class="ct-link" href="#"><span class="ci">💬</span> Telegram — @appstorm</a>
+        <a class="ct-link" href="mailto:tu@email.com"><span class="ci">📧</span> Email — tu@email.com</a>
+        <a class="ct-link" href="https://instagram.com/tuusuario" target="_blank"><span class="ci">📱</span> Instagram — @tuusuario</a>
+        <a class="ct-link" href="https://youtube.com/@tucanal" target="_blank"><span class="ci">▶</span> YouTube — AppStorm</a>
+        <a class="ct-link" href="https://t.me/tuusuario" target="_blank"><span class="ci">💬</span> Telegram — @tuusuario</a>
       </div>
     </div>
   </div>
 </div>
+</div>
 
-</div><!-- /app -->
-
-<!-- Chat -->
+<!-- CHAT -->
 <div class="chat-fab">
   <div class="chat-win" id="chat-win">
-    <div class="chat-head">Asistente AppStorm</div>
-    <div class="chat-msgs" id="cmsgs"><div class="msg bot">¡Hola! ¿Qué app estás buscando?</div></div>
+    <div class="chat-head">
+      <div>
+        <span>Asistente AppStorm</span>
+        <small>Powered by Claude AI</small>
+      </div>
+    </div>
+    <div class="chat-msgs" id="cmsgs">
+      <div class="msg bot">¡Hola! Puedo ayudarte a encontrar apps, comparar opciones o resolver dudas. ¿Qué necesitas?</div>
+    </div>
+    <div class="chat-sugs" id="chat-sugs">
+      <button class="cs-btn" onclick="chatQuick('¿Cuál es la mejor app de música?')">Mejor app música</button>
+      <button class="cs-btn" onclick="chatQuick('Diferencias entre Spotify y YouTube Music')">Spotify vs YouTube Music</button>
+      <button class="cs-btn" onclick="chatQuick('¿Qué app de edición me recomiendas?')">Mejor editor</button>
+    </div>
     <div class="chat-foot">
-      <input id="cin" type="text" placeholder="Escribe aquí..." onkeydown="if(event.key==='Enter')chatSend()"/>
+      <input id="cin" type="text" placeholder="Pregunta lo que quieras..." onkeydown="if(event.key==='Enter')chatSend()"/>
       <button onclick="chatSend()">Enviar</button>
     </div>
   </div>
@@ -519,6 +551,7 @@ function closeBurger(){document.getElementById('mmenu').classList.remove('open')
 
 /* DATOS */
 let apps=[];
+let activeStory=null;
 let activeCat=null;
 
 async function init(){
@@ -531,64 +564,74 @@ async function init(){
 }
 
 /* CAPTURAS */
-function capturasHtml(a,prefix){
-  if(!a.capturas||!a.capturas.length) return '';
-  const imgs=a.capturas.map(url=>
-    `<img class="captura" src="${url}" alt="Captura ${a.name}" onclick="openLightbox('${url}')" loading="lazy"/>`
-  ).join('');
-  return `<div class="capturas-wrap"><div class="capturas-title">Capturas de pantalla</div><div class="capturas-row">${imgs}</div></div>`;
+function capturasHtml(a){
+  if(!a.capturas||!a.capturas.length)return '';
+  return `<div class="capturas-wrap"><div class="capturas-title">Capturas de pantalla</div><div class="capturas-row">${a.capturas.map(u=>`<img class="captura" src="${u}" alt="${a.name}" onclick="openLB('${u}')" loading="lazy"/>`).join('')}</div></div>`;
 }
+function openLB(src){document.getElementById('lb-img').src=src;document.getElementById('lightbox').classList.add('open');}
+function closeLB(){document.getElementById('lightbox').classList.remove('open');}
 
-/* LIGHTBOX */
-function openLightbox(src){
-  document.getElementById('lb-img').src=src;
-  document.getElementById('lightbox').classList.add('open');
-}
-function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
-
-/* STORIES */
+/* STORIES con toggle para cerrar */
 function renderStories(){
   document.getElementById('stories').innerHTML=apps.map(a=>`
-    <div class="story" id="st-${a.id}" onclick="openPanel(${a.id},'inicio')">
+    <div class="story" id="st-${a.id}" onclick="toggleStory(${a.id})">
       <div class="s-ring"><div class="s-inner">${a.icon}</div></div>
       <div class="s-lbl">${a.name}</div>
     </div>`).join('');
 }
 
-/* CATEGORÍAS TILES */
+function toggleStory(id){
+  const panel=document.getElementById('pan-inicio');
+  if(activeStory===id){
+    // cerrar
+    activeStory=null;
+    panel.classList.remove('on');
+    document.querySelectorAll('.story').forEach(s=>s.classList.remove('on'));
+    return;
+  }
+  // abrir
+  activeStory=id;
+  const a=apps.find(x=>x.id===id);if(!a)return;
+  document.querySelectorAll('.story').forEach(s=>s.classList.remove('on'));
+  document.getElementById('st-'+id)?.classList.add('on');
+  fillPan('pi',a);
+  panel.classList.remove('on');void panel.offsetWidth;panel.classList.add('on');
+  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+/* CATEGORÍAS con toggle para cerrar */
 const CAT_ICONS={'Entretenimiento':'▶','Edición':'✦','Fotografía':'◈','Música':'♫','Personalización':'⬡'};
 const CAT_COLORS={'Entretenimiento':'#e94560','Edición':'#2a9fff','Fotografía':'#a855f7','Música':'#22c55e','Personalización':'#f59e0b'};
 
 function renderCatTiles(){
   const cats=[...new Set(apps.map(a=>a.cat))];
   document.getElementById('cat-tiles').innerHTML=cats.map(cat=>{
-    const count=apps.filter(a=>a.cat===cat).length;
+    const n=apps.filter(a=>a.cat===cat).length;
     const color=CAT_COLORS[cat]||'var(--accent)';
-    return `
-      <div class="cat-tile" id="ct-${cat}" style="--tile-color:${color}" onclick="toggleCat('${cat}')">
-        <div class="ct-icon">${CAT_ICONS[cat]||'◆'}</div>
-        <div class="ct-name">${cat}</div>
-        <div class="ct-count">${count} app${count>1?'s':''}</div>
-      </div>`;
+    return `<div class="cat-tile" id="ct-${cat}" style="--tile-color:${color}" onclick="toggleCat('${cat}')">
+      <div class="ct-icon">${CAT_ICONS[cat]||'◆'}</div>
+      <div class="ct-name">${cat}</div>
+      <div class="ct-count">${n} app${n>1?'s':''}</div>
+    </div>`;
   }).join('');
 }
 
 function toggleCat(cat){
-  const panel=document.getElementById('cat-apps-panel');
+  const panel=document.getElementById('cat-panel');
   const panDet=document.getElementById('pan-cat');
   if(activeCat===cat){
     activeCat=null;
     panel.classList.remove('on');
     panDet.classList.remove('on');
-    document.querySelectorAll('.cat-tile').forEach(t=>t.classList.remove('active-tile'));
+    document.querySelectorAll('.cat-tile').forEach(t=>t.classList.remove('on'));
     return;
   }
   activeCat=cat;
-  document.querySelectorAll('.cat-tile').forEach(t=>t.classList.remove('active-tile'));
-  document.getElementById('ct-'+cat)?.classList.add('active-tile');
+  document.querySelectorAll('.cat-tile').forEach(t=>t.classList.remove('on'));
+  document.getElementById('ct-'+cat)?.classList.add('on');
   panDet.classList.remove('on');
   const list=apps.filter(a=>a.cat===cat);
-  document.getElementById('cat-apps-grid').innerHTML=list.map(a=>`
+  document.getElementById('cat-grid').innerHTML=list.map(a=>`
     <div class="ca-card" onclick="openPanel(${a.id},'cat')">
       <div class="ca-ico">${a.icon}</div>
       <div class="ca-name">${a.name}</div>
@@ -610,26 +653,22 @@ function fillPan(px,a){
     <div class="m-item"><span class="m-lbl">Tamaño</span><span class="m-val">${a.size}</span></div>
     <div class="m-item"><span class="m-lbl">Android</span><span class="m-val">${a.android}</span></div>
     <div class="m-item"><span class="m-lbl">Categoría</span><span class="m-val">${a.cat}</span></div>`;
-  document.getElementById(px+'-capturas').innerHTML=capturasHtml(a,px);
+  document.getElementById(px+'-capturas').innerHTML=capturasHtml(a);
   document.getElementById(px+'-mega').href=a.mega;
   document.getElementById(px+'-play').href=a.play;
 }
 
 function openPanel(id,sec){
   const a=apps.find(x=>x.id===id);if(!a)return;
-  const map={inicio:{px:'pi',pid:'pan-inicio'},apps:{px:'pa',pid:'pan-apps'},cat:{px:'pc',pid:'pan-cat'}};
-  const m=map[sec]||map.inicio;
-  if(sec==='inicio'){
-    document.querySelectorAll('.story').forEach(s=>s.classList.remove('on'));
-    document.getElementById('st-'+id)?.classList.add('on');
-  }
+  const map={apps:{px:'pa',pid:'pan-apps'},cat:{px:'pc',pid:'pan-cat'}};
+  const m=map[sec];if(!m)return;
   fillPan(m.px,a);
   const p=document.getElementById(m.pid);
   p.classList.remove('on');void p.offsetWidth;p.classList.add('on');
   p.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-/* GRID APPS */
+/* GRID */
 function renderFilters(){
   const cats=['Todos',...new Set(apps.map(a=>a.cat))];
   document.getElementById('filters').innerHTML=cats.map(c=>
@@ -653,7 +692,11 @@ function renderGrid(cat){
 }
 
 /* IA */
-const API_KEY='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';
+const API_KEY='PON-AQUI-TU-API-KEY';
+
+function buildCatalogContext(){
+  return apps.map(a=>`- ${a.name} (${a.cat}): ${a.descLarga||a.desc} | Versión: ${a.ver} | Tamaño: ${a.size} | Tags: ${a.tags.join(', ')}`).join('\n');
+}
 
 async function buscarIA(){
   const q=document.getElementById('srch').value.trim();
@@ -663,63 +706,106 @@ async function buscarIA(){
   if(!q)return;
   btn.disabled=true;inp.disabled=true;
   out.innerHTML='<span class="ai-typing">Consultando IA</span>';
-  const catalog=apps.map(a=>`ID:${a.id} | ${a.name} | ${a.cat} | Tags: ${a.tags.join(',')}`).join('\n');
   try{
     const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
       headers:{'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01'},
       body:JSON.stringify({
-        model:'claude-haiku-4-5-20251001',max_tokens:300,
-        messages:[{role:'user',content:`Eres el asistente de AppStorm, una tienda de apps Android.\nCatálogo:\n${catalog}\n\nEl usuario busca: "${q}"\n\nResponde en español en máximo 2 líneas. Menciona 1-3 apps del catálogo por nombre que sean relevantes. Sé directo y amigable.`}]
+        model:'claude-haiku-4-5-20251001',max_tokens:400,
+        messages:[{role:'user',content:`Eres el asistente experto de AppStorm, una tienda de apps Android en español.
+
+CATÁLOGO COMPLETO:
+${buildCatalogContext()}
+
+PREGUNTA DEL USUARIO: "${q}"
+
+INSTRUCCIONES:
+- Responde en español de forma natural y conversacional
+- Si pregunta por la mejor app de una categoría, recomienda la más adecuada con razones concretas
+- Si compara apps, explica diferencias reales entre ellas
+- Si busca algo específico, sugiere la app más relevante del catálogo
+- Menciona los nombres exactos de las apps del catálogo cuando sean relevantes
+- Responde en máximo 3 líneas, siendo directo y útil
+- Si ninguna app del catálogo encaja, dilo honestamente`}]
       })
     });
     const data=await res.json();
     let txt=data.content?.[0]?.text||'No pude procesar la búsqueda.';
-    apps.forEach(a=>{txt=txt.replace(new RegExp(a.name,'g'),`<strong style="color:var(--accent);cursor:pointer" onclick="openPanel(${a.id},'inicio')">${a.name}</strong>`);});
+    apps.forEach(a=>{
+      txt=txt.replace(new RegExp('\\b'+a.name+'\\b','g'),
+        `<strong style="color:var(--accent);cursor:pointer" onclick="toggleStory(${a.id})">${a.name}</strong>`);
+    });
     out.innerHTML=txt;
   }catch{
     const f=apps.filter(a=>a.tags.some(t=>q.toLowerCase().includes(t)||t.includes(q.toLowerCase()))||a.cat.toLowerCase().includes(q.toLowerCase())||a.name.toLowerCase().includes(q.toLowerCase()));
-    out.innerHTML=f.length?'Te recomiendo: '+f.slice(0,3).map(a=>`<strong style="cursor:pointer;color:var(--accent)" onclick="openPanel(${a.id},'inicio')">${a.name}</strong>`).join(', '):'Sin resultados. Prueba: música, edición, fotos, fondos o launcher.';
+    out.innerHTML=f.length?'Te recomiendo: '+f.slice(0,3).map(a=>`<strong style="cursor:pointer;color:var(--accent)" onclick="toggleStory(${a.id})">${a.name}</strong>`).join(', '):'Sin resultados. Prueba: música, edición, fotos, fondos o launcher.';
   }finally{btn.disabled=false;inp.disabled=false;}
 }
 document.getElementById('srch').addEventListener('keydown',e=>{if(e.key==='Enter')buscarIA();});
 
-/* CHAT */
+/* CHAT MEJORADO */
+let chatHistory=[];
+
+function chatQuick(q){
+  document.getElementById('cin').value=q;
+  chatSend();
+}
+
 async function chatSend(){
   const inp=document.getElementById('cin');
   const msgs=document.getElementById('cmsgs');
   const q=inp.value.trim();if(!q)return;
+
+  // Ocultar sugerencias tras primer mensaje
+  document.getElementById('chat-sugs').style.display='none';
+
   msgs.innerHTML+=`<div class="msg user">${q}</div>`;
   inp.value='';
-  const t=document.createElement('div');t.className='msg bot';t.textContent='...';
+  const t=document.createElement('div');
+  t.className='msg bot';t.innerHTML='<span class="ai-typing">Pensando</span>';
   msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;
-  const catalog=apps.map(a=>`${a.name} (${a.cat})`).join(', ');
+
+  chatHistory.push({role:'user',content:q});
+
   try{
     const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
       headers:{'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01'},
-      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:200,messages:[{role:'user',content:`Eres el asistente de AppStorm. Apps: ${catalog}. Usuario: "${q}". Responde en 1-2 líneas en español.`}]})
+      body:JSON.stringify({
+        model:'claude-haiku-4-5-20251001',max_tokens:350,
+        system:`Eres el asistente experto de AppStorm, una tienda de apps Android en español. 
+Eres amigable, directo y muy útil. Conoces perfectamente estas apps del catálogo:
+
+${buildCatalogContext()}
+
+Responde siempre en español. Puedes comparar apps, recomendar la mejor para cada caso, explicar diferencias, dar consejos de uso, o responder cualquier duda relacionada con las apps del catálogo. Sé conversacional y conciso, máximo 3-4 líneas por respuesta.`,
+        messages:chatHistory.slice(-6)
+      })
     });
     const data=await res.json();
-    t.textContent=data.content?.[0]?.text||'No entendí la consulta.';
+    const reply=data.content?.[0]?.text||'No pude responder en este momento.';
+    t.textContent=reply;
+    chatHistory.push({role:'assistant',content:reply});
   }catch{
     const f=apps.filter(a=>a.tags.some(x=>q.toLowerCase().includes(x))||a.cat.toLowerCase().includes(q.toLowerCase())||a.name.toLowerCase().includes(q.toLowerCase()));
-    t.textContent=f.length?'Te sugiero: '+f.slice(0,2).map(a=>a.name).join(' y ')+'.':'Prueba: música, edición, fotos, fondos, launcher.';
+    t.textContent=f.length?'Te sugiero: '+f.slice(0,2).map(a=>a.name).join(' y ')+'. ¿Quieres saber más sobre alguna?':'Prueba preguntarme: "¿cuál es la mejor app de música?" o "diferencias entre CapCut y PicsArt".';
+    chatHistory.push({role:'assistant',content:t.textContent});
   }
   msgs.scrollTop=msgs.scrollHeight;
 }
+
 function toggleChat(){document.getElementById('chat-win').classList.toggle('open');}
 
 function fallback(){
   return[
-    {id:1,icon:"▶",name:"YouTube",desc:"La plataforma de vídeo más grande del mundo.",descLarga:"YouTube con 2.000M usuarios activos.",cat:"Entretenimiento",ver:"19.45",size:"120MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.google.android.youtube",tags:["vídeo","streaming"],capturas:[]},
-    {id:2,icon:"✦",name:"CapCut",desc:"Editor de vídeo profesional.",descLarga:"Reels y vídeos con efectos IA.",cat:"Edición",ver:"11.2",size:"98MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.lemon.lvoverseas",tags:["edición","vídeo"],capturas:[]},
-    {id:3,icon:"◈",name:"PicsArt",desc:"Editor de fotos con IA.",descLarga:"Edición con recorte IA.",cat:"Fotografía",ver:"24.1",size:"85MB",android:"6.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.picsart.studio",tags:["fotos","edición"],capturas:[]},
-    {id:4,icon:"♫",name:"YouTube Music",desc:"Música con catálogo YouTube.",descLarga:"Toda la música de YouTube.",cat:"Música",ver:"6.51",size:"45MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music",tags:["música","streaming"],capturas:[]},
-    {id:5,icon:"●",name:"Spotify",desc:"Streaming de música líder.",descLarga:"100M canciones y podcasts.",cat:"Música",ver:"8.9",size:"38MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.spotify.music",tags:["música","podcasts"],capturas:[]},
-    {id:6,icon:"⬡",name:"Wallcraft",desc:"Fondos 4K para Android.",descLarga:"Miles de fondos en 4K.",cat:"Personalización",ver:"3.8",size:"22MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.wallcraft.app",tags:["fondos","4K"],capturas:[]},
-    {id:7,icon:"◉",name:"Smart Launcher",desc:"Launcher minimalista.",descLarga:"Agrupa apps por categoría.",cat:"Personalización",ver:"6.3",size:"19MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=ginlemon.flowerpro",tags:["launcher","personalización"],capturas:[]},
-    {id:8,icon:"▣",name:"PPCine",desc:"Películas y series online.",descLarga:"Streaming de películas HD.",cat:"Entretenimiento",ver:"2.1",size:"31MB",android:"5.0+",mega:"#",play:"#",tags:["películas","series"],capturas:[]}
+    {id:1,icon:"▶",name:"YouTube",desc:"La plataforma de vídeo más grande del mundo.",descLarga:"YouTube es la plataforma de streaming con más de 2.000 millones de usuarios activos. Vídeos en HD, 4K, Shorts y mucho más.",cat:"Entretenimiento",ver:"19.45",size:"120MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.google.android.youtube",tags:["vídeo","streaming","entretenimiento"],capturas:[]},
+    {id:2,icon:"✦",name:"CapCut",desc:"Editor de vídeo profesional y fácil de usar.",descLarga:"Crea reels, stories y vídeos con efectos de IA, transiciones automáticas y música integrada. Sin marca de agua.",cat:"Edición",ver:"11.2",size:"98MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.lemon.lvoverseas",tags:["edición","vídeo","reels"],capturas:[]},
+    {id:3,icon:"◈",name:"PicsArt",desc:"Editor de fotos con IA y comunidad creativa.",descLarga:"Edición de fotos con recorte IA, efectos, stickers y comunidad millonaria de creadores.",cat:"Fotografía",ver:"24.1",size:"85MB",android:"6.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.picsart.studio",tags:["fotos","edición","diseño"],capturas:[]},
+    {id:4,icon:"♫",name:"YouTube Music",desc:"Música y podcasts con el catálogo de YouTube.",descLarga:"Toda la música de YouTube con recomendaciones inteligentes y modo sin conexión.",cat:"Música",ver:"6.51",size:"45MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music",tags:["música","streaming","youtube"],capturas:[]},
+    {id:5,icon:"●",name:"Spotify",desc:"Streaming de música y podcasts líder mundial.",descLarga:"Más de 100 millones de canciones y podcasts. Recomendaciones personalizadas y listas editoriales.",cat:"Música",ver:"8.9",size:"38MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.spotify.music",tags:["música","podcasts","streaming"],capturas:[]},
+    {id:6,icon:"⬡",name:"Wallcraft",desc:"Fondos de pantalla en 4K y HD para Android.",descLarga:"Miles de fondos en 4K actualizados semanalmente. Anime, naturaleza, abstracto y mucho más.",cat:"Personalización",ver:"3.8",size:"22MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.wallcraft.app",tags:["fondos","4K","personalización"],capturas:[]},
+    {id:7,icon:"◉",name:"Smart Launcher",desc:"Launcher minimalista e inteligente para Android.",descLarga:"Agrupa apps automáticamente por categoría. Interfaz limpia, widgets modernos y personalización total.",cat:"Personalización",ver:"6.3",size:"19MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=ginlemon.flowerpro",tags:["launcher","personalización","minimalista"],capturas:[]},
+    {id:8,icon:"▣",name:"PPCine",desc:"Reproductor de películas y series online.",descLarga:"Miles de películas y series en streaming desde tu Android. Calidad HD y actualización constante.",cat:"Entretenimiento",ver:"2.1",size:"31MB",android:"5.0+",mega:"#",play:"#",tags:["películas","series","streaming"],capturas:[]}
   ];
 }
 init();
