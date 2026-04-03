@@ -38,7 +38,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 @keyframes boltFlash{0%,100%{opacity:0;}50%{opacity:1;}}
 .bsvg{display:inline-block;vertical-align:middle;}
 
-/* MAIN */
 #app{opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s;}
 #app.visible{opacity:1;transform:translateY(0);}
 
@@ -59,7 +58,6 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .mmenu a{font-size:14px;color:var(--muted2);padding:9px 14px;border-radius:8px;cursor:pointer;transition:background .2s,color .2s;}
 .mmenu a:hover,.mmenu a.on{background:rgba(42,159,255,.08);color:var(--accent);}
 
-/* SECCIONES */
 .sec{display:none;}.sec.on{display:block;}
 
 /* HERO */
@@ -82,15 +80,18 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .ai-typing::after{content:'▌';animation:blink .7s infinite;}
 @keyframes blink{50%{opacity:0;}}
 
-/* BLOCK */
 .block{padding:1.5rem;}
 .block-title{font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:1.1rem;}
 .block-desc{font-size:14px;color:var(--muted2);line-height:1.8;margin-bottom:1.4rem;}
 .divider{height:1px;background:var(--border);margin:0 1.5rem;}
 
-/* STORIES */
-.stories{display:flex;gap:1rem;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;}
-.stories::-webkit-scrollbar{display:none;}
+/* STORIES — centradas */
+.stories{
+  display:flex;gap:1rem;
+  justify-content:center;
+  flex-wrap:wrap;
+  padding-bottom:6px;
+}
 .story{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;}
 .s-ring{width:60px;height:60px;border-radius:50%;border:2px solid var(--bord2);padding:3px;transition:border-color .2s,transform .2s;}
 .story:hover .s-ring,.story.on .s-ring{border-color:var(--accent);transform:scale(1.06);}
@@ -129,21 +130,26 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .btn-ps{flex:1;min-width:130px;padding:11px 14px;border-radius:9px;font-size:13px;cursor:pointer;text-align:center;background:transparent;border:1px solid var(--bord2);color:var(--muted2);font-family:'Inter',sans-serif;transition:border-color .2s,color .2s;text-decoration:none;display:inline-block;}
 .btn-ps:hover{border-color:var(--accent);color:var(--accent);}
 
-/* CATEGORÍAS TILES */
-.cat-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px;margin-bottom:1rem;}
-.cat-tile{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1rem;cursor:pointer;display:flex;flex-direction:column;gap:6px;transition:border-color .2s,transform .15s,background .2s;position:relative;overflow:hidden;}
+/* CATEGORÍAS — centradas */
+.cat-tiles{
+  display:flex;gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-bottom:1rem;
+}
+.cat-tile{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:110px;transition:border-color .2s,transform .15s,background .2s;position:relative;overflow:hidden;text-align:center;}
 .cat-tile::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--tile-color,var(--accent));border-radius:12px 12px 0 0;}
 .cat-tile:hover{border-color:var(--accent);transform:translateY(-3px);background:var(--bg3);}
 .cat-tile.on{border-color:var(--accent);background:rgba(42,159,255,.06);}
 .ct-icon{font-size:26px;line-height:1;}
-.ct-name{font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:700;color:var(--text);}
-.ct-count{font-size:11px;color:var(--muted);}
+.ct-name{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:var(--text);}
+.ct-count{font-size:10px;color:var(--muted);}
 .cat-apps-panel{background:var(--bg2);border:1px solid var(--bord2);border-radius:12px;padding:1rem;display:none;margin-bottom:1rem;animation:panIn .2s ease;}
 .cat-apps-panel.on{display:block;}
 .cat-apps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;}
 .ca-card{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:.75rem;cursor:pointer;transition:border-color .2s,transform .15s;display:flex;flex-direction:column;gap:5px;}
 .ca-card:hover{border-color:var(--accent);transform:translateY(-2px);}
-.ca-ico{font-size:22px;line-height:1;}
+.ca-ico{font-size:22px;}
 .ca-name{font-size:12px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .ca-ver{font-size:10px;color:var(--muted);}
 
@@ -159,22 +165,64 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .fbtn{font-size:12px;padding:5px 13px;border-radius:20px;cursor:pointer;background:var(--bg3);border:1px solid var(--border);color:var(--muted2);font-family:'Inter',sans-serif;transition:all .2s;}
 .fbtn:hover,.fbtn.on{background:rgba(42,159,255,.11);border-color:var(--accent);color:var(--accent);}
 
-/* PLAYLISTS */
-.pl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;}
-.pl-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s,transform .15s;}
-.pl-card:hover{border-color:var(--accent);transform:translateY(-2px);}
-.pl-thumb{height:72px;display:flex;align-items:center;justify-content:center;font-size:30px;background:var(--bg3);border-bottom:1px solid var(--border);}
-.pl-info{padding:.85rem;}
-.pl-info h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px;}
-.pl-info p{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:8px;}
-.pl-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px;}
+/* ══ PLAYLISTS ══ */
+.pl-search-wrap{
+  background:var(--bg2);border:1px solid var(--bord2);
+  border-radius:14px;padding:.95rem 1.2rem;
+  margin-bottom:1.5rem;
+}
+.pl-search-row{display:flex;gap:8px;}
+.pl-search-row input{flex:1;min-width:0;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 13px;color:var(--text);font-size:14px;outline:none;font-family:'Inter',sans-serif;transition:border-color .2s;}
+.pl-search-row input::placeholder{color:var(--muted);}
+.pl-search-row input:focus{border-color:var(--accent);}
+.pl-search-row input:disabled{opacity:.6;}
+.btn-pl-ai{background:var(--acc2);border:1px solid var(--accent);border-radius:8px;padding:10px 14px;color:#fff;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:background .2s;flex-shrink:0;}
+.btn-pl-ai:hover{background:var(--accent);}
+.btn-pl-ai:disabled{opacity:.5;cursor:default;}
+.pl-ai-out{margin-top:10px;font-size:13px;color:var(--muted2);min-height:18px;line-height:1.7;}
+
+/* Géneros filtro */
+.genre-filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1.2rem;}
+
+/* Grid de playlists */
+.pl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
+
+/* Tarjeta playlist con toggle */
+.pl-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s;}
+.pl-card.on{border-color:var(--accent);}
+.pl-header{display:flex;align-items:center;gap:12px;padding:.85rem 1rem;cursor:pointer;transition:background .2s;}
+.pl-header:hover{background:var(--bg3);}
+.pl-thumb{
+  width:80px;height:56px;border-radius:8px;
+  object-fit:cover;background:var(--bg3);
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:22px;overflow:hidden;
+}
+.pl-thumb img{width:100%;height:100%;object-fit:cover;border-radius:8px;}
+.pl-header-info{flex:1;min-width:0;}
+.pl-header-info h4{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pl-header-info p{font-size:11px;color:var(--muted);line-height:1.4;}
+.pl-chevron{font-size:12px;color:var(--muted);transition:transform .2s;flex-shrink:0;}
+.pl-card.on .pl-chevron{transform:rotate(180deg);color:var(--accent);}
+
+/* Panel expandible de playlist */
+.pl-body{display:none;padding:.85rem 1rem;border-top:1px solid var(--border);}
+.pl-card.on .pl-body{display:block;}
+.pl-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:.85rem;}
 .pt{font-size:10px;color:var(--accent);background:rgba(42,159,255,.08);border-radius:4px;padding:2px 6px;}
-.pl-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--accent);text-decoration:none;transition:opacity .2s;}
-.pl-link:hover{opacity:.7;}
+.pl-desc{font-size:13px;color:var(--muted2);line-height:1.6;margin-bottom:.85rem;}
+.pl-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--acc2);border:1px solid var(--accent);
+  border-radius:8px;padding:9px 14px;color:#fff;
+  font-size:13px;text-decoration:none;
+  transition:background .2s;
+}
+.pl-btn:hover{background:var(--accent);}
 
 /* TUTORIALES */
 .tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;}
-.tc{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:1.1rem;cursor:pointer;transition:border-color .2s;}
+.tc{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:1.1rem;transition:border-color .2s;}
 .tc:hover{border-color:var(--accent);}
 .tn{font-family:'Rajdhani',sans-serif;font-size:26px;font-weight:700;color:rgba(42,159,255,.18);margin-bottom:5px;}
 .tc h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px;}
@@ -197,7 +245,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .chat-win.open{display:flex;}
 .chat-head{display:flex;align-items:center;justify-content:space-between;padding:10px 13px;background:var(--bg3);border-bottom:1px solid var(--border);}
 .chat-head span{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:600;color:var(--accent);}
-.chat-head small{font-size:10px;color:var(--muted);margin-top:1px;display:block;}
+.chat-head small{font-size:10px;color:var(--muted);display:block;}
 .chat-msgs{padding:10px;display:flex;flex-direction:column;gap:7px;max-height:240px;overflow-y:auto;}
 .msg{font-size:12px;line-height:1.6;padding:8px 11px;border-radius:10px;max-width:90%;}
 .msg.bot{background:var(--bg3);color:var(--muted2);align-self:flex-start;border-radius:4px 10px 10px 10px;}
@@ -221,10 +269,10 @@ footer strong{color:var(--accent);}
   .hero{padding:2rem 1rem 1.8rem;}
   .hero-brand{font-size:24px;}
   .block{padding:1rem;}
-  .srch-row{flex-direction:column;}
-  .btn-ai{width:100%;text-align:center;padding:11px;}
+  .srch-row,.pl-search-row{flex-direction:column;}
+  .btn-ai,.btn-pl-ai{width:100%;text-align:center;padding:11px;}
   .grid{grid-template-columns:repeat(2,1fr);gap:8px;}
-  .cat-tiles{grid-template-columns:repeat(2,1fr);}
+  .cat-tiles{justify-content:center;}
   .cat-apps-grid{grid-template-columns:repeat(2,1fr);}
   .pan-btns{flex-direction:column;}
   .pan-top{flex-direction:column;}
@@ -389,66 +437,23 @@ footer strong{color:var(--accent);}
 <!-- ══ PLAYLISTS ══ -->
 <div id="sec-playlists" class="sec">
   <div class="block">
-    <div class="block-title">Playlists curadas</div>
-    <div class="block-desc">Colecciones de música seleccionadas por género y mood, con enlace directo a YouTube. Actualizadas regularmente.</div>
-    <div class="pl-grid" id="pl-grid">
-      <!-- Edita estas tarjetas para añadir tus playlists reales -->
-      <!-- Sustituye href="#" por el enlace real de YouTube -->
-      <div class="pl-card">
-        <div class="pl-thumb">🎧</div>
-        <div class="pl-info">
-          <h4>Trap &amp; Urban 2025</h4>
-          <p>Los mejores temas de trap, drill y urban. Actualizado cada semana.</p>
-          <div class="pl-tags"><span class="pt">Trap</span><span class="pt">Urban</span><span class="pt">2025</span></div>
-          <a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a>
-        </div>
+    <div class="block-title">Playlists &amp; Música</div>
+    <div class="block-desc">Busca una canción o artista con IA, o explora las colecciones por género.</div>
+
+    <!-- Buscador de música con IA -->
+    <div class="pl-search-wrap">
+      <div class="pl-search-row">
+        <input id="pl-srch" type="text" placeholder="Busca una canción, artista o género... Ej: Bad Bunny, trap 2025"/>
+        <button class="btn-pl-ai" id="pl-sbtn" onclick="buscarMusica()">Buscar en YouTube</button>
       </div>
-      <div class="pl-card">
-        <div class="pl-thumb">🌙</div>
-        <div class="pl-info">
-          <h4>Lo-Fi / Estudio</h4>
-          <p>Música instrumental para concentrarse o relajarse sin interrupciones.</p>
-          <div class="pl-tags"><span class="pt">Lo-Fi</span><span class="pt">Chill</span><span class="pt">Estudio</span></div>
-          <a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a>
-        </div>
-      </div>
-      <div class="pl-card">
-        <div class="pl-thumb">🔥</div>
-        <div class="pl-info">
-          <h4>Reggaeton Clásico</h4>
-          <p>Los himnos del reggaeton de 2004 a 2015 que nunca pasan de moda.</p>
-          <div class="pl-tags"><span class="pt">Reggaeton</span><span class="pt">Clásicos</span></div>
-          <a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a>
-        </div>
-      </div>
-      <div class="pl-card">
-        <div class="pl-thumb">⚡</div>
-        <div class="pl-info">
-          <h4>Gym &amp; Workout</h4>
-          <p>Energía máxima para entrenar. Electrónica, hip-hop y rock.</p>
-          <div class="pl-tags"><span class="pt">Gym</span><span class="pt">Electrónica</span></div>
-          <a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a>
-        </div>
-      </div>
-      <div class="pl-card">
-        <div class="pl-thumb">🌅</div>
-        <div class="pl-info">
-          <h4>Hits Verano</h4>
-          <p>Los temas del verano que todo el mundo tararea. Actualizados mensualmente.</p>
-          <div class="pl-tags"><span class="pt">Pop</span><span class="pt">Verano</span></div>
-          <a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a>
-        </div>
-      </div>
-      <div class="pl-card">
-        <div class="pl-thumb">🎸</div>
-        <div class="pl-info">
-          <h4>Rock en Español</h4>
-          <p>De Soda Stereo a Maná. El mejor rock en español de todos los tiempos.</p>
-          <div class="pl-tags"><span class="pt">Rock</span><span class="pt">Español</span></div>
-          <a class="pl-link" href="#" target="_blank">▶ Escuchar en YouTube</a>
-        </div>
-      </div>
+      <div class="pl-ai-out" id="pl-ai-out"></div>
     </div>
+
+    <!-- Filtros de género -->
+    <div class="genre-filters" id="genre-filters"></div>
+
+    <!-- Grid de playlists -->
+    <div class="pl-grid" id="pl-grid"></div>
   </div>
 </div>
 
@@ -458,8 +463,6 @@ footer strong{color:var(--accent);}
     <div class="block-title">Tutoriales</div>
     <div class="block-desc">Guías paso a paso para sacar el máximo partido a tu Android.</div>
     <div class="tg">
-      <!-- Edita el texto de cada tarjeta libremente -->
-      <!-- Cambia el número, título, descripción y etiqueta -->
       <div class="tc"><div class="tn">01</div><h4>Cómo instalar un APK en Android</h4><p>Habilita fuentes desconocidas e instala cualquier APK de forma segura en pocos pasos.</p><span class="tc-tag">Básico</span></div>
       <div class="tc"><div class="tn">02</div><h4>Personalizar tu launcher con Smart Launcher</h4><p>Iconos, widgets y pantallas de inicio completamente a tu gusto desde cero.</p><span class="tc-tag">Personalización</span></div>
       <div class="tc"><div class="tn">03</div><h4>Editar vídeos con CapCut desde cero</h4><p>Cortes, efectos, música y exportación en HD paso a paso para principiantes.</p><span class="tc-tag">Edición</span></div>
@@ -475,7 +478,6 @@ footer strong{color:var(--accent);}
   <div class="block">
     <div class="block-title">Contacto</div>
     <div class="ct-wrap">
-      <!-- Sustituye los href="#" y los textos por tus datos reales -->
       <p>¿Quieres sugerir una app, reportar un enlace roto o simplemente saludar? Respondo a todos los mensajes.</p>
       <div class="ct-links">
         <a class="ct-link" href="mailto:tu@email.com"><span class="ci">📧</span> Email — tu@email.com</a>
@@ -492,10 +494,7 @@ footer strong{color:var(--accent);}
 <div class="chat-fab">
   <div class="chat-win" id="chat-win">
     <div class="chat-head">
-      <div>
-        <span>Asistente AppStorm</span>
-        <small>Powered by Claude AI</small>
-      </div>
+      <div><span>Asistente AppStorm</span><small>Powered by Claude AI</small></div>
     </div>
     <div class="chat-msgs" id="cmsgs">
       <div class="msg bot">¡Hola! Puedo ayudarte a encontrar apps, comparar opciones o resolver dudas. ¿Qué necesitas?</div>
@@ -503,7 +502,7 @@ footer strong{color:var(--accent);}
     <div class="chat-sugs" id="chat-sugs">
       <button class="cs-btn" onclick="chatQuick('¿Cuál es la mejor app de música?')">Mejor app música</button>
       <button class="cs-btn" onclick="chatQuick('Diferencias entre Spotify y YouTube Music')">Spotify vs YouTube Music</button>
-      <button class="cs-btn" onclick="chatQuick('¿Qué app de edición me recomiendas?')">Mejor editor</button>
+      <button class="cs-btn" onclick="chatQuick('¿Qué editor de vídeo me recomiendas?')">Mejor editor</button>
     </div>
     <div class="chat-foot">
       <input id="cin" type="text" placeholder="Pregunta lo que quieras..." onkeydown="if(event.key==='Enter')chatSend()"/>
@@ -551,17 +550,117 @@ function closeBurger(){document.getElementById('mmenu').classList.remove('open')
 
 /* DATOS */
 let apps=[];
+let playlists=[];
 let activeStory=null;
 let activeCat=null;
+let activePl=null;
+const API_KEY='';
 
 async function init(){
-  try{const r=await fetch('apps.json');apps=await r.json();}
-  catch{apps=fallback();}
+  try{const r=await fetch('apps.json');apps=await r.json();}catch{apps=fallback();}
+  try{const r=await fetch('playlists.json');playlists=await r.json();}catch{playlists=fallbackPl();}
   renderStories();
   renderCatTiles();
   renderFilters();
   renderGrid('Todos');
+  renderGenreFilters();
+  renderPlaylists('Todos');
 }
+
+/* YOUTUBE helpers */
+function ytId(url){
+  if(!url)return null;
+  const m=url.match(/(?:list=)([a-zA-Z0-9_-]+)/);
+  if(m)return null; // es playlist, no video
+  const mv=url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return mv?mv[1]:null;
+}
+function plThumb(pl){
+  const vid=ytId(pl.youtube||'');
+  if(vid)return `<img src="https://img.youtube.com/vi/${vid}/mqdefault.jpg" alt="${pl.titulo}" style="width:100%;height:100%;object-fit:cover;border-radius:8px"/>`;
+  // si es playlist usamos emoji del género
+  const emojis={'Trap':'🎧','Lo-Fi':'🌙','Reggaeton':'🔥','Gym':'⚡','Pop':'🌅','Rock':'🎸'};
+  return emojis[pl.genero]||'🎵';
+}
+function plUrl(pl){
+  const vid=ytId(pl.youtube||'');
+  if(vid)return `https://youtube.com/watch?v=${vid}`;
+  if(pl.youtube&&pl.youtube!='#')return pl.youtube;
+  return `https://www.youtube.com/results?search_query=${encodeURIComponent(pl.titulo)}`;
+}
+
+/* GÉNEROS */
+function renderGenreFilters(){
+  const genres=['Todos',...new Set(playlists.map(p=>p.genero))];
+  document.getElementById('genre-filters').innerHTML=genres.map(g=>
+    `<button class="fbtn${g==='Todos'?' on':''}" onclick="filterGenre('${g}')">${g}</button>`
+  ).join('');
+}
+function filterGenre(g){
+  document.querySelectorAll('#genre-filters .fbtn').forEach(b=>b.classList.remove('on'));
+  [...document.querySelectorAll('#genre-filters .fbtn')].find(b=>b.textContent===g)?.classList.add('on');
+  renderPlaylists(g);
+}
+
+/* PLAYLISTS con toggle */
+function renderPlaylists(genre){
+  activePl=null;
+  const list=genre==='Todos'?playlists:playlists.filter(p=>p.genero===genre);
+  document.getElementById('pl-grid').innerHTML=list.map(pl=>`
+    <div class="pl-card" id="plc-${pl.id}">
+      <div class="pl-header" onclick="togglePl(${pl.id})">
+        <div class="pl-thumb">${plThumb(pl)}</div>
+        <div class="pl-header-info">
+          <h4>${pl.titulo}</h4>
+          <p>${pl.tags.join(' · ')}</p>
+        </div>
+        <span class="pl-chevron">▼</span>
+      </div>
+      <div class="pl-body">
+        <div class="pl-tags">${pl.tags.map(t=>`<span class="pt">${t}</span>`).join('')}</div>
+        <p class="pl-desc">${pl.descripcion}</p>
+        <a class="pl-btn" href="${plUrl(pl)}" target="_blank">▶ Escuchar en YouTube</a>
+      </div>
+    </div>`).join('');
+}
+
+function togglePl(id){
+  const card=document.getElementById('plc-'+id);
+  if(!card)return;
+  if(activePl===id){
+    card.classList.remove('on');
+    activePl=null;
+  }else{
+    if(activePl){document.getElementById('plc-'+activePl)?.classList.remove('on');}
+    card.classList.add('on');
+    activePl=id;
+    card.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+}
+
+/* BUSCADOR DE MÚSICA */
+async function buscarMusica(){
+  const q=document.getElementById('pl-srch').value.trim();
+  const out=document.getElementById('pl-ai-out');
+  const btn=document.getElementById('pl-sbtn');
+  const inp=document.getElementById('pl-srch');
+  if(!q)return;
+  btn.disabled=true;inp.disabled=true;
+  out.innerHTML='<span class="ai-typing">Buscando en YouTube</span>';
+
+  // Construcción del enlace de búsqueda de YouTube
+  const searchUrl=`https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;
+  const musicUrl=`https://music.youtube.com/search?q=${encodeURIComponent(q)}`;
+
+  setTimeout(()=>{
+    out.innerHTML=`Resultados para "<strong style="color:var(--accent)">${q}</strong>":<br>
+      <a href="${searchUrl}" target="_blank" style="color:var(--accent);display:inline-flex;align-items:center;gap:6px;margin-top:6px;text-decoration:none;font-weight:500;">▶ Buscar en YouTube</a>
+      &nbsp;&nbsp;
+      <a href="${musicUrl}" target="_blank" style="color:#22c55e;display:inline-flex;align-items:center;gap:6px;margin-top:6px;text-decoration:none;font-weight:500;">♫ Buscar en YouTube Music</a>`;
+    btn.disabled=false;inp.disabled=false;
+  },500);
+}
+document.getElementById('pl-srch')?.addEventListener('keydown',e=>{if(e.key==='Enter')buscarMusica();});
 
 /* CAPTURAS */
 function capturasHtml(a){
@@ -571,7 +670,7 @@ function capturasHtml(a){
 function openLB(src){document.getElementById('lb-img').src=src;document.getElementById('lightbox').classList.add('open');}
 function closeLB(){document.getElementById('lightbox').classList.remove('open');}
 
-/* STORIES con toggle para cerrar */
+/* STORIES */
 function renderStories(){
   document.getElementById('stories').innerHTML=apps.map(a=>`
     <div class="story" id="st-${a.id}" onclick="toggleStory(${a.id})">
@@ -579,17 +678,9 @@ function renderStories(){
       <div class="s-lbl">${a.name}</div>
     </div>`).join('');
 }
-
 function toggleStory(id){
   const panel=document.getElementById('pan-inicio');
-  if(activeStory===id){
-    // cerrar
-    activeStory=null;
-    panel.classList.remove('on');
-    document.querySelectorAll('.story').forEach(s=>s.classList.remove('on'));
-    return;
-  }
-  // abrir
+  if(activeStory===id){activeStory=null;panel.classList.remove('on');document.querySelectorAll('.story').forEach(s=>s.classList.remove('on'));return;}
   activeStory=id;
   const a=apps.find(x=>x.id===id);if(!a)return;
   document.querySelectorAll('.story').forEach(s=>s.classList.remove('on'));
@@ -599,10 +690,9 @@ function toggleStory(id){
   panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-/* CATEGORÍAS con toggle para cerrar */
+/* CATEGORÍAS */
 const CAT_ICONS={'Entretenimiento':'▶','Edición':'✦','Fotografía':'◈','Música':'♫','Personalización':'⬡'};
 const CAT_COLORS={'Entretenimiento':'#e94560','Edición':'#2a9fff','Fotografía':'#a855f7','Música':'#22c55e','Personalización':'#f59e0b'};
-
 function renderCatTiles(){
   const cats=[...new Set(apps.map(a=>a.cat))];
   document.getElementById('cat-tiles').innerHTML=cats.map(cat=>{
@@ -615,23 +705,15 @@ function renderCatTiles(){
     </div>`;
   }).join('');
 }
-
 function toggleCat(cat){
   const panel=document.getElementById('cat-panel');
   const panDet=document.getElementById('pan-cat');
-  if(activeCat===cat){
-    activeCat=null;
-    panel.classList.remove('on');
-    panDet.classList.remove('on');
-    document.querySelectorAll('.cat-tile').forEach(t=>t.classList.remove('on'));
-    return;
-  }
+  if(activeCat===cat){activeCat=null;panel.classList.remove('on');panDet.classList.remove('on');document.querySelectorAll('.cat-tile').forEach(t=>t.classList.remove('on'));return;}
   activeCat=cat;
   document.querySelectorAll('.cat-tile').forEach(t=>t.classList.remove('on'));
   document.getElementById('ct-'+cat)?.classList.add('on');
   panDet.classList.remove('on');
-  const list=apps.filter(a=>a.cat===cat);
-  document.getElementById('cat-grid').innerHTML=list.map(a=>`
+  document.getElementById('cat-grid').innerHTML=apps.filter(a=>a.cat===cat).map(a=>`
     <div class="ca-card" onclick="openPanel(${a.id},'cat')">
       <div class="ca-ico">${a.icon}</div>
       <div class="ca-name">${a.name}</div>
@@ -657,7 +739,6 @@ function fillPan(px,a){
   document.getElementById(px+'-mega').href=a.mega;
   document.getElementById(px+'-play').href=a.play;
 }
-
 function openPanel(id,sec){
   const a=apps.find(x=>x.id===id);if(!a)return;
   const map={apps:{px:'pa',pid:'pan-apps'},cat:{px:'pc',pid:'pan-cat'}};
@@ -668,7 +749,7 @@ function openPanel(id,sec){
   p.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-/* GRID */
+/* GRID APPS */
 function renderFilters(){
   const cats=['Todos',...new Set(apps.map(a=>a.cat))];
   document.getElementById('filters').innerHTML=cats.map(c=>
@@ -676,8 +757,8 @@ function renderFilters(){
   ).join('');
 }
 function filterBy(cat){
-  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
-  [...document.querySelectorAll('.fbtn')].find(b=>b.textContent===cat)?.classList.add('on');
+  document.querySelectorAll('#filters .fbtn').forEach(b=>b.classList.remove('on'));
+  [...document.querySelectorAll('#filters .fbtn')].find(b=>b.textContent===cat)?.classList.add('on');
   renderGrid(cat);
   document.getElementById('pan-apps').classList.remove('on');
 }
@@ -691,13 +772,8 @@ function renderGrid(cat){
     </div>`).join('');
 }
 
-/* IA */
-const API_KEY='';
-
-function buildCatalogContext(){
-  return apps.map(a=>`- ${a.name} (${a.cat}): ${a.descLarga||a.desc} | Versión: ${a.ver} | Tamaño: ${a.size} | Tags: ${a.tags.join(', ')}`).join('\n');
-}
-
+/* IA APPS */
+function buildCtx(){return apps.map(a=>`- ${a.name} (${a.cat}): ${a.descLarga||a.desc} | v${a.ver} | ${a.size} | Tags: ${a.tags.join(', ')}`).join('\n');}
 async function buscarIA(){
   const q=document.getElementById('srch').value.trim();
   const out=document.getElementById('ai-out');
@@ -710,31 +786,11 @@ async function buscarIA(){
     const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
       headers:{'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01'},
-      body:JSON.stringify({
-        model:'claude-haiku-4-5-20251001',max_tokens:400,
-        messages:[{role:'user',content:`Eres el asistente experto de AppStorm, una tienda de apps Android en español.
-
-CATÁLOGO COMPLETO:
-${buildCatalogContext()}
-
-PREGUNTA DEL USUARIO: "${q}"
-
-INSTRUCCIONES:
-- Responde en español de forma natural y conversacional
-- Si pregunta por la mejor app de una categoría, recomienda la más adecuada con razones concretas
-- Si compara apps, explica diferencias reales entre ellas
-- Si busca algo específico, sugiere la app más relevante del catálogo
-- Menciona los nombres exactos de las apps del catálogo cuando sean relevantes
-- Responde en máximo 3 líneas, siendo directo y útil
-- Si ninguna app del catálogo encaja, dilo honestamente`}]
-      })
+      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:400,messages:[{role:'user',content:`Eres el asistente experto de AppStorm, una tienda de apps Android en español.\n\nCATÁLOGO:\n${buildCtx()}\n\nPREGUNTA: "${q}"\n\nResponde en español, máximo 3 líneas. Si compara apps explica diferencias reales. Menciona nombres exactos del catálogo.`}]})
     });
     const data=await res.json();
     let txt=data.content?.[0]?.text||'No pude procesar la búsqueda.';
-    apps.forEach(a=>{
-      txt=txt.replace(new RegExp('\\b'+a.name+'\\b','g'),
-        `<strong style="color:var(--accent);cursor:pointer" onclick="toggleStory(${a.id})">${a.name}</strong>`);
-    });
+    apps.forEach(a=>{txt=txt.replace(new RegExp('\\b'+a.name+'\\b','g'),`<strong style="color:var(--accent);cursor:pointer" onclick="toggleStory(${a.id})">${a.name}</strong>`);});
     out.innerHTML=txt;
   }catch{
     const f=apps.filter(a=>a.tags.some(t=>q.toLowerCase().includes(t)||t.includes(q.toLowerCase()))||a.cat.toLowerCase().includes(q.toLowerCase())||a.name.toLowerCase().includes(q.toLowerCase()));
@@ -743,71 +799,58 @@ INSTRUCCIONES:
 }
 document.getElementById('srch').addEventListener('keydown',e=>{if(e.key==='Enter')buscarIA();});
 
-/* CHAT MEJORADO */
+/* CHAT */
 let chatHistory=[];
-
-function chatQuick(q){
-  document.getElementById('cin').value=q;
-  chatSend();
-}
-
+function chatQuick(q){document.getElementById('cin').value=q;chatSend();}
 async function chatSend(){
   const inp=document.getElementById('cin');
   const msgs=document.getElementById('cmsgs');
   const q=inp.value.trim();if(!q)return;
-
-  // Ocultar sugerencias tras primer mensaje
   document.getElementById('chat-sugs').style.display='none';
-
   msgs.innerHTML+=`<div class="msg user">${q}</div>`;
   inp.value='';
-  const t=document.createElement('div');
-  t.className='msg bot';t.innerHTML='<span class="ai-typing">Pensando</span>';
+  const t=document.createElement('div');t.className='msg bot';t.innerHTML='<span class="ai-typing">Pensando</span>';
   msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;
-
   chatHistory.push({role:'user',content:q});
-
   try{
     const res=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
       headers:{'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01'},
-      body:JSON.stringify({
-        model:'claude-haiku-4-5-20251001',max_tokens:350,
-        system:`Eres el asistente experto de AppStorm, una tienda de apps Android en español. 
-Eres amigable, directo y muy útil. Conoces perfectamente estas apps del catálogo:
-
-${buildCatalogContext()}
-
-Responde siempre en español. Puedes comparar apps, recomendar la mejor para cada caso, explicar diferencias, dar consejos de uso, o responder cualquier duda relacionada con las apps del catálogo. Sé conversacional y conciso, máximo 3-4 líneas por respuesta.`,
-        messages:chatHistory.slice(-6)
-      })
+      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:350,
+        system:`Eres el asistente experto de AppStorm, tienda de apps Android en español. Eres amigable y directo.\nApps disponibles:\n${buildCtx()}\nResponde en español, máximo 3-4 líneas. Compara apps, recomienda la mejor para cada caso, explica diferencias reales.`,
+        messages:chatHistory.slice(-6)})
     });
     const data=await res.json();
-    const reply=data.content?.[0]?.text||'No pude responder en este momento.';
+    const reply=data.content?.[0]?.text||'No pude responder ahora.';
     t.textContent=reply;
     chatHistory.push({role:'assistant',content:reply});
   }catch{
     const f=apps.filter(a=>a.tags.some(x=>q.toLowerCase().includes(x))||a.cat.toLowerCase().includes(q.toLowerCase())||a.name.toLowerCase().includes(q.toLowerCase()));
-    t.textContent=f.length?'Te sugiero: '+f.slice(0,2).map(a=>a.name).join(' y ')+'. ¿Quieres saber más sobre alguna?':'Prueba preguntarme: "¿cuál es la mejor app de música?" o "diferencias entre CapCut y PicsArt".';
+    t.textContent=f.length?'Te sugiero: '+f.slice(0,2).map(a=>a.name).join(' y ')+'. ¿Quieres saber más?':'Prueba: "¿cuál es la mejor app de música?" o "diferencias entre CapCut y PicsArt"';
     chatHistory.push({role:'assistant',content:t.textContent});
   }
   msgs.scrollTop=msgs.scrollHeight;
 }
-
 function toggleChat(){document.getElementById('chat-win').classList.toggle('open');}
 
-function fallback(){
-  return[
-    {id:1,icon:"▶",name:"YouTube",desc:"La plataforma de vídeo más grande del mundo.",descLarga:"YouTube es la plataforma de streaming con más de 2.000 millones de usuarios activos. Vídeos en HD, 4K, Shorts y mucho más.",cat:"Entretenimiento",ver:"19.45",size:"120MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.google.android.youtube",tags:["vídeo","streaming","entretenimiento"],capturas:[]},
-    {id:2,icon:"✦",name:"CapCut",desc:"Editor de vídeo profesional y fácil de usar.",descLarga:"Crea reels, stories y vídeos con efectos de IA, transiciones automáticas y música integrada. Sin marca de agua.",cat:"Edición",ver:"11.2",size:"98MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.lemon.lvoverseas",tags:["edición","vídeo","reels"],capturas:[]},
-    {id:3,icon:"◈",name:"PicsArt",desc:"Editor de fotos con IA y comunidad creativa.",descLarga:"Edición de fotos con recorte IA, efectos, stickers y comunidad millonaria de creadores.",cat:"Fotografía",ver:"24.1",size:"85MB",android:"6.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.picsart.studio",tags:["fotos","edición","diseño"],capturas:[]},
-    {id:4,icon:"♫",name:"YouTube Music",desc:"Música y podcasts con el catálogo de YouTube.",descLarga:"Toda la música de YouTube con recomendaciones inteligentes y modo sin conexión.",cat:"Música",ver:"6.51",size:"45MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music",tags:["música","streaming","youtube"],capturas:[]},
-    {id:5,icon:"●",name:"Spotify",desc:"Streaming de música y podcasts líder mundial.",descLarga:"Más de 100 millones de canciones y podcasts. Recomendaciones personalizadas y listas editoriales.",cat:"Música",ver:"8.9",size:"38MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.spotify.music",tags:["música","podcasts","streaming"],capturas:[]},
-    {id:6,icon:"⬡",name:"Wallcraft",desc:"Fondos de pantalla en 4K y HD para Android.",descLarga:"Miles de fondos en 4K actualizados semanalmente. Anime, naturaleza, abstracto y mucho más.",cat:"Personalización",ver:"3.8",size:"22MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.wallcraft.app",tags:["fondos","4K","personalización"],capturas:[]},
-    {id:7,icon:"◉",name:"Smart Launcher",desc:"Launcher minimalista e inteligente para Android.",descLarga:"Agrupa apps automáticamente por categoría. Interfaz limpia, widgets modernos y personalización total.",cat:"Personalización",ver:"6.3",size:"19MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=ginlemon.flowerpro",tags:["launcher","personalización","minimalista"],capturas:[]},
-    {id:8,icon:"▣",name:"PPCine",desc:"Reproductor de películas y series online.",descLarga:"Miles de películas y series en streaming desde tu Android. Calidad HD y actualización constante.",cat:"Entretenimiento",ver:"2.1",size:"31MB",android:"5.0+",mega:"#",play:"#",tags:["películas","series","streaming"],capturas:[]}
-  ];
-}
+function fallback(){return[
+  {id:1,icon:"▶",name:"YouTube",desc:"La plataforma de vídeo más grande del mundo.",descLarga:"YouTube con 2.000M usuarios activos. HD, 4K, Shorts.",cat:"Entretenimiento",ver:"19.45",size:"120MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.google.android.youtube",tags:["vídeo","streaming"],capturas:[]},
+  {id:2,icon:"✦",name:"CapCut",desc:"Editor de vídeo profesional.",descLarga:"Reels y vídeos con efectos IA sin marca de agua.",cat:"Edición",ver:"11.2",size:"98MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.lemon.lvoverseas",tags:["edición","vídeo"],capturas:[]},
+  {id:3,icon:"◈",name:"PicsArt",desc:"Editor de fotos con IA.",descLarga:"Edición con recorte IA y efectos.",cat:"Fotografía",ver:"24.1",size:"85MB",android:"6.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.picsart.studio",tags:["fotos","edición"],capturas:[]},
+  {id:4,icon:"♫",name:"YouTube Music",desc:"Música con catálogo YouTube.",descLarga:"Toda la música de YouTube con recomendaciones.",cat:"Música",ver:"6.51",size:"45MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music",tags:["música","streaming"],capturas:[]},
+  {id:5,icon:"●",name:"Spotify",desc:"Streaming de música líder.",descLarga:"100M canciones y podcasts con recomendaciones.",cat:"Música",ver:"8.9",size:"38MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.spotify.music",tags:["música","podcasts"],capturas:[]},
+  {id:6,icon:"⬡",name:"Wallcraft",desc:"Fondos 4K para Android.",descLarga:"Miles de fondos en 4K actualizados semanalmente.",cat:"Personalización",ver:"3.8",size:"22MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.wallcraft.app",tags:["fondos","4K"],capturas:[]},
+  {id:7,icon:"◉",name:"Smart Launcher",desc:"Launcher minimalista.",descLarga:"Agrupa apps por categoría automáticamente.",cat:"Personalización",ver:"6.3",size:"19MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=ginlemon.flowerpro",tags:["launcher","personalización"],capturas:[]},
+  {id:8,icon:"▣",name:"PPCine",desc:"Películas y series online.",descLarga:"Streaming de películas y series en HD.",cat:"Entretenimiento",ver:"2.1",size:"31MB",android:"5.0+",mega:"#",play:"#",tags:["películas","series"],capturas:[]}
+];}
+function fallbackPl(){return[
+  {id:1,titulo:"Trap & Urban 2025",descripcion:"Los mejores temas de trap y urban actualizados.",genero:"Trap",tags:["Trap","Urban"],youtube:"#"},
+  {id:2,titulo:"Lo-Fi / Estudio",descripcion:"Música instrumental para concentrarse.",genero:"Lo-Fi",tags:["Lo-Fi","Chill"],youtube:"#"},
+  {id:3,titulo:"Reggaeton Clásico",descripcion:"Los himnos del reggaeton 2004-2015.",genero:"Reggaeton",tags:["Reggaeton","Clásicos"],youtube:"#"},
+  {id:4,titulo:"Gym & Workout",descripcion:"Energía máxima para entrenar.",genero:"Gym",tags:["Gym","Electrónica"],youtube:"#"},
+  {id:5,titulo:"Hits Verano",descripcion:"Los temas del verano actualizados mensualmente.",genero:"Pop",tags:["Pop","Verano"],youtube:"#"},
+  {id:6,titulo:"Rock en Español",descripcion:"De Soda Stereo a Maná.",genero:"Rock",tags:["Rock","Español"],youtube:"#"}
+];}
 init();
 </script>
 </body>

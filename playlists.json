@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "titulo": "Trap & Urban 2025",
+    "descripcion": "Los mejores temas de trap, drill y urban. Actualizado cada semana.",
+    "genero": "Trap",
+    "tags": ["Trap", "Urban", "2025"],
+    "youtube": "PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboZg",
+    "tipo": "playlist"
+  },
+  {
+    "id": 2,
+    "titulo": "Lo-Fi / Estudio",
+    "descripcion": "Música instrumental para concentrarse o relajarse sin interrupciones.",
+    "genero": "Lo-Fi",
+    "tags": ["Lo-Fi", "Chill", "Estudio"],
+    "youtube": "PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboZg",
+    "tipo": "playlist"
+  },
+  {
+    "id": 3,
+    "titulo": "Reggaeton Clásico",
+    "descripcion": "Los himnos del reggaeton de 2004 a 2015 que nunca pasan de moda.",
+    "genero": "Reggaeton",
+    "tags": ["Reggaeton", "Clásicos"],
+    "youtube": "PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboZg",
+    "tipo": "playlist"
+  },
+  {
+    "id": 4,
+    "titulo": "Gym & Workout",
+    "descripcion": "Energía máxima para entrenar. Electrónica, hip-hop y rock.",
+    "genero": "Gym",
+    "tags": ["Gym", "Electrónica", "Rock"],
+    "youtube": "PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboZg",
+    "tipo": "playlist"
+  },
+  {
+    "id": 5,
+    "titulo": "Hits Verano",
+    "descripcion": "Los temas del verano actualizados mensualmente.",
+    "genero": "Pop",
+    "tags": ["Pop", "Verano", "Hits"],
+    "youtube": "PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboZg",
+    "tipo": "playlist"
+  },
+  {
+    "id": 6,
+    "titulo": "Rock en Español",
+    "descripcion": "De Soda Stereo a Maná. Los clásicos de siempre.",
+    "genero": "Rock",
+    "tags": ["Rock", "Español", "Clásicos"],
+    "youtube": "PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboZg",
+    "tipo": "playlist"
+  }
+]
