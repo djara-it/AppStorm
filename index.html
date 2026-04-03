@@ -692,7 +692,7 @@ function renderGrid(cat){
 }
 
 /* IA */
-const API_KEY='PON-AQUI-TU-API-KEY';
+const API_KEY='';
 
 function buildCatalogContext(){
   return apps.map(a=>`- ${a.name} (${a.cat}): ${a.descLarga||a.desc} | Versión: ${a.ver} | Tamaño: ${a.size} | Tags: ${a.tags.join(', ')}`).join('\n');
