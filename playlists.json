@@ -2,11 +2,13 @@
   {
     "id": 1,
     "titulo": "Trap & Urban 2025",
-    "descripcion": "Los mejores temas de trap, drill y urban. Actualizado cada semana.",
+    "descripcion": "Los mejores temas de trap, drill y urban actualizados cada semana.",
     "genero": "Trap",
     "tags": ["Trap", "Urban", "2025"],
-    "youtube": "PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboZg",
-    "tipo": "playlist"
+    "videos": [
+      { "titulo": "Video 1 - pon aquí el título", "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+      { "titulo": "Video 2 - pon aquí el título", "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ" }
+    ]
   },
   {
     "id": 2,
@@ -14,8 +16,9 @@
     "descripcion": "Música instrumental para concentrarse o relajarse sin interrupciones.",
     "genero": "Lo-Fi",
     "tags": ["Lo-Fi", "Chill", "Estudio"],
-    "youtube": "PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboZg",
-    "tipo": "playlist"
+    "videos": [
+      { "titulo": "Lofi Hip Hop - Beats to Study", "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ" }
+    ]
   },
   {
     "id": 3,
@@ -23,8 +26,9 @@
     "descripcion": "Los himnos del reggaeton de 2004 a 2015 que nunca pasan de moda.",
     "genero": "Reggaeton",
     "tags": ["Reggaeton", "Clásicos"],
-    "youtube": "PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboZg",
-    "tipo": "playlist"
+    "videos": [
+      { "titulo": "Video 1", "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ" }
+    ]
   },
   {
     "id": 4,
@@ -32,8 +36,9 @@
     "descripcion": "Energía máxima para entrenar. Electrónica, hip-hop y rock.",
     "genero": "Gym",
     "tags": ["Gym", "Electrónica", "Rock"],
-    "youtube": "PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboZg",
-    "tipo": "playlist"
+    "videos": [
+      { "titulo": "Video 1", "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ" }
+    ]
   },
   {
     "id": 5,
@@ -41,8 +46,9 @@
     "descripcion": "Los temas del verano actualizados mensualmente.",
     "genero": "Pop",
     "tags": ["Pop", "Verano", "Hits"],
-    "youtube": "PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboZg",
-    "tipo": "playlist"
+    "videos": [
+      { "titulo": "Video 1", "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ" }
+    ]
   },
   {
     "id": 6,
@@ -50,7 +56,8 @@
     "descripcion": "De Soda Stereo a Maná. Los clásicos de siempre.",
     "genero": "Rock",
     "tags": ["Rock", "Español", "Clásicos"],
-    "youtube": "PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboZg",
-    "tipo": "playlist"
+    "videos": [
+      { "titulo": "Video 1", "youtube": "https://www.youtube.com/watch?v=dQw4w9WgXcQ" }
+    ]
   }
 ]

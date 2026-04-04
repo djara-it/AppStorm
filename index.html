@@ -23,6 +23,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;transition:background .3s,color .3s;}
+.s-inner,.card-ico,.ca-ico,.ct-icon,.pan-ico{font-family:'Noto Sans Symbols','Segoe UI Symbol','Arial Unicode MS',sans-serif;font-variant-emoji:text;}
 
 /* SPLASH */
 #splash{position:fixed;inset:0;z-index:9999;background:#07070f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;transition:opacity .6s,transform .6s;}
@@ -37,7 +38,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 @keyframes boltDraw{to{stroke-dashoffset:0;}}
 @keyframes boltFlash{0%,100%{opacity:0;}50%{opacity:1;}}
 .bsvg{display:inline-block;vertical-align:middle;}
-
 #app{opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s;}
 #app.visible{opacity:1;transform:translateY(0);}
 
@@ -49,15 +49,14 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .nav-links a{font-size:13px;color:var(--muted2);text-decoration:none;cursor:pointer;padding:5px 11px;border-radius:6px;transition:color .2s,background .2s;white-space:nowrap;}
 .nav-links a:hover{color:var(--accent);}
 .nav-links a.on{color:var(--accent);background:rgba(42,159,255,.09);}
-.theme-btn{width:34px;height:34px;border-radius:50%;background:transparent;border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--text);margin-left:6px;transition:border-color .2s,background .2s;}
-.theme-btn:hover{border-color:var(--accent);background:rgba(42,159,255,.08);}
+.theme-btn{width:34px;height:34px;border-radius:50%;background:transparent;border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--text);margin-left:6px;transition:border-color .2s;}
+.theme-btn:hover{border-color:var(--accent);}
 .burger{display:none;width:34px;height:34px;background:transparent;border:1px solid var(--border);border-radius:6px;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;}
 .burger span{display:block;width:16px;height:1.5px;background:var(--text);border-radius:1px;}
 .mmenu{display:none;position:fixed;top:54px;left:0;right:0;z-index:190;background:var(--bg2);border-bottom:1px solid var(--border);padding:.85rem;flex-direction:column;gap:3px;}
 .mmenu.open{display:flex;}
 .mmenu a{font-size:14px;color:var(--muted2);padding:9px 14px;border-radius:8px;cursor:pointer;transition:background .2s,color .2s;}
 .mmenu a:hover,.mmenu a.on{background:rgba(42,159,255,.08);color:var(--accent);}
-
 .sec{display:none;}.sec.on{display:block;}
 
 /* HERO */
@@ -72,26 +71,20 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .srch-row input{flex:1;min-width:0;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 13px;color:var(--text);font-size:14px;outline:none;font-family:'Inter',sans-serif;transition:border-color .2s;}
 .srch-row input::placeholder{color:var(--muted);}
 .srch-row input:focus{border-color:var(--accent);}
-.srch-row input:disabled{opacity:.6;}
 .btn-ai{background:var(--acc2);border:1px solid var(--accent);border-radius:8px;padding:10px 14px;color:#fff;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:background .2s;flex-shrink:0;}
 .btn-ai:hover{background:var(--accent);}
-.btn-ai:disabled{opacity:.5;cursor:default;}
 .ai-out{margin-top:10px;font-size:13px;color:var(--muted2);min-height:18px;line-height:1.7;text-align:left;}
-.ai-typing::after{content:'▌';animation:blink .7s infinite;}
-@keyframes blink{50%{opacity:0;}}
+.srch-hints{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
+.sh-btn{font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(42,159,255,.08);border:1px solid var(--bord2);color:var(--accent);cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;}
+.sh-btn:hover{background:rgba(42,159,255,.18);}
 
 .block{padding:1.5rem;}
 .block-title{font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:1.1rem;}
 .block-desc{font-size:14px;color:var(--muted2);line-height:1.8;margin-bottom:1.4rem;}
 .divider{height:1px;background:var(--border);margin:0 1.5rem;}
 
-/* STORIES — centradas */
-.stories{
-  display:flex;gap:1rem;
-  justify-content:center;
-  flex-wrap:wrap;
-  padding-bottom:6px;
-}
+/* STORIES centradas */
+.stories{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;padding-bottom:6px;}
 .story{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;}
 .s-ring{width:60px;height:60px;border-radius:50%;border:2px solid var(--bord2);padding:3px;transition:border-color .2s,transform .2s;}
 .story:hover .s-ring,.story.on .s-ring{border-color:var(--accent);transform:scale(1.06);}
@@ -130,13 +123,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .btn-ps{flex:1;min-width:130px;padding:11px 14px;border-radius:9px;font-size:13px;cursor:pointer;text-align:center;background:transparent;border:1px solid var(--bord2);color:var(--muted2);font-family:'Inter',sans-serif;transition:border-color .2s,color .2s;text-decoration:none;display:inline-block;}
 .btn-ps:hover{border-color:var(--accent);color:var(--accent);}
 
-/* CATEGORÍAS — centradas */
-.cat-tiles{
-  display:flex;gap:10px;
-  justify-content:center;
-  flex-wrap:wrap;
-  margin-bottom:1rem;
-}
+/* CATEGORÍAS centradas */
+.cat-tiles{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:1rem;}
 .cat-tile{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:110px;transition:border-color .2s,transform .15s,background .2s;position:relative;overflow:hidden;text-align:center;}
 .cat-tile::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--tile-color,var(--accent));border-radius:12px 12px 0 0;}
 .cat-tile:hover{border-color:var(--accent);transform:translateY(-3px);background:var(--bg3);}
@@ -153,72 +141,70 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .ca-name{font-size:12px;font-weight:500;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .ca-ver{font-size:10px;color:var(--muted);}
 
-/* GRID */
+/* GRID APPS */
+.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1.1rem;}
+.fbtn{font-size:12px;padding:5px 13px;border-radius:20px;cursor:pointer;background:var(--bg3);border:1px solid var(--border);color:var(--muted2);font-family:'Inter',sans-serif;transition:all .2s;}
+.fbtn:hover,.fbtn.on{background:rgba(42,159,255,.11);border-color:var(--accent);color:var(--accent);}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:10px;}
 .card{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:.9rem;cursor:pointer;transition:border-color .2s,transform .15s;}
 .card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.card.on{border-color:var(--accent);background:rgba(42,159,255,.04);}
 .card-ico{width:46px;height:46px;border-radius:10px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:8px;}
 .card h4{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px;}
 .card p{font-size:11px;color:var(--muted);line-height:1.4;margin-bottom:6px;}
 .ctag{font-size:10px;color:var(--accent);background:rgba(42,159,255,.08);border-radius:4px;padding:2px 6px;display:inline-block;}
-.filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1.1rem;}
-.fbtn{font-size:12px;padding:5px 13px;border-radius:20px;cursor:pointer;background:var(--bg3);border:1px solid var(--border);color:var(--muted2);font-family:'Inter',sans-serif;transition:all .2s;}
-.fbtn:hover,.fbtn.on{background:rgba(42,159,255,.11);border-color:var(--accent);color:var(--accent);}
 
-/* ══ PLAYLISTS ══ */
-.pl-search-wrap{
-  background:var(--bg2);border:1px solid var(--bord2);
-  border-radius:14px;padding:.95rem 1.2rem;
-  margin-bottom:1.5rem;
-}
+/* PLAYLISTS */
+.pl-search-wrap{background:var(--bg2);border:1px solid var(--bord2);border-radius:14px;padding:.95rem 1.2rem;margin-bottom:1.5rem;}
 .pl-search-row{display:flex;gap:8px;}
 .pl-search-row input{flex:1;min-width:0;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:10px 13px;color:var(--text);font-size:14px;outline:none;font-family:'Inter',sans-serif;transition:border-color .2s;}
 .pl-search-row input::placeholder{color:var(--muted);}
 .pl-search-row input:focus{border-color:var(--accent);}
-.pl-search-row input:disabled{opacity:.6;}
 .btn-pl-ai{background:var(--acc2);border:1px solid var(--accent);border-radius:8px;padding:10px 14px;color:#fff;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:background .2s;flex-shrink:0;}
 .btn-pl-ai:hover{background:var(--accent);}
-.btn-pl-ai:disabled{opacity:.5;cursor:default;}
 .pl-ai-out{margin-top:10px;font-size:13px;color:var(--muted2);min-height:18px;line-height:1.7;}
-
-/* Géneros filtro */
 .genre-filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1.2rem;}
+.pl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;}
 
-/* Grid de playlists */
-.pl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
-
-/* Tarjeta playlist con toggle */
+/* Playlist card con toggle — SOLO la abierta muestra contenido */
 .pl-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s;}
 .pl-card.on{border-color:var(--accent);}
-.pl-header{display:flex;align-items:center;gap:12px;padding:.85rem 1rem;cursor:pointer;transition:background .2s;}
+.pl-header{display:flex;align-items:center;gap:12px;padding:.85rem 1rem;cursor:pointer;transition:background .2s;user-select:none;}
 .pl-header:hover{background:var(--bg3);}
-.pl-thumb{
-  width:80px;height:56px;border-radius:8px;
-  object-fit:cover;background:var(--bg3);
-  flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  font-size:22px;overflow:hidden;
-}
+.pl-thumb{width:80px;height:56px;border-radius:8px;background:var(--bg3);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px;overflow:hidden;}
 .pl-thumb img{width:100%;height:100%;object-fit:cover;border-radius:8px;}
 .pl-header-info{flex:1;min-width:0;}
 .pl-header-info h4{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.pl-header-info p{font-size:11px;color:var(--muted);line-height:1.4;}
-.pl-chevron{font-size:12px;color:var(--muted);transition:transform .2s;flex-shrink:0;}
+.pl-header-info p{font-size:11px;color:var(--muted);}
+.pl-chevron{font-size:11px;color:var(--muted);transition:transform .25s;flex-shrink:0;}
 .pl-card.on .pl-chevron{transform:rotate(180deg);color:var(--accent);}
 
-/* Panel expandible de playlist */
-.pl-body{display:none;padding:.85rem 1rem;border-top:1px solid var(--border);}
-.pl-card.on .pl-body{display:block;}
-.pl-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:.85rem;}
+/* Cuerpo de playlist — oculto por defecto */
+.pl-body{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.pl-card.on .pl-body{max-height:800px;}
+.pl-body-inner{padding:.85rem 1rem;border-top:1px solid var(--border);}
+.pl-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:.75rem;}
 .pt{font-size:10px;color:var(--accent);background:rgba(42,159,255,.08);border-radius:4px;padding:2px 6px;}
 .pl-desc{font-size:13px;color:var(--muted2);line-height:1.6;margin-bottom:.85rem;}
-.pl-btn{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--acc2);border:1px solid var(--accent);
-  border-radius:8px;padding:9px 14px;color:#fff;
-  font-size:13px;text-decoration:none;
-  transition:background .2s;
+
+/* Vídeos dentro de una playlist */
+.pl-videos{display:flex;flex-direction:column;gap:8px;}
+.pl-video{
+  display:flex;align-items:center;gap:10px;
+  background:var(--bg3);border:1px solid var(--border);
+  border-radius:8px;padding:8px 10px;
+  text-decoration:none;color:var(--text);
+  transition:border-color .2s;
 }
-.pl-btn:hover{background:var(--accent);}
+.pl-video:hover{border-color:var(--accent);}
+.pv-thumb{
+  width:60px;height:40px;border-radius:5px;
+  background:var(--bg);flex-shrink:0;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+}
+.pv-thumb img{width:100%;height:100%;object-fit:cover;border-radius:5px;}
+.pv-title{font-size:12px;color:var(--text);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pv-play{font-size:12px;color:var(--accent);flex-shrink:0;}
 
 /* TUTORIALES */
 .tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;}
@@ -243,7 +229,7 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .chat-btn:hover{transform:scale(1.08);}
 .chat-win{position:fixed;bottom:78px;right:18px;width:300px;background:var(--bg2);border:1px solid var(--bord2);border-radius:14px;display:none;flex-direction:column;overflow:hidden;z-index:499;box-shadow:0 8px 30px var(--shadow);}
 .chat-win.open{display:flex;}
-.chat-head{display:flex;align-items:center;justify-content:space-between;padding:10px 13px;background:var(--bg3);border-bottom:1px solid var(--border);}
+.chat-head{padding:10px 13px;background:var(--bg3);border-bottom:1px solid var(--border);}
 .chat-head span{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:600;color:var(--accent);}
 .chat-head small{font-size:10px;color:var(--muted);display:block;}
 .chat-msgs{padding:10px;display:flex;flex-direction:column;gap:7px;max-height:240px;overflow-y:auto;}
@@ -251,12 +237,12 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .msg.bot{background:var(--bg3);color:var(--muted2);align-self:flex-start;border-radius:4px 10px 10px 10px;}
 .msg.user{background:var(--acc2);color:#fff;align-self:flex-end;border-radius:10px 4px 10px 10px;}
 .chat-sugs{display:flex;gap:5px;flex-wrap:wrap;padding:0 10px 8px;}
-.cs-btn{font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(42,159,255,.1);border:1px solid var(--bord2);color:var(--accent);cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:background .2s;}
+.cs-btn{font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(42,159,255,.1);border:1px solid var(--bord2);color:var(--accent);cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;}
 .cs-btn:hover{background:rgba(42,159,255,.2);}
 .chat-foot{display:flex;gap:6px;padding:9px;border-top:1px solid var(--border);}
 .chat-foot input{flex:1;min-width:0;background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:7px 9px;color:var(--text);font-size:12px;outline:none;font-family:'Inter',sans-serif;transition:border-color .2s;}
 .chat-foot input:focus{border-color:var(--accent);}
-.chat-foot button{background:var(--acc2);border:1px solid var(--accent);border-radius:6px;padding:7px 11px;color:#fff;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;}
+.chat-foot button{background:var(--acc2);border:1px solid var(--accent);border-radius:6px;padding:7px 11px;color:#fff;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;}
 .chat-foot button:hover{background:var(--accent);}
 
 footer{text-align:center;padding:2rem 1rem;border-top:1px solid var(--border);font-size:12px;color:var(--muted);margin-top:2rem;}
@@ -293,13 +279,11 @@ footer strong{color:var(--accent);}
 <!-- SPLASH -->
 <div id="splash">
   <div class="sp-logo">
-    APP
-    <svg class="bsvg" width="38" height="58" viewBox="0 0 38 58" fill="none" style="margin:0 2px;">
-      <text x="2" y="50" font-family="Rajdhani,sans-serif" font-weight="700" font-size="50" fill="#ffffff">S</text>
+    APP<svg class="bsvg" width="38" height="58" viewBox="0 0 38 58" fill="none" style="margin:0 2px;">
+      <text x="2" y="50" font-family="Rajdhani,sans-serif" font-weight="700" font-size="50" fill="#fff">S</text>
       <polygon points="23,4 13,26 20,26 15,54 27,28 19,28" fill="none" stroke="#2a9fff" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="110" stroke-dashoffset="110" style="animation:boltDraw .5s .75s ease forwards;"/>
       <polygon points="23,4 13,26 20,26 15,54 27,28 19,28" fill="#2a9fff" opacity="0" style="animation:boltFlash .15s 1.1s ease forwards;"/>
-    </svg>
-    TORM
+    </svg>TORM
   </div>
   <div class="sp-tag">Apps &amp; Android</div>
   <div class="sp-bar"><div class="sp-fill"></div></div>
@@ -308,12 +292,10 @@ footer strong{color:var(--accent);}
 <div id="app">
 <nav>
   <a class="nav-brand" onclick="goTo('inicio')">
-    APP
-    <svg class="bsvg" width="14" height="21" viewBox="0 0 38 58" fill="none" style="margin:0 1px;">
+    APP<svg class="bsvg" width="14" height="21" viewBox="0 0 38 58" fill="none" style="margin:0 1px;">
       <text x="2" y="50" font-family="Rajdhani,sans-serif" font-weight="700" font-size="50" fill="currentColor">S</text>
       <polygon points="23,4 13,26 20,26 15,54 27,28 19,28" fill="#2a9fff"/>
-    </svg>
-    TORM
+    </svg>TORM
   </a>
   <div class="nav-r">
     <div class="nav-links">
@@ -324,9 +306,7 @@ footer strong{color:var(--accent);}
       <a id="nl-contacto" onclick="goTo('contacto')">Contacto</a>
     </div>
     <button class="theme-btn" id="tbtn" onclick="toggleTheme()">🌙</button>
-    <button class="burger" id="burger" onclick="toggleBurger()">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="burger" id="burger" onclick="toggleBurger()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="mmenu" id="mmenu">
@@ -337,22 +317,28 @@ footer strong{color:var(--accent);}
   <a id="ml-contacto" onclick="goTo('contacto');closeBurger()">Contacto</a>
 </div>
 
-<!-- ══ INICIO ══ -->
+<!-- INICIO -->
 <div id="sec-inicio" class="sec on">
   <div class="hero">
     <div class="hero-brand">
-      APP
-      <svg class="bsvg" width="24" height="36" viewBox="0 0 38 58" fill="none" style="margin:0 2px;">
+      APP<svg class="bsvg" width="24" height="36" viewBox="0 0 38 58" fill="none" style="margin:0 2px;">
         <text x="2" y="50" font-family="Rajdhani,sans-serif" font-weight="700" font-size="50" fill="currentColor">S</text>
         <polygon points="23,4 13,26 20,26 15,54 27,28 19,28" fill="#2a9fff"/>
-      </svg>
-      TORM
+      </svg>TORM
     </div>
-    <p>Busca con inteligencia artificial o explora el catálogo</p>
+    <p>Busca apps por nombre, categoría o tipo</p>
     <div class="srch-wrap">
       <div class="srch-row">
-        <input id="srch" type="text" placeholder="¿Qué app buscas? Ej: mejor app de música, diferencias entre..."/>
-        <button class="btn-ai" id="sbtn" onclick="buscarIA()">Buscar con IA</button>
+        <input id="srch" type="text" placeholder="Ej: musica, edicion, youtube, launcher..."/>
+        <button class="btn-ai" onclick="buscarIA()">Buscar</button>
+      </div>
+      <div class="srch-hints">
+        <button class="sh-btn" onclick="buscarRapido('musica')">Música</button>
+        <button class="sh-btn" onclick="buscarRapido('video')">Vídeo</button>
+        <button class="sh-btn" onclick="buscarRapido('fotos')">Fotos</button>
+        <button class="sh-btn" onclick="buscarRapido('fondos')">Fondos</button>
+        <button class="sh-btn" onclick="buscarRapido('launcher')">Launcher</button>
+        <button class="sh-btn" onclick="buscarRapido('peliculas')">Películas</button>
       </div>
       <div class="ai-out" id="ai-out"></div>
     </div>
@@ -362,118 +348,79 @@ footer strong{color:var(--accent);}
     <div class="block-title">Destacados</div>
     <div class="stories" id="stories"></div>
     <div class="panel" id="pan-inicio">
-      <div class="pan-top">
-        <div class="pan-ico" id="pi-ico"></div>
-        <div class="pan-info">
-          <div class="pan-cat" id="pi-cat"></div>
-          <h3 id="pi-name"></h3>
-          <p id="pi-desc"></p>
-        </div>
-      </div>
+      <div class="pan-top"><div class="pan-ico" id="pi-ico"></div><div class="pan-info"><div class="pan-cat" id="pi-cat"></div><h3 id="pi-name"></h3><p id="pi-desc"></p></div></div>
       <div class="pan-meta" id="pi-meta"></div>
       <p class="pan-full" id="pi-full"></p>
       <div id="pi-capturas"></div>
-      <div class="pan-btns">
-        <a class="btn-dl" id="pi-mega" target="_blank">⬇ Descargar APK</a>
-        <a class="btn-ps" id="pi-play" target="_blank">▶ Play Store</a>
-      </div>
+      <div class="pan-btns"><a class="btn-dl" id="pi-mega" target="_blank">⬇ Descargar APK</a><a class="btn-ps" id="pi-play" target="_blank">▶&#xFE0E; Play Store</a></div>
     </div>
   </div>
-
   <div class="divider"></div>
-
   <div class="block">
     <div class="block-title">Categorías</div>
     <div class="cat-tiles" id="cat-tiles"></div>
-    <div class="cat-apps-panel" id="cat-panel">
-      <div class="cat-apps-grid" id="cat-grid"></div>
-    </div>
+    <div class="cat-apps-panel" id="cat-panel"><div class="cat-apps-grid" id="cat-grid"></div></div>
     <div class="panel" id="pan-cat" style="margin-top:.8rem;">
-      <div class="pan-top">
-        <div class="pan-ico" id="pc-ico"></div>
-        <div class="pan-info">
-          <div class="pan-cat" id="pc-cat"></div>
-          <h3 id="pc-name"></h3>
-          <p id="pc-desc"></p>
-        </div>
-      </div>
+      <div class="pan-top"><div class="pan-ico" id="pc-ico"></div><div class="pan-info"><div class="pan-cat" id="pc-cat"></div><h3 id="pc-name"></h3><p id="pc-desc"></p></div></div>
       <div class="pan-meta" id="pc-meta"></div>
       <p class="pan-full" id="pc-full"></p>
       <div id="pc-capturas"></div>
-      <div class="pan-btns">
-        <a class="btn-dl" id="pc-mega" target="_blank">⬇ Descargar APK</a>
-        <a class="btn-ps" id="pc-play" target="_blank">▶ Play Store</a>
-      </div>
+      <div class="pan-btns"><a class="btn-dl" id="pc-mega" target="_blank">⬇ Descargar APK</a><a class="btn-ps" id="pc-play" target="_blank">▶&#xFE0E; Play Store</a></div>
     </div>
   </div>
 </div>
 
-<!-- ══ APLICACIONES ══ -->
+<!-- APLICACIONES -->
 <div id="sec-apps" class="sec">
   <div class="block">
     <div class="block-title">Todas las aplicaciones</div>
     <div class="filters" id="filters"></div>
     <div class="grid" id="grid-apps"></div>
-  </div>
-  <div class="panel" id="pan-apps" style="margin:0 1.5rem 2rem;">
-    <div class="pan-top">
-      <div class="pan-ico" id="pa-ico"></div>
-      <div class="pan-info">
-        <div class="pan-cat" id="pa-cat"></div>
-        <h3 id="pa-name"></h3>
-        <p id="pa-desc"></p>
-      </div>
-    </div>
-    <div class="pan-meta" id="pa-meta"></div>
-    <p class="pan-full" id="pa-full"></p>
-    <div id="pa-capturas"></div>
-    <div class="pan-btns">
-      <a class="btn-dl" id="pa-mega" target="_blank">⬇ Descargar APK</a>
-      <a class="btn-ps" id="pa-play" target="_blank">▶ Play Store</a>
+    <!-- Panel de detalle dentro de la sección apps -->
+    <div class="panel" id="pan-apps" style="margin-top:1rem;">
+      <div class="pan-top"><div class="pan-ico" id="pa-ico"></div><div class="pan-info"><div class="pan-cat" id="pa-cat"></div><h3 id="pa-name"></h3><p id="pa-desc"></p></div></div>
+      <div class="pan-meta" id="pa-meta"></div>
+      <p class="pan-full" id="pa-full"></p>
+      <div id="pa-capturas"></div>
+      <div class="pan-btns"><a class="btn-dl" id="pa-mega" target="_blank">⬇ Descargar APK</a><a class="btn-ps" id="pa-play" target="_blank">▶&#xFE0E; Play Store</a></div>
     </div>
   </div>
 </div>
 
-<!-- ══ PLAYLISTS ══ -->
+<!-- PLAYLISTS -->
 <div id="sec-playlists" class="sec">
   <div class="block">
     <div class="block-title">Playlists &amp; Música</div>
-    <div class="block-desc">Busca una canción o artista con IA, o explora las colecciones por género.</div>
-
-    <!-- Buscador de música con IA -->
+    <div class="block-desc">Busca una canción o artista, o explora las colecciones por género.</div>
     <div class="pl-search-wrap">
       <div class="pl-search-row">
-        <input id="pl-srch" type="text" placeholder="Busca una canción, artista o género... Ej: Bad Bunny, trap 2025"/>
-        <button class="btn-pl-ai" id="pl-sbtn" onclick="buscarMusica()">Buscar en YouTube</button>
+        <input id="pl-srch" type="text" placeholder="Busca canción, artista o género..."/>
+        <button class="btn-pl-ai" onclick="buscarMusica()">Buscar en YouTube</button>
       </div>
       <div class="pl-ai-out" id="pl-ai-out"></div>
     </div>
-
-    <!-- Filtros de género -->
     <div class="genre-filters" id="genre-filters"></div>
-
-    <!-- Grid de playlists -->
     <div class="pl-grid" id="pl-grid"></div>
   </div>
 </div>
 
-<!-- ══ TUTORIALES ══ -->
+<!-- TUTORIALES -->
 <div id="sec-tutoriales" class="sec">
   <div class="block">
     <div class="block-title">Tutoriales</div>
     <div class="block-desc">Guías paso a paso para sacar el máximo partido a tu Android.</div>
     <div class="tg">
-      <div class="tc"><div class="tn">01</div><h4>Cómo instalar un APK en Android</h4><p>Habilita fuentes desconocidas e instala cualquier APK de forma segura en pocos pasos.</p><span class="tc-tag">Básico</span></div>
-      <div class="tc"><div class="tn">02</div><h4>Personalizar tu launcher con Smart Launcher</h4><p>Iconos, widgets y pantallas de inicio completamente a tu gusto desde cero.</p><span class="tc-tag">Personalización</span></div>
-      <div class="tc"><div class="tn">03</div><h4>Editar vídeos con CapCut desde cero</h4><p>Cortes, efectos, música y exportación en HD paso a paso para principiantes.</p><span class="tc-tag">Edición</span></div>
-      <div class="tc"><div class="tn">04</div><h4>Fondos de pantalla 4K con Wallcraft</h4><p>Cómo encontrar, aplicar y programar los mejores fondos en resolución 4K.</p><span class="tc-tag">Personalización</span></div>
-      <div class="tc"><div class="tn">05</div><h4>Descargar música sin conexión en Spotify</h4><p>Descarga tus listas favoritas y gestiona el espacio de almacenamiento.</p><span class="tc-tag">Música</span></div>
-      <div class="tc"><div class="tn">06</div><h4>Editar fotos con IA en PicsArt</h4><p>Eliminación de fondo, retoques automáticos y efectos con inteligencia artificial.</p><span class="tc-tag">Fotografía</span></div>
+      <div class="tc"><div class="tn">01</div><h4>Cómo instalar un APK en Android</h4><p>Habilita fuentes desconocidas e instala cualquier APK de forma segura.</p><span class="tc-tag">Básico</span></div>
+      <div class="tc"><div class="tn">02</div><h4>Personalizar con Smart Launcher</h4><p>Iconos, widgets y pantallas de inicio a tu gusto desde cero.</p><span class="tc-tag">Personalización</span></div>
+      <div class="tc"><div class="tn">03</div><h4>Editar vídeos con CapCut</h4><p>Cortes, efectos, música y exportación en HD para principiantes.</p><span class="tc-tag">Edición</span></div>
+      <div class="tc"><div class="tn">04</div><h4>Fondos 4K con Wallcraft</h4><p>Cómo encontrar y aplicar los mejores fondos en resolución 4K.</p><span class="tc-tag">Personalización</span></div>
+      <div class="tc"><div class="tn">05</div><h4>Música sin conexión en Spotify</h4><p>Descarga listas y gestiona el espacio de almacenamiento.</p><span class="tc-tag">Música</span></div>
+      <div class="tc"><div class="tn">06</div><h4>Editar fotos con IA en PicsArt</h4><p>Eliminación de fondo, retoques y efectos con inteligencia artificial.</p><span class="tc-tag">Fotografía</span></div>
     </div>
   </div>
 </div>
 
-<!-- ══ CONTACTO ══ -->
+<!-- CONTACTO -->
 <div id="sec-contacto" class="sec">
   <div class="block">
     <div class="block-title">Contacto</div>
@@ -482,7 +429,7 @@ footer strong{color:var(--accent);}
       <div class="ct-links">
         <a class="ct-link" href="mailto:tu@email.com"><span class="ci">📧</span> Email — tu@email.com</a>
         <a class="ct-link" href="https://instagram.com/tuusuario" target="_blank"><span class="ci">📱</span> Instagram — @tuusuario</a>
-        <a class="ct-link" href="https://youtube.com/@tucanal" target="_blank"><span class="ci">▶</span> YouTube — AppStorm</a>
+        <a class="ct-link" href="https://youtube.com/@tucanal" target="_blank"><span class="ci">▶&#xFE0E;</span> YouTube — AppStorm</a>
         <a class="ct-link" href="https://t.me/tuusuario" target="_blank"><span class="ci">💬</span> Telegram — @tuusuario</a>
       </div>
     </div>
@@ -493,16 +440,12 @@ footer strong{color:var(--accent);}
 <!-- CHAT -->
 <div class="chat-fab">
   <div class="chat-win" id="chat-win">
-    <div class="chat-head">
-      <div><span>Asistente AppStorm</span><small>Powered by Claude AI</small></div>
-    </div>
-    <div class="chat-msgs" id="cmsgs">
-      <div class="msg bot">¡Hola! Puedo ayudarte a encontrar apps, comparar opciones o resolver dudas. ¿Qué necesitas?</div>
-    </div>
+    <div class="chat-head"><span>Asistente AppStorm</span><small>Búsqueda inteligente de apps</small></div>
+    <div class="chat-msgs" id="cmsgs"><div class="msg bot">¡Hola! ¿Qué app estás buscando?</div></div>
     <div class="chat-sugs" id="chat-sugs">
-      <button class="cs-btn" onclick="chatQuick('¿Cuál es la mejor app de música?')">Mejor app música</button>
-      <button class="cs-btn" onclick="chatQuick('Diferencias entre Spotify y YouTube Music')">Spotify vs YouTube Music</button>
-      <button class="cs-btn" onclick="chatQuick('¿Qué editor de vídeo me recomiendas?')">Mejor editor</button>
+      <button class="cs-btn" onclick="chatQuick('musica')">Apps música</button>
+      <button class="cs-btn" onclick="chatQuick('edicion video')">Editar vídeo</button>
+      <button class="cs-btn" onclick="chatQuick('personalizar')">Personalizar</button>
     </div>
     <div class="chat-foot">
       <input id="cin" type="text" placeholder="Pregunta lo que quieras..." onkeydown="if(event.key==='Enter')chatSend()"/>
@@ -511,346 +454,159 @@ footer strong{color:var(--accent);}
   </div>
   <button class="chat-btn" onclick="toggleChat()">✦</button>
 </div>
-
 <footer><strong>APPSTORM</strong> &nbsp;·&nbsp; Apps y personalización para Android</footer>
 
 <script>
 /* SPLASH */
-window.addEventListener('load',()=>{
-  setTimeout(()=>{
-    document.getElementById('splash').classList.add('hide');
-    setTimeout(()=>{document.getElementById('splash').style.display='none';document.getElementById('app').classList.add('visible');},650);
-  },2900);
-});
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('splash').classList.add('hide');setTimeout(()=>{document.getElementById('splash').style.display='none';document.getElementById('app').classList.add('visible');},650);},2900);});
 
 /* TEMA */
-function toggleTheme(){
-  const h=document.documentElement,d=h.getAttribute('data-theme')==='dark';
-  h.setAttribute('data-theme',d?'light':'dark');
-  document.getElementById('tbtn').textContent=d?'☀️':'🌙';
-  localStorage.setItem('ast',d?'light':'dark');
-}
+function toggleTheme(){const h=document.documentElement,d=h.getAttribute('data-theme')==='dark';h.setAttribute('data-theme',d?'light':'dark');document.getElementById('tbtn').textContent=d?'☀️':'🌙';localStorage.setItem('ast',d?'light':'dark');}
 (()=>{const t=localStorage.getItem('ast')||'dark';document.documentElement.setAttribute('data-theme',t);document.getElementById('tbtn').textContent=t==='dark'?'🌙':'☀️';})();
 
 /* NAV */
 const SECS=['inicio','apps','playlists','tutoriales','contacto'];
-function goTo(s){
-  SECS.forEach(x=>{
-    document.getElementById('sec-'+x)?.classList.remove('on');
-    document.getElementById('nl-'+x)?.classList.remove('on');
-    document.getElementById('ml-'+x)?.classList.remove('on');
-  });
-  document.getElementById('sec-'+s)?.classList.add('on');
-  document.getElementById('nl-'+s)?.classList.add('on');
-  document.getElementById('ml-'+s)?.classList.add('on');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
+function goTo(s){SECS.forEach(x=>{document.getElementById('sec-'+x)?.classList.remove('on');document.getElementById('nl-'+x)?.classList.remove('on');document.getElementById('ml-'+x)?.classList.remove('on');});document.getElementById('sec-'+s)?.classList.add('on');document.getElementById('nl-'+s)?.classList.add('on');document.getElementById('ml-'+s)?.classList.add('on');window.scrollTo({top:0,behavior:'smooth'});}
 function toggleBurger(){document.getElementById('mmenu').classList.toggle('open');}
 function closeBurger(){document.getElementById('mmenu').classList.remove('open');}
 
-/* DATOS */
-let apps=[];
-let playlists=[];
-let activeStory=null;
-let activeCat=null;
-let activePl=null;
-const API_KEY='';
+/* NORMALIZACIÓN */
+function norm(s){return(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9\s]/g,' ').trim();}
+function matchApp(a,q){const nq=norm(q);const words=nq.split(/\s+/).filter(Boolean);const hay=[norm(a.name),norm(a.desc),norm(a.descLarga||''),norm(a.cat),...a.tags.map(t=>norm(t))].join(' ');return words.some(w=>hay.includes(w));}
 
+/* DATOS */
+let apps=[],playlists=[],activeStory=null,activeCat=null,activePl=null,activeCard=null;
 async function init(){
   try{const r=await fetch('apps.json');apps=await r.json();}catch{apps=fallback();}
   try{const r=await fetch('playlists.json');playlists=await r.json();}catch{playlists=fallbackPl();}
-  renderStories();
-  renderCatTiles();
-  renderFilters();
-  renderGrid('Todos');
-  renderGenreFilters();
-  renderPlaylists('Todos');
+  renderStories();renderCatTiles();renderFilters();renderGrid('Todos');renderGenreFilters();renderPlaylists('Todos');
 }
 
-/* YOUTUBE helpers */
-function ytId(url){
-  if(!url)return null;
-  const m=url.match(/(?:list=)([a-zA-Z0-9_-]+)/);
-  if(m)return null; // es playlist, no video
-  const mv=url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-  return mv?mv[1]:null;
+/* BUSCAR */
+function buscarRapido(q){document.getElementById('srch').value=q;buscarIA();}
+function buscarIA(){
+  const q=document.getElementById('srch').value.trim();
+  const out=document.getElementById('ai-out');
+  if(!q){out.innerHTML='';return;}
+  const found=apps.filter(a=>matchApp(a,q));
+  out.innerHTML=found.length
+    ?'Encontrado: '+found.map(a=>`<strong style="cursor:pointer;color:var(--accent)" onclick="toggleStory(${a.id})">${a.name}</strong>`).join(', ')
+    :'Mostrando todo — <span style="color:var(--muted2)">prueba con otro término</span>';
 }
-function plThumb(pl){
-  const vid=ytId(pl.youtube||'');
-  if(vid)return `<img src="https://img.youtube.com/vi/${vid}/mqdefault.jpg" alt="${pl.titulo}" style="width:100%;height:100%;object-fit:cover;border-radius:8px"/>`;
-  // si es playlist usamos emoji del género
-  const emojis={'Trap':'🎧','Lo-Fi':'🌙','Reggaeton':'🔥','Gym':'⚡','Pop':'🌅','Rock':'🎸'};
-  return emojis[pl.genero]||'🎵';
-}
-function plUrl(pl){
-  const vid=ytId(pl.youtube||'');
-  if(vid)return `https://youtube.com/watch?v=${vid}`;
-  if(pl.youtube&&pl.youtube!='#')return pl.youtube;
-  return `https://www.youtube.com/results?search_query=${encodeURIComponent(pl.titulo)}`;
-}
-
-/* GÉNEROS */
-function renderGenreFilters(){
-  const genres=['Todos',...new Set(playlists.map(p=>p.genero))];
-  document.getElementById('genre-filters').innerHTML=genres.map(g=>
-    `<button class="fbtn${g==='Todos'?' on':''}" onclick="filterGenre('${g}')">${g}</button>`
-  ).join('');
-}
-function filterGenre(g){
-  document.querySelectorAll('#genre-filters .fbtn').forEach(b=>b.classList.remove('on'));
-  [...document.querySelectorAll('#genre-filters .fbtn')].find(b=>b.textContent===g)?.classList.add('on');
-  renderPlaylists(g);
-}
-
-/* PLAYLISTS con toggle */
-function renderPlaylists(genre){
-  activePl=null;
-  const list=genre==='Todos'?playlists:playlists.filter(p=>p.genero===genre);
-  document.getElementById('pl-grid').innerHTML=list.map(pl=>`
-    <div class="pl-card" id="plc-${pl.id}">
-      <div class="pl-header" onclick="togglePl(${pl.id})">
-        <div class="pl-thumb">${plThumb(pl)}</div>
-        <div class="pl-header-info">
-          <h4>${pl.titulo}</h4>
-          <p>${pl.tags.join(' · ')}</p>
-        </div>
-        <span class="pl-chevron">▼</span>
-      </div>
-      <div class="pl-body">
-        <div class="pl-tags">${pl.tags.map(t=>`<span class="pt">${t}</span>`).join('')}</div>
-        <p class="pl-desc">${pl.descripcion}</p>
-        <a class="pl-btn" href="${plUrl(pl)}" target="_blank">▶ Escuchar en YouTube</a>
-      </div>
-    </div>`).join('');
-}
-
-function togglePl(id){
-  const card=document.getElementById('plc-'+id);
-  if(!card)return;
-  if(activePl===id){
-    card.classList.remove('on');
-    activePl=null;
-  }else{
-    if(activePl){document.getElementById('plc-'+activePl)?.classList.remove('on');}
-    card.classList.add('on');
-    activePl=id;
-    card.scrollIntoView({behavior:'smooth',block:'nearest'});
-  }
-}
-
-/* BUSCADOR DE MÚSICA */
-async function buscarMusica(){
-  const q=document.getElementById('pl-srch').value.trim();
-  const out=document.getElementById('pl-ai-out');
-  const btn=document.getElementById('pl-sbtn');
-  const inp=document.getElementById('pl-srch');
-  if(!q)return;
-  btn.disabled=true;inp.disabled=true;
-  out.innerHTML='<span class="ai-typing">Buscando en YouTube</span>';
-
-  // Construcción del enlace de búsqueda de YouTube
-  const searchUrl=`https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;
-  const musicUrl=`https://music.youtube.com/search?q=${encodeURIComponent(q)}`;
-
-  setTimeout(()=>{
-    out.innerHTML=`Resultados para "<strong style="color:var(--accent)">${q}</strong>":<br>
-      <a href="${searchUrl}" target="_blank" style="color:var(--accent);display:inline-flex;align-items:center;gap:6px;margin-top:6px;text-decoration:none;font-weight:500;">▶ Buscar en YouTube</a>
-      &nbsp;&nbsp;
-      <a href="${musicUrl}" target="_blank" style="color:#22c55e;display:inline-flex;align-items:center;gap:6px;margin-top:6px;text-decoration:none;font-weight:500;">♫ Buscar en YouTube Music</a>`;
-    btn.disabled=false;inp.disabled=false;
-  },500);
-}
-document.getElementById('pl-srch')?.addEventListener('keydown',e=>{if(e.key==='Enter')buscarMusica();});
+document.getElementById('srch').addEventListener('input',()=>{const q=document.getElementById('srch').value.trim();if(q.length>=2)buscarIA();else document.getElementById('ai-out').innerHTML='';});
+document.getElementById('srch').addEventListener('keydown',e=>{if(e.key==='Enter')buscarIA();});
 
 /* CAPTURAS */
-function capturasHtml(a){
-  if(!a.capturas||!a.capturas.length)return '';
-  return `<div class="capturas-wrap"><div class="capturas-title">Capturas de pantalla</div><div class="capturas-row">${a.capturas.map(u=>`<img class="captura" src="${u}" alt="${a.name}" onclick="openLB('${u}')" loading="lazy"/>`).join('')}</div></div>`;
-}
+function capturasHtml(a){if(!a.capturas||!a.capturas.length)return '';return `<div class="capturas-wrap"><div class="capturas-title">Capturas</div><div class="capturas-row">${a.capturas.map(u=>`<img class="captura" src="${u}" alt="${a.name}" onclick="openLB('${u}')" loading="lazy"/>`).join('')}</div></div>`;}
 function openLB(src){document.getElementById('lb-img').src=src;document.getElementById('lightbox').classList.add('open');}
 function closeLB(){document.getElementById('lightbox').classList.remove('open');}
 
 /* STORIES */
-function renderStories(){
-  document.getElementById('stories').innerHTML=apps.map(a=>`
-    <div class="story" id="st-${a.id}" onclick="toggleStory(${a.id})">
-      <div class="s-ring"><div class="s-inner">${a.icon}</div></div>
-      <div class="s-lbl">${a.name}</div>
-    </div>`).join('');
-}
-function toggleStory(id){
-  const panel=document.getElementById('pan-inicio');
-  if(activeStory===id){activeStory=null;panel.classList.remove('on');document.querySelectorAll('.story').forEach(s=>s.classList.remove('on'));return;}
-  activeStory=id;
+function renderStories(){document.getElementById('stories').innerHTML=apps.map(a=>`<div class="story" id="st-${a.id}" onclick="toggleStory(${a.id})"><div class="s-ring"><div class="s-inner">${a.icon}\uFE0E</div></div><div class="s-lbl">${a.name}</div></div>`).join('');}
+function toggleStory(id){const panel=document.getElementById('pan-inicio');if(activeStory===id){activeStory=null;panel.classList.remove('on');document.querySelectorAll('.story').forEach(s=>s.classList.remove('on'));return;}activeStory=id;const a=apps.find(x=>x.id===id);if(!a)return;document.querySelectorAll('.story').forEach(s=>s.classList.remove('on'));document.getElementById('st-'+id)?.classList.add('on');fillPan('pi',a);panel.classList.remove('on');void panel.offsetWidth;panel.classList.add('on');panel.scrollIntoView({behavior:'smooth',block:'nearest'});}
+
+/* CATEGORÍAS */
+const CAT_ICONS={'Entretenimiento':'▶\uFE0E','Edición':'✦\uFE0E','Fotografía':'◈\uFE0E','Música':'♫\uFE0E','Personalización':'⬡\uFE0E'};
+const CAT_COLORS={'Entretenimiento':'#e94560','Edición':'#2a9fff','Fotografía':'#a855f7','Música':'#22c55e','Personalización':'#f59e0b'};
+function renderCatTiles(){const cats=[...new Set(apps.map(a=>a.cat))];document.getElementById('cat-tiles').innerHTML=cats.map(cat=>{const n=apps.filter(a=>a.cat===cat).length;return `<div class="cat-tile" id="ct-${cat}" style="--tile-color:${CAT_COLORS[cat]||'var(--accent)'}" onclick="toggleCat('${cat}')"><div class="ct-icon">${CAT_ICONS[cat]||'◆'}</div><div class="ct-name">${cat}</div><div class="ct-count">${n} app${n>1?'s':''}</div></div>`;}).join('');}
+function toggleCat(cat){const panel=document.getElementById('cat-panel'),panDet=document.getElementById('pan-cat');if(activeCat===cat){activeCat=null;panel.classList.remove('on');panDet.classList.remove('on');document.querySelectorAll('.cat-tile').forEach(t=>t.classList.remove('on'));return;}activeCat=cat;document.querySelectorAll('.cat-tile').forEach(t=>t.classList.remove('on'));document.getElementById('ct-'+cat)?.classList.add('on');panDet.classList.remove('on');document.getElementById('cat-grid').innerHTML=apps.filter(a=>a.cat===cat).map(a=>`<div class="ca-card" onclick="openPanel(${a.id},'cat')"><div class="ca-ico">${a.icon}\uFE0E</div><div class="ca-name">${a.name}</div><div class="ca-ver">v${a.ver}</div></div>`).join('');panel.classList.add('on');panel.scrollIntoView({behavior:'smooth',block:'nearest'});}
+
+/* PANEL */
+function fillPan(px,a){document.getElementById(px+'-ico').textContent=a.icon+'\uFE0E';document.getElementById(px+'-cat').textContent=a.cat;document.getElementById(px+'-name').textContent=a.name;document.getElementById(px+'-desc').textContent=a.desc;document.getElementById(px+'-full').textContent=a.descLarga||a.desc;document.getElementById(px+'-meta').innerHTML=`<div class="m-item"><span class="m-lbl">Versión</span><span class="m-val">${a.ver}</span></div><div class="m-item"><span class="m-lbl">Tamaño</span><span class="m-val">${a.size}</span></div><div class="m-item"><span class="m-lbl">Android</span><span class="m-val">${a.android}</span></div><div class="m-item"><span class="m-lbl">Categoría</span><span class="m-val">${a.cat}</span></div>`;document.getElementById(px+'-capturas').innerHTML=capturasHtml(a);document.getElementById(px+'-mega').href=a.mega;document.getElementById(px+'-play').href=a.play;}
+
+/* APPS SECTION — toggle para cerrar igual que destacados */
+function renderFilters(){const cats=['Todos',...new Set(apps.map(a=>a.cat))];document.getElementById('filters').innerHTML=cats.map(c=>`<button class="fbtn${c==='Todos'?' on':''}" onclick="filterBy('${c}')">${c}</button>`).join('');}
+function filterBy(cat){document.querySelectorAll('#filters .fbtn').forEach(b=>b.classList.remove('on'));[...document.querySelectorAll('#filters .fbtn')].find(b=>b.textContent===cat)?.classList.add('on');renderGrid(cat);activeCard=null;document.getElementById('pan-apps').classList.remove('on');document.querySelectorAll('#grid-apps .card').forEach(c=>c.classList.remove('on'));}
+function renderGrid(cat){const list=cat==='Todos'?apps:apps.filter(a=>a.cat===cat);document.getElementById('grid-apps').innerHTML=list.map(a=>`<div class="card" id="card-${a.id}" onclick="toggleCard(${a.id})"><div class="card-ico">${a.icon}\uFE0E</div><h4>${a.name}</h4><p>${a.desc}</p><span class="ctag">${a.cat}</span></div>`).join('');}
+
+function toggleCard(id){
+  const panel=document.getElementById('pan-apps');
+  const card=document.getElementById('card-'+id);
+  if(activeCard===id){
+    // cerrar
+    activeCard=null;
+    panel.classList.remove('on');
+    document.querySelectorAll('#grid-apps .card').forEach(c=>c.classList.remove('on'));
+    return;
+  }
+  // abrir
+  activeCard=id;
+  document.querySelectorAll('#grid-apps .card').forEach(c=>c.classList.remove('on'));
+  card?.classList.add('on');
   const a=apps.find(x=>x.id===id);if(!a)return;
-  document.querySelectorAll('.story').forEach(s=>s.classList.remove('on'));
-  document.getElementById('st-'+id)?.classList.add('on');
-  fillPan('pi',a);
+  fillPan('pa',a);
   panel.classList.remove('on');void panel.offsetWidth;panel.classList.add('on');
   panel.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-/* CATEGORÍAS */
-const CAT_ICONS={'Entretenimiento':'▶','Edición':'✦','Fotografía':'◈','Música':'♫','Personalización':'⬡'};
-const CAT_COLORS={'Entretenimiento':'#e94560','Edición':'#2a9fff','Fotografía':'#a855f7','Música':'#22c55e','Personalización':'#f59e0b'};
-function renderCatTiles(){
-  const cats=[...new Set(apps.map(a=>a.cat))];
-  document.getElementById('cat-tiles').innerHTML=cats.map(cat=>{
-    const n=apps.filter(a=>a.cat===cat).length;
-    const color=CAT_COLORS[cat]||'var(--accent)';
-    return `<div class="cat-tile" id="ct-${cat}" style="--tile-color:${color}" onclick="toggleCat('${cat}')">
-      <div class="ct-icon">${CAT_ICONS[cat]||'◆'}</div>
-      <div class="ct-name">${cat}</div>
-      <div class="ct-count">${n} app${n>1?'s':''}</div>
+function openPanel(id,sec){const a=apps.find(x=>x.id===id);if(!a)return;const map={cat:{px:'pc',pid:'pan-cat'}};const m=map[sec];if(!m)return;fillPan(m.px,a);const p=document.getElementById(m.pid);p.classList.remove('on');void p.offsetWidth;p.classList.add('on');p.scrollIntoView({behavior:'smooth',block:'nearest'});}
+
+/* PLAYLISTS */
+function ytId(url){if(!url||url==='#')return null;const m=url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);return m?m[1]:null;}
+function emojiThumb(g){const e={'Trap':'🎧','Lo-Fi':'🌙','Reggaeton':'🔥','Gym':'⚡','Pop':'🌅','Rock':'🎸'};return e[g]||'🎵';}
+
+function renderGenreFilters(){const genres=['Todos',...new Set(playlists.map(p=>p.genero))];document.getElementById('genre-filters').innerHTML=genres.map(g=>`<button class="fbtn${g==='Todos'?' on':''}" onclick="filterGenre('${g}')">${g}</button>`).join('');}
+function filterGenre(g){document.querySelectorAll('#genre-filters .fbtn').forEach(b=>b.classList.remove('on'));[...document.querySelectorAll('#genre-filters .fbtn')].find(b=>b.textContent===g)?.classList.add('on');activePl=null;renderPlaylists(g);}
+
+function renderPlaylists(genre){
+  activePl=null;
+  const list=genre==='Todos'?playlists:playlists.filter(p=>p.genero===genre);
+  document.getElementById('pl-grid').innerHTML=list.map(pl=>{
+    // Miniatura: primer vídeo de la lista o emoji
+    const firstVid=pl.videos&&pl.videos[0]?ytId(pl.videos[0].youtube):null;
+    const thumb=firstVid
+      ?`<img src="https://img.youtube.com/vi/${firstVid}/mqdefault.jpg" alt="${pl.titulo}" style="width:100%;height:100%;object-fit:cover;border-radius:8px" onerror="this.outerHTML='${emojiThumb(pl.genero)}'"/>`
+      :emojiThumb(pl.genero);
+
+    // Vídeos del interior
+    const videosHtml=(pl.videos||[]).map(v=>{
+      const vid=ytId(v.youtube);
+      const vThumb=vid?`<img src="https://img.youtube.com/vi/${vid}/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:5px" onerror="this.outerHTML='▶'"/>`:'▶&#xFE0E;';
+      return `<a class="pl-video" href="${v.youtube}" target="_blank">
+        <div class="pv-thumb">${vThumb}</div>
+        <span class="pv-title">${v.titulo}</span>
+        <span class="pv-play">▶&#xFE0E;</span>
+      </a>`;
+    }).join('');
+
+    return `<div class="pl-card" id="plc-${pl.id}">
+      <div class="pl-header" onclick="togglePl(${pl.id})">
+        <div class="pl-thumb">${thumb}</div>
+        <div class="pl-header-info">
+          <h4>${pl.titulo}</h4>
+          <p>${pl.tags.join(' · ')} · ${(pl.videos||[]).length} vídeo${(pl.videos||[]).length!==1?'s':''}</p>
+        </div>
+        <span class="pl-chevron">▼</span>
+      </div>
+      <div class="pl-body">
+        <div class="pl-body-inner">
+          <div class="pl-tags">${pl.tags.map(t=>`<span class="pt">${t}</span>`).join('')}</div>
+          <p class="pl-desc">${pl.descripcion}</p>
+          <div class="pl-videos">${videosHtml||'<p style="font-size:12px;color:var(--muted)">Añade vídeos en playlists.json</p>'}</div>
+        </div>
+      </div>
     </div>`;
   }).join('');
 }
-function toggleCat(cat){
-  const panel=document.getElementById('cat-panel');
-  const panDet=document.getElementById('pan-cat');
-  if(activeCat===cat){activeCat=null;panel.classList.remove('on');panDet.classList.remove('on');document.querySelectorAll('.cat-tile').forEach(t=>t.classList.remove('on'));return;}
-  activeCat=cat;
-  document.querySelectorAll('.cat-tile').forEach(t=>t.classList.remove('on'));
-  document.getElementById('ct-'+cat)?.classList.add('on');
-  panDet.classList.remove('on');
-  document.getElementById('cat-grid').innerHTML=apps.filter(a=>a.cat===cat).map(a=>`
-    <div class="ca-card" onclick="openPanel(${a.id},'cat')">
-      <div class="ca-ico">${a.icon}</div>
-      <div class="ca-name">${a.name}</div>
-      <div class="ca-ver">v${a.ver}</div>
-    </div>`).join('');
-  panel.classList.add('on');
-  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+
+function togglePl(id){
+  const card=document.getElementById('plc-'+id);if(!card)return;
+  if(activePl===id){card.classList.remove('on');activePl=null;}
+  else{if(activePl)document.getElementById('plc-'+activePl)?.classList.remove('on');card.classList.add('on');activePl=id;card.scrollIntoView({behavior:'smooth',block:'nearest'});}
 }
 
-/* PANEL */
-function fillPan(px,a){
-  document.getElementById(px+'-ico').textContent=a.icon;
-  document.getElementById(px+'-cat').textContent=a.cat;
-  document.getElementById(px+'-name').textContent=a.name;
-  document.getElementById(px+'-desc').textContent=a.desc;
-  document.getElementById(px+'-full').textContent=a.descLarga||a.desc;
-  document.getElementById(px+'-meta').innerHTML=`
-    <div class="m-item"><span class="m-lbl">Versión</span><span class="m-val">${a.ver}</span></div>
-    <div class="m-item"><span class="m-lbl">Tamaño</span><span class="m-val">${a.size}</span></div>
-    <div class="m-item"><span class="m-lbl">Android</span><span class="m-val">${a.android}</span></div>
-    <div class="m-item"><span class="m-lbl">Categoría</span><span class="m-val">${a.cat}</span></div>`;
-  document.getElementById(px+'-capturas').innerHTML=capturasHtml(a);
-  document.getElementById(px+'-mega').href=a.mega;
-  document.getElementById(px+'-play').href=a.play;
-}
-function openPanel(id,sec){
-  const a=apps.find(x=>x.id===id);if(!a)return;
-  const map={apps:{px:'pa',pid:'pan-apps'},cat:{px:'pc',pid:'pan-cat'}};
-  const m=map[sec];if(!m)return;
-  fillPan(m.px,a);
-  const p=document.getElementById(m.pid);
-  p.classList.remove('on');void p.offsetWidth;p.classList.add('on');
-  p.scrollIntoView({behavior:'smooth',block:'nearest'});
-}
-
-/* GRID APPS */
-function renderFilters(){
-  const cats=['Todos',...new Set(apps.map(a=>a.cat))];
-  document.getElementById('filters').innerHTML=cats.map(c=>
-    `<button class="fbtn${c==='Todos'?' on':''}" onclick="filterBy('${c}')">${c}</button>`
-  ).join('');
-}
-function filterBy(cat){
-  document.querySelectorAll('#filters .fbtn').forEach(b=>b.classList.remove('on'));
-  [...document.querySelectorAll('#filters .fbtn')].find(b=>b.textContent===cat)?.classList.add('on');
-  renderGrid(cat);
-  document.getElementById('pan-apps').classList.remove('on');
-}
-function renderGrid(cat){
-  const list=cat==='Todos'?apps:apps.filter(a=>a.cat===cat);
-  document.getElementById('grid-apps').innerHTML=list.map(a=>`
-    <div class="card" onclick="openPanel(${a.id},'apps')">
-      <div class="card-ico">${a.icon}</div>
-      <h4>${a.name}</h4><p>${a.desc}</p>
-      <span class="ctag">${a.cat}</span>
-    </div>`).join('');
-}
-
-/* IA APPS */
-function buildCtx(){return apps.map(a=>`- ${a.name} (${a.cat}): ${a.descLarga||a.desc} | v${a.ver} | ${a.size} | Tags: ${a.tags.join(', ')}`).join('\n');}
-async function buscarIA(){
-  const q=document.getElementById('srch').value.trim();
-  const out=document.getElementById('ai-out');
-  const btn=document.getElementById('sbtn');
-  const inp=document.getElementById('srch');
-  if(!q)return;
-  btn.disabled=true;inp.disabled=true;
-  out.innerHTML='<span class="ai-typing">Consultando IA</span>';
-  try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01'},
-      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:400,messages:[{role:'user',content:`Eres el asistente experto de AppStorm, una tienda de apps Android en español.\n\nCATÁLOGO:\n${buildCtx()}\n\nPREGUNTA: "${q}"\n\nResponde en español, máximo 3 líneas. Si compara apps explica diferencias reales. Menciona nombres exactos del catálogo.`}]})
-    });
-    const data=await res.json();
-    let txt=data.content?.[0]?.text||'No pude procesar la búsqueda.';
-    apps.forEach(a=>{txt=txt.replace(new RegExp('\\b'+a.name+'\\b','g'),`<strong style="color:var(--accent);cursor:pointer" onclick="toggleStory(${a.id})">${a.name}</strong>`);});
-    out.innerHTML=txt;
-  }catch{
-    const f=apps.filter(a=>a.tags.some(t=>q.toLowerCase().includes(t)||t.includes(q.toLowerCase()))||a.cat.toLowerCase().includes(q.toLowerCase())||a.name.toLowerCase().includes(q.toLowerCase()));
-    out.innerHTML=f.length?'Te recomiendo: '+f.slice(0,3).map(a=>`<strong style="cursor:pointer;color:var(--accent)" onclick="toggleStory(${a.id})">${a.name}</strong>`).join(', '):'Sin resultados. Prueba: música, edición, fotos, fondos o launcher.';
-  }finally{btn.disabled=false;inp.disabled=false;}
-}
-document.getElementById('srch').addEventListener('keydown',e=>{if(e.key==='Enter')buscarIA();});
+/* BUSCADOR MÚSICA */
+function buscarMusica(){const q=document.getElementById('pl-srch').value.trim();const out=document.getElementById('pl-ai-out');if(!q)return;out.innerHTML=`Resultados para "<strong style="color:var(--accent)">${q}</strong>":<br><a href="https://www.youtube.com/results?search_query=${encodeURIComponent(q)}" target="_blank" style="color:var(--accent);display:inline-flex;align-items:center;gap:6px;margin-top:6px;text-decoration:none;font-weight:500;">▶&#xFE0E; YouTube</a>&nbsp;&nbsp;<a href="https://music.youtube.com/search?q=${encodeURIComponent(q)}" target="_blank" style="color:#22c55e;display:inline-flex;align-items:center;gap:6px;margin-top:6px;text-decoration:none;font-weight:500;">♫&#xFE0E; YouTube Music</a>`;}
+document.getElementById('pl-srch')?.addEventListener('keydown',e=>{if(e.key==='Enter')buscarMusica();});
 
 /* CHAT */
 let chatHistory=[];
 function chatQuick(q){document.getElementById('cin').value=q;chatSend();}
-async function chatSend(){
-  const inp=document.getElementById('cin');
-  const msgs=document.getElementById('cmsgs');
-  const q=inp.value.trim();if(!q)return;
-  document.getElementById('chat-sugs').style.display='none';
-  msgs.innerHTML+=`<div class="msg user">${q}</div>`;
-  inp.value='';
-  const t=document.createElement('div');t.className='msg bot';t.innerHTML='<span class="ai-typing">Pensando</span>';
-  msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;
-  chatHistory.push({role:'user',content:q});
-  try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01'},
-      body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:350,
-        system:`Eres el asistente experto de AppStorm, tienda de apps Android en español. Eres amigable y directo.\nApps disponibles:\n${buildCtx()}\nResponde en español, máximo 3-4 líneas. Compara apps, recomienda la mejor para cada caso, explica diferencias reales.`,
-        messages:chatHistory.slice(-6)})
-    });
-    const data=await res.json();
-    const reply=data.content?.[0]?.text||'No pude responder ahora.';
-    t.textContent=reply;
-    chatHistory.push({role:'assistant',content:reply});
-  }catch{
-    const f=apps.filter(a=>a.tags.some(x=>q.toLowerCase().includes(x))||a.cat.toLowerCase().includes(q.toLowerCase())||a.name.toLowerCase().includes(q.toLowerCase()));
-    t.textContent=f.length?'Te sugiero: '+f.slice(0,2).map(a=>a.name).join(' y ')+'. ¿Quieres saber más?':'Prueba: "¿cuál es la mejor app de música?" o "diferencias entre CapCut y PicsArt"';
-    chatHistory.push({role:'assistant',content:t.textContent});
-  }
-  msgs.scrollTop=msgs.scrollHeight;
-}
+function chatSend(){const inp=document.getElementById('cin'),msgs=document.getElementById('cmsgs'),q=inp.value.trim();if(!q)return;document.getElementById('chat-sugs').style.display='none';msgs.innerHTML+=`<div class="msg user">${q}</div>`;inp.value='';const t=document.createElement('div');t.className='msg bot';const found=apps.filter(a=>matchApp(a,q));t.textContent=found.length?'Te sugiero: '+found.slice(0,3).map(a=>a.name).join(', ')+'. Pulsa en destacados para ver los detalles.':'Prueba con: música, edición, fotos, fondos, launcher o entretenimiento.';msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;}
 function toggleChat(){document.getElementById('chat-win').classList.toggle('open');}
 
-function fallback(){return[
-  {id:1,icon:"▶",name:"YouTube",desc:"La plataforma de vídeo más grande del mundo.",descLarga:"YouTube con 2.000M usuarios activos. HD, 4K, Shorts.",cat:"Entretenimiento",ver:"19.45",size:"120MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.google.android.youtube",tags:["vídeo","streaming"],capturas:[]},
-  {id:2,icon:"✦",name:"CapCut",desc:"Editor de vídeo profesional.",descLarga:"Reels y vídeos con efectos IA sin marca de agua.",cat:"Edición",ver:"11.2",size:"98MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.lemon.lvoverseas",tags:["edición","vídeo"],capturas:[]},
-  {id:3,icon:"◈",name:"PicsArt",desc:"Editor de fotos con IA.",descLarga:"Edición con recorte IA y efectos.",cat:"Fotografía",ver:"24.1",size:"85MB",android:"6.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.picsart.studio",tags:["fotos","edición"],capturas:[]},
-  {id:4,icon:"♫",name:"YouTube Music",desc:"Música con catálogo YouTube.",descLarga:"Toda la música de YouTube con recomendaciones.",cat:"Música",ver:"6.51",size:"45MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music",tags:["música","streaming"],capturas:[]},
-  {id:5,icon:"●",name:"Spotify",desc:"Streaming de música líder.",descLarga:"100M canciones y podcasts con recomendaciones.",cat:"Música",ver:"8.9",size:"38MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.spotify.music",tags:["música","podcasts"],capturas:[]},
-  {id:6,icon:"⬡",name:"Wallcraft",desc:"Fondos 4K para Android.",descLarga:"Miles de fondos en 4K actualizados semanalmente.",cat:"Personalización",ver:"3.8",size:"22MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.wallcraft.app",tags:["fondos","4K"],capturas:[]},
-  {id:7,icon:"◉",name:"Smart Launcher",desc:"Launcher minimalista.",descLarga:"Agrupa apps por categoría automáticamente.",cat:"Personalización",ver:"6.3",size:"19MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=ginlemon.flowerpro",tags:["launcher","personalización"],capturas:[]},
-  {id:8,icon:"▣",name:"PPCine",desc:"Películas y series online.",descLarga:"Streaming de películas y series en HD.",cat:"Entretenimiento",ver:"2.1",size:"31MB",android:"5.0+",mega:"#",play:"#",tags:["películas","series"],capturas:[]}
-];}
-function fallbackPl(){return[
-  {id:1,titulo:"Trap & Urban 2025",descripcion:"Los mejores temas de trap y urban actualizados.",genero:"Trap",tags:["Trap","Urban"],youtube:"#"},
-  {id:2,titulo:"Lo-Fi / Estudio",descripcion:"Música instrumental para concentrarse.",genero:"Lo-Fi",tags:["Lo-Fi","Chill"],youtube:"#"},
-  {id:3,titulo:"Reggaeton Clásico",descripcion:"Los himnos del reggaeton 2004-2015.",genero:"Reggaeton",tags:["Reggaeton","Clásicos"],youtube:"#"},
-  {id:4,titulo:"Gym & Workout",descripcion:"Energía máxima para entrenar.",genero:"Gym",tags:["Gym","Electrónica"],youtube:"#"},
-  {id:5,titulo:"Hits Verano",descripcion:"Los temas del verano actualizados mensualmente.",genero:"Pop",tags:["Pop","Verano"],youtube:"#"},
-  {id:6,titulo:"Rock en Español",descripcion:"De Soda Stereo a Maná.",genero:"Rock",tags:["Rock","Español"],youtube:"#"}
-];}
+function fallback(){return[{id:1,icon:"▶",name:"YouTube",desc:"La plataforma de vídeo más grande.",descLarga:"YouTube con 2.000M usuarios.",cat:"Entretenimiento",ver:"19.45",size:"120MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.google.android.youtube",tags:["video","streaming"],capturas:[]},{id:2,icon:"✦",name:"CapCut",desc:"Editor de vídeo profesional.",descLarga:"Reels con efectos IA.",cat:"Edición",ver:"11.2",size:"98MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.lemon.lvoverseas",tags:["edicion","video"],capturas:[]},{id:3,icon:"◈",name:"PicsArt",desc:"Editor de fotos con IA.",descLarga:"Edición con recorte IA.",cat:"Fotografía",ver:"24.1",size:"85MB",android:"6.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.picsart.studio",tags:["fotos","edicion"],capturas:[]},{id:4,icon:"♫",name:"YouTube Music",desc:"Música con catálogo YouTube.",descLarga:"Toda la música de YouTube.",cat:"Música",ver:"6.51",size:"45MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music",tags:["musica","streaming"],capturas:[]},{id:5,icon:"●",name:"Spotify",desc:"Streaming de música líder.",descLarga:"100M canciones.",cat:"Música",ver:"8.9",size:"38MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.spotify.music",tags:["musica","podcasts"],capturas:[]},{id:6,icon:"⬡",name:"Wallcraft",desc:"Fondos 4K.",descLarga:"Miles de fondos en 4K.",cat:"Personalización",ver:"3.8",size:"22MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.wallcraft.app",tags:["fondos","4K"],capturas:[]},{id:7,icon:"◉",name:"Smart Launcher",desc:"Launcher minimalista.",descLarga:"Agrupa apps por categoría.",cat:"Personalización",ver:"6.3",size:"19MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=ginlemon.flowerpro",tags:["launcher","personalizacion"],capturas:[]},{id:8,icon:"▣",name:"PPCine",desc:"Películas online.",descLarga:"Streaming HD.",cat:"Entretenimiento",ver:"2.1",size:"31MB",android:"5.0+",mega:"#",play:"#",tags:["peliculas","series"],capturas:[]}];}
+function fallbackPl(){return[{id:1,titulo:"Trap & Urban 2025",descripcion:"Los mejores temas de trap y urban.",genero:"Trap",tags:["Trap","Urban"],videos:[{titulo:"Ejemplo vídeo",youtube:"#"}]},{id:2,titulo:"Lo-Fi / Estudio",descripcion:"Música instrumental para concentrarse.",genero:"Lo-Fi",tags:["Lo-Fi","Chill"],videos:[{titulo:"Ejemplo vídeo",youtube:"#"}]}];}
 init();
 </script>
 </body>
