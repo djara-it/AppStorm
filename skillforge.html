@@ -7,135 +7,71 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --void:#04040a;
-  --deep:#08080f;
-  --surface:#0e0e1a;
-  --card:#141428;
-  --border:#1e1e3a;
-  --gold:#c9a84c;
-  --gold2:#e8c870;
-  --fire:#e85d30;
-  --ice:#4db8ff;
-  --nature:#4caf72;
-  --arcane:#9b59ff;
-  --text:#e8e8f0;
-  --muted:#6060a0;
-  --muted2:#9090c0;
+  --void:#04040a;--deep:#08080f;--surface:#0e0e1a;--card:#141428;--border:#1e1e3a;
+  --gold:#c9a84c;--gold2:#e8c870;--fire:#e85d30;--ice:#4db8ff;--nature:#4caf72;--arcane:#9b59ff;
+  --text:#e8e8f0;--muted:#6060a0;--muted2:#9090c0;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{
-  font-family:'Crimson Pro',serif;
-  background:var(--void);
-  color:var(--text);
-  min-height:100vh;
-  overflow-x:hidden;
-}
-
-/* Fondo con partículas estáticas */
-body::before{
-  content:'';
-  position:fixed;inset:0;
-  background:
-    radial-gradient(ellipse 60% 40% at 20% 20%,rgba(201,168,76,.04) 0%,transparent 60%),
-    radial-gradient(ellipse 40% 60% at 80% 80%,rgba(155,89,255,.04) 0%,transparent 60%);
-  pointer-events:none;z-index:0;
-}
+body{font-family:'Crimson Pro',serif;background:var(--void);color:var(--text);min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 60% 40% at 20% 20%,rgba(201,168,76,.04) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 80% 80%,rgba(155,89,255,.04) 0%,transparent 60%);pointer-events:none;z-index:0;}
 
 /* HEADER */
-.sf-header{
-  position:sticky;top:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.75rem 1.5rem;
-  background:rgba(4,4,10,.92);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-}
-.sf-logo{
-  font-family:'Cinzel',serif;
-  font-size:18px;font-weight:700;
-  color:var(--gold);letter-spacing:2px;
-}
+.sf-header{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.5rem;background:rgba(4,4,10,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.sf-logo{font-family:'Cinzel',serif;font-size:18px;font-weight:700;color:var(--gold);letter-spacing:2px;}
 .sf-logo span{color:var(--text);font-weight:400;}
 .hdr-right{display:flex;align-items:center;gap:10px;}
+.hdr-day{font-size:12px;color:var(--muted2);}
 
 /* PANTALLAS */
 .screen{display:none;position:relative;z-index:1;}
 .screen.on{display:block;}
 
 /* ═══ ONBOARDING ═══ */
-#s-onboard{
-  min-height:100vh;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:2rem 1.5rem;text-align:center;
-}
-.onboard-title{
-  font-family:'Cinzel',serif;
-  font-size:clamp(32px,6vw,56px);
-  font-weight:700;color:var(--gold);
-  line-height:1.1;margin-bottom:.5rem;
-  animation:fadeDown .8s ease forwards;
-}
-.onboard-sub{
-  font-size:18px;color:var(--muted2);
-  margin-bottom:2.5rem;
-  animation:fadeDown .8s .15s ease forwards;opacity:0;
-}
+#s-onboard{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem 1.5rem;text-align:center;}
+.onboard-title{font-family:'Cinzel',serif;font-size:clamp(32px,6vw,56px);font-weight:700;color:var(--gold);line-height:1.1;margin-bottom:.5rem;animation:fadeDown .8s ease forwards;}
+.onboard-sub{font-size:18px;color:var(--muted2);margin-bottom:2.5rem;animation:fadeDown .8s .15s ease forwards;opacity:0;}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-12px);}to{opacity:1;transform:translateY(0);}}
-
-.onboard-form{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:16px;padding:2rem;
-  max-width:420px;width:100%;
-  animation:fadeDown .8s .3s ease forwards;opacity:0;
-}
+.onboard-form{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;max-width:460px;width:100%;animation:fadeDown .8s .3s ease forwards;opacity:0;}
 .form-label{font-size:12px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem;display:block;}
-.form-input{
-  width:100%;background:var(--card);border:1px solid var(--border);
-  border-radius:8px;padding:11px 14px;color:var(--text);
-  font-size:15px;font-family:'Crimson Pro',serif;outline:none;
-  transition:border-color .2s;margin-bottom:1.2rem;
-}
+.form-input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-size:15px;font-family:'Crimson Pro',serif;outline:none;transition:border-color .2s;margin-bottom:1.2rem;}
 .form-input:focus{border-color:var(--gold);}
 .form-input::placeholder{color:var(--muted);}
 
-/* Avatares */
-.avatar-pick{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem;}
-.av{
-  width:56px;height:56px;border-radius:50%;
-  background:var(--card);border:2px solid var(--border);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  font-size:24px;transition:border-color .2s,transform .15s;
-}
-.av:hover{border-color:var(--gold);transform:scale(1.1);}
-.av.on{border-color:var(--gold);box-shadow:0 0 12px rgba(201,168,76,.4);}
+/* Avatar builder */
+.avatar-builder{margin-bottom:1.5rem;}
+.av-preview{display:flex;justify-content:center;margin-bottom:1rem;}
+.av-preview svg{width:100px;height:100px;filter:drop-shadow(0 0 12px rgba(201,168,76,.3));}
+.av-tabs{display:flex;gap:0;margin-bottom:.75rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.av-tab{flex:1;padding:7px;text-align:center;font-size:12px;letter-spacing:1px;color:var(--muted);cursor:pointer;transition:background .2s,color .2s;border:none;background:transparent;font-family:'Crimson Pro',serif;}
+.av-tab.on{background:var(--card);color:var(--gold);}
+.av-options{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;min-height:52px;}
+.av-opt{width:44px;height:44px;border-radius:8px;background:var(--card);border:2px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,transform .15s;}
+.av-opt:hover{border-color:var(--gold);transform:scale(1.08);}
+.av-opt.on{border-color:var(--gold);box-shadow:0 0 8px rgba(201,168,76,.4);}
+.av-opt svg{width:28px;height:28px;}
+.av-color{width:32px;height:32px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:border-color .2s,transform .15s;}
+.av-color:hover,.av-color.on{border-color:var(--gold);transform:scale(1.15);}
 
-.btn-primary{
-  width:100%;padding:12px;border-radius:10px;
-  background:var(--gold);border:none;color:var(--void);
-  font-family:'Cinzel',serif;font-size:14px;font-weight:700;
-  letter-spacing:1px;cursor:pointer;transition:opacity .2s,transform .15s;
-}
+.btn-primary{width:100%;padding:12px;border-radius:10px;background:var(--gold);border:none;color:var(--void);font-family:'Cinzel',serif;font-size:14px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:opacity .2s,transform .15s;}
 .btn-primary:hover{opacity:.88;transform:translateY(-1px);}
-.btn-primary:disabled{opacity:.4;cursor:default;transform:none;}
+.btn-primary:active{transform:translateY(0);}
 
-/* ═══ MAIN GAME ═══ */
-#s-game{padding:0 0 6rem;}
+/* Login con Google */
+.btn-google{width:100%;padding:11px;border-radius:10px;background:var(--card);border:1px solid var(--border);color:var(--text);font-family:'Crimson Pro',serif;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:border-color .2s,background .2s;margin-bottom:.75rem;}
+.btn-google:hover{border-color:var(--gold);background:var(--deep);}
+.or-divider{display:flex;align-items:center;gap:10px;margin-bottom:.75rem;color:var(--muted);font-size:12px;}
+.or-divider::before,.or-divider::after{content:'';flex:1;height:1px;background:var(--border);}
 
-/* Stats bar del personaje */
-.char-bar{
-  background:var(--surface);border-bottom:1px solid var(--border);
-  padding:1rem 1.5rem;
-  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
-}
-.char-avatar{
-  width:52px;height:52px;border-radius:50%;
-  background:var(--card);border:2px solid var(--gold);
-  display:flex;align-items:center;justify-content:center;
-  font-size:24px;flex-shrink:0;
-}
+/* ═══ GAME ═══ */
+#s-game{padding:0 0 5rem;}
+.char-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:1rem 1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.char-avatar{width:56px;height:56px;border-radius:50%;background:var(--card);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;}
+.char-avatar svg{width:44px;height:44px;}
 .char-info{flex:1;min-width:0;}
 .char-name{font-family:'Cinzel',serif;font-size:16px;color:var(--gold);}
 .char-level{font-size:12px;color:var(--muted2);margin-top:2px;}
+.hp-bar-wrap{width:100%;height:6px;background:var(--border);border-radius:3px;margin-top:4px;}
+.hp-bar{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--fire),#ff9060);transition:width .5s ease;}
 .char-stats{display:flex;gap:1.5rem;align-items:center;}
 .stat{display:flex;flex-direction:column;align-items:center;gap:2px;}
 .stat-val{font-family:'Cinzel',serif;font-size:18px;font-weight:700;}
@@ -144,230 +80,153 @@ body::before{
 .stat-val.streak{color:var(--nature);}
 .stat-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
 
-/* Barra de vida */
-.hp-bar-wrap{width:100%;height:6px;background:var(--border);border-radius:3px;margin-top:4px;}
-.hp-bar{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--fire),#ff9060);transition:width .5s ease;}
-
 /* TABS */
 .tabs{display:flex;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:54px;z-index:50;}
 .tab{flex:1;padding:.75rem;text-align:center;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
 .tab:hover{color:var(--text);}
 .tab.on{color:var(--gold);border-bottom-color:var(--gold);}
-
 .tab-content{display:none;padding:1.5rem;}
 .tab-content.on{display:block;}
 
-/* Sección habilidades */
+/* Skills */
 .skills-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;}
-.btn-add{
-  display:flex;align-items:center;gap:6px;
-  background:rgba(201,168,76,.1);border:1px solid var(--gold);
-  border-radius:8px;padding:7px 14px;color:var(--gold);
-  font-size:12px;letter-spacing:1px;cursor:pointer;
-  font-family:'Crimson Pro',serif;transition:background .2s;
-}
+.btn-add{display:flex;align-items:center;gap:6px;background:rgba(201,168,76,.1);border:1px solid var(--gold);border-radius:8px;padding:7px 14px;color:var(--gold);font-size:12px;letter-spacing:1px;cursor:pointer;font-family:'Crimson Pro',serif;transition:background .2s;}
 .btn-add:hover{background:rgba(201,168,76,.2);}
-
 .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;}
-
-/* Tarjeta de habilidad */
-.skill-card{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:12px;padding:1.1rem;
-  position:relative;overflow:hidden;
-  transition:border-color .2s,transform .15s;
-}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.1rem;position:relative;overflow:hidden;transition:border-color .2s,transform .15s;}
 .skill-card:hover{border-color:var(--gold);transform:translateY(-2px);}
-.skill-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:var(--skill-color,var(--gold));border-radius:12px 12px 0 0;
-}
+.skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--skill-color,var(--gold));border-radius:12px 12px 0 0;}
 .skill-top{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:.75rem;}
 .skill-icon{font-size:28px;line-height:1;flex-shrink:0;}
 .skill-meta{flex:1;min-width:0;}
 .skill-name{font-family:'Cinzel',serif;font-size:14px;color:var(--text);margin-bottom:2px;}
 .skill-desc{font-size:12px;color:var(--muted2);line-height:1.5;}
-.skill-level{
-  font-family:'Cinzel',serif;font-size:11px;
-  color:var(--skill-color,var(--gold));
-  background:rgba(201,168,76,.08);
-  border:1px solid rgba(201,168,76,.2);
-  border-radius:4px;padding:2px 8px;
-  align-self:flex-start;white-space:nowrap;
-}
-
-/* Barra XP */
+.skill-level{font-family:'Cinzel',serif;font-size:11px;color:var(--skill-color,var(--gold));background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:4px;padding:2px 8px;align-self:flex-start;white-space:nowrap;}
 .xp-wrap{margin-bottom:.75rem;}
 .xp-header{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:4px;}
 .xp-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
 .xp-fill{height:100%;border-radius:3px;background:var(--skill-color,var(--gold));transition:width .6s ease;}
-
 .skill-actions{display:flex;gap:8px;}
-.btn-done{
-  flex:1;padding:8px;border-radius:7px;font-size:12px;
-  background:rgba(76,175,114,.12);border:1px solid var(--nature);
-  color:var(--nature);cursor:pointer;font-family:'Crimson Pro',serif;
-  transition:background .2s;
-}
+.btn-done{flex:1;padding:8px;border-radius:7px;font-size:12px;background:rgba(76,175,114,.12);border:1px solid var(--nature);color:var(--nature);cursor:pointer;font-family:'Crimson Pro',serif;transition:background .2s;}
 .btn-done:hover{background:rgba(76,175,114,.25);}
 .btn-done:disabled{opacity:.4;cursor:default;}
 .btn-done.done{background:rgba(76,175,114,.3);color:#fff;}
-.btn-skip{
-  padding:8px 12px;border-radius:7px;font-size:12px;
-  background:rgba(232,93,48,.08);border:1px solid rgba(232,93,48,.3);
-  color:var(--fire);cursor:pointer;font-family:'Crimson Pro',serif;
-  transition:background .2s;
-}
-.btn-skip:hover{background:rgba(232,93,48,.2);}
-
-/* Streak badge */
-.streak-badge{
-  position:absolute;top:.85rem;right:.85rem;
-  font-size:11px;color:var(--nature);
-  background:rgba(76,175,114,.1);
-  border:1px solid rgba(76,175,114,.2);
-  border-radius:4px;padding:2px 7px;
-}
-
-/* EMPTY STATE */
-.empty-state{
-  text-align:center;padding:3rem 1rem;
-  color:var(--muted);
-}
+.btn-del{padding:8px 12px;border-radius:7px;font-size:12px;background:rgba(232,93,48,.08);border:1px solid rgba(232,93,48,.3);color:var(--fire);cursor:pointer;font-family:'Crimson Pro',serif;transition:background .2s;}
+.btn-del:hover{background:rgba(232,93,48,.2);}
+.streak-badge{position:absolute;top:.85rem;right:.85rem;font-size:11px;color:var(--nature);background:rgba(76,175,114,.1);border:1px solid rgba(76,175,114,.2);border-radius:4px;padding:2px 7px;}
+.empty-state{text-align:center;padding:3rem 1rem;color:var(--muted);}
 .empty-icon{font-size:40px;margin-bottom:.75rem;opacity:.4;}
 .empty-state h3{font-family:'Cinzel',serif;font-size:16px;color:var(--muted2);margin-bottom:.5rem;}
 .empty-state p{font-size:14px;line-height:1.6;}
 
 /* MODAL */
-.modal-bg{
-  position:fixed;inset:0;z-index:999;
-  background:rgba(0,0,0,.7);backdrop-filter:blur(4px);
-  display:none;align-items:center;justify-content:center;padding:1rem;
-}
+.modal-bg{position:fixed;inset:0;z-index:999;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:1rem;}
 .modal-bg.open{display:flex;}
-.modal{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:16px;padding:1.75rem;
-  width:100%;max-width:440px;
-  animation:fadeDown .2s ease;
-}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.75rem;width:100%;max-width:440px;animation:fadeDown .2s ease;max-height:90vh;overflow-y:auto;}
 .modal h3{font-family:'Cinzel',serif;font-size:18px;color:var(--gold);margin-bottom:1.2rem;}
 .modal-close{float:right;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;margin-top:-4px;}
 .modal-close:hover{color:var(--text);}
-
-/* Tipos de habilidad */
 .skill-types{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.2rem;}
-.stype{
-  padding:.6rem;border-radius:8px;border:1px solid var(--border);
-  cursor:pointer;text-align:center;transition:border-color .2s,background .2s;
-}
+.stype{padding:.6rem;border-radius:8px;border:1px solid var(--border);cursor:pointer;text-align:center;transition:border-color .2s,background .2s;}
 .stype:hover{border-color:var(--gold);}
 .stype.on{border-color:var(--gold);background:rgba(201,168,76,.08);}
 .stype-icon{font-size:20px;display:block;margin-bottom:3px;}
 .stype-name{font-size:11px;color:var(--muted2);}
-
-/* IA suggestion */
-.ai-suggest{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:10px;padding:1rem;margin-bottom:1.2rem;
-}
+.ai-suggest{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;margin-bottom:1.2rem;}
 .ai-suggest-title{font-size:11px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:.5rem;}
 .ai-suggest-text{font-size:13px;color:var(--muted2);line-height:1.6;}
-.ai-suggest-text.loading::after{content:'▌';animation:blink .7s infinite;}
+.ai-typing::after{content:'▌';animation:blink .7s infinite;}
 @keyframes blink{50%{opacity:0;}}
+.btn-ai-suggest{width:100%;padding:10px;border-radius:8px;background:rgba(155,89,255,.1);border:1px solid var(--arcane);color:var(--arcane);font-size:13px;cursor:pointer;font-family:'Crimson Pro',serif;transition:background .2s;margin-bottom:1rem;}
+.btn-ai-suggest:hover{background:rgba(155,89,255,.2);}
 
 /* HISTORIAL */
 .log-list{display:flex;flex-direction:column;gap:8px;}
-.log-item{
-  display:flex;align-items:center;gap:10px;
-  background:var(--card);border:1px solid var(--border);
-  border-radius:8px;padding:.75rem 1rem;
-}
-.log-icon{font-size:16px;flex-shrink:0;}
+.log-item{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;}
 .log-text{flex:1;font-size:13px;color:var(--muted2);}
 .log-time{font-size:11px;color:var(--muted);}
-.log-xp{font-size:12px;color:var(--gold);font-family:'Cinzel',serif;}
+.log-val{font-size:12px;color:var(--gold);font-family:'Cinzel',serif;}
 
-/* RACHA */
+/* ESTADÍSTICAS */
 .streak-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:1.5rem;}
-.streak-day{
-  aspect-ratio:1;border-radius:6px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:10px;color:var(--muted);
-  background:var(--card);border:1px solid var(--border);
-}
+.streak-day{aspect-ratio:1;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--muted);background:var(--card);border:1px solid var(--border);}
 .streak-day.done{background:rgba(76,175,114,.2);border-color:var(--nature);color:var(--nature);}
 .streak-day.today{border-color:var(--gold);color:var(--gold);}
+.stat-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;}
+.stat-card-val{font-family:'Cinzel',serif;font-size:24px;font-weight:700;}
+.stat-card-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
 
-/* BTN AI */
-.btn-ai-suggest{
-  width:100%;padding:10px;border-radius:8px;
-  background:rgba(155,89,255,.1);border:1px solid var(--arcane);
-  color:var(--arcane);font-size:13px;cursor:pointer;
-  font-family:'Crimson Pro',serif;transition:background .2s;
-  margin-bottom:1rem;
-}
-.btn-ai-suggest:hover{background:rgba(155,89,255,.2);}
-
-/* NOTIFICACIÓN */
-.notif{
-  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
-  background:var(--card);border:1px solid var(--border);
-  border-radius:10px;padding:.75rem 1.25rem;
-  font-size:13px;color:var(--text);
-  z-index:9999;opacity:0;transition:opacity .3s;
-  white-space:nowrap;
-}
+/* NOTIF */
+.notif{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--border);border-radius:10px;padding:.75rem 1.25rem;font-size:13px;color:var(--text);z-index:9999;opacity:0;transition:opacity .3s;white-space:nowrap;}
 .notif.show{opacity:1;}
 .notif.gold{border-color:var(--gold);color:var(--gold);}
 .notif.red{border-color:var(--fire);color:var(--fire);}
 .notif.green{border-color:var(--nature);color:var(--nature);}
+
+/* Cloud banner */
+.cloud-banner{background:rgba(155,89,255,.08);border:1px solid rgba(155,89,255,.25);border-radius:10px;padding:.75rem 1rem;display:flex;align-items:center;gap:10px;margin-bottom:1rem;font-size:13px;color:var(--muted2);}
+.cloud-banner strong{color:var(--arcane);}
+.btn-cloud{margin-left:auto;padding:5px 12px;border-radius:6px;background:rgba(155,89,255,.15);border:1px solid var(--arcane);color:var(--arcane);font-size:12px;cursor:pointer;font-family:'Crimson Pro',serif;white-space:nowrap;}
+.btn-cloud:hover{background:rgba(155,89,255,.3);}
 
 @media(max-width:600px){
   .char-stats{gap:.75rem;}
   .skills-grid{grid-template-columns:1fr;}
   .skill-types{grid-template-columns:repeat(3,1fr);}
   .tab-content{padding:1rem;}
+  .stat-cards{grid-template-columns:repeat(2,1fr);}
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="sf-header" id="sf-header" style="display:none;">
   <div class="sf-logo">SKILL<span>FORGE</span></div>
   <div class="hdr-right">
-    <span id="hdr-day" style="font-size:12px;color:var(--muted)"></span>
+    <span class="hdr-day" id="hdr-day"></span>
+    <button id="btn-logout" style="display:none;background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;color:var(--muted);font-size:12px;cursor:pointer;" onclick="logout()">Salir</button>
   </div>
 </header>
 
-<!-- ONBOARDING -->
+<!-- ══ ONBOARDING ══ -->
 <div id="s-onboard" class="screen on">
   <div class="onboard-title">SKILL<br>FORGE</div>
   <p class="onboard-sub">Forja tus habilidades. Gana experiencia real.</p>
   <div class="onboard-form">
+
+    <!-- Login Google -->
+    <button class="btn-google" onclick="loginGoogle()">
+      <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#4285F4" d="M44.5 20H24v8.5h11.8C34.3 33.6 29.7 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.3 0 6.3 1.3 8.5 3.3l6-6C35 5.5 29.8 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21c11.6 0 20-8 20-20.5 0-1.2-.1-2.4-.5-3.5z"/><path fill="#34A853" d="M6.3 14.7l7 5.1C15.1 16 19.2 13 24 13c3.3 0 6.3 1.3 8.5 3.3l6-6C35 5.5 29.8 3 24 3c-7.6 0-14.1 4.6-17.7 11.7z"/><path fill="#FBBC05" d="M24 45c5.8 0 10.7-1.9 14.3-5.2l-6.6-5.4C29.7 36.3 27 37 24 37c-5.7 0-10.3-3.4-11.8-8.2l-6.9 5.4C8.9 40.4 16 45 24 45z"/><path fill="#EA4335" d="M44.5 20H24v8.5h11.8c-.8 2.3-2.2 4.3-4.1 5.7l6.6 5.4C41.8 36.2 45 30.5 45 24c0-1.2-.1-2.4-.5-4z"/></svg>
+      Continuar con Google
+    </button>
+    <div class="or-divider">o crea tu personaje</div>
+
     <label class="form-label">Tu nombre de héroe</label>
     <input class="form-input" id="hero-name" type="text" placeholder="¿Cómo te llamas?" maxlength="20"/>
-    <label class="form-label">Elige tu avatar</label>
-    <div class="avatar-pick" id="avatar-pick">
-      <div class="av on" data-av="⚔️">⚔️</div>
-      <div class="av" data-av="🧙">🧙</div>
-      <div class="av" data-av="🏹">🏹</div>
-      <div class="av" data-av="🛡️">🛡️</div>
-      <div class="av" data-av="🔥">🔥</div>
-      <div class="av" data-av="⚡">⚡</div>
-      <div class="av" data-av="🌿">🌿</div>
-      <div class="av" data-av="💎">💎</div>
+
+    <label class="form-label">Diseña tu personaje</label>
+    <div class="avatar-builder">
+      <div class="av-preview" id="av-preview">
+        <!-- SVG generado dinámicamente -->
+      </div>
+      <div class="av-tabs">
+        <button class="av-tab on" onclick="switchAvTab('tipo')">Tipo</button>
+        <button class="av-tab" onclick="switchAvTab('piel')">Piel</button>
+        <button class="av-tab" onclick="switchAvTab('pelo')">Pelo</button>
+        <button class="av-tab" onclick="switchAvTab('extra')">Extra</button>
+      </div>
+      <div class="av-options" id="av-options"></div>
     </div>
-    <button class="btn-primary" id="btn-start" onclick="startGame()">Comenzar aventura</button>
+
+    <button class="btn-primary" onclick="startGame()">Comenzar aventura</button>
   </div>
 </div>
 
-<!-- JUEGO -->
+<!-- ══ JUEGO ══ -->
 <div id="s-game" class="screen">
-  <!-- Stats personaje -->
   <div class="char-bar">
-    <div class="char-avatar" id="g-avatar">⚔️</div>
+    <div class="char-avatar" id="g-avatar"></div>
     <div class="char-info">
       <div class="char-name" id="g-name">Héroe</div>
       <div class="char-level" id="g-level">Nivel 1 · Aprendiz</div>
@@ -375,142 +234,206 @@ body::before{
     </div>
     <div class="char-stats">
       <div class="stat"><span class="stat-val hp" id="g-hp">100</span><span class="stat-lbl">Vida</span></div>
-      <div class="stat"><span class="stat-val xp" id="g-xp">0</span><span class="stat-lbl">XP Total</span></div>
+      <div class="stat"><span class="stat-val xp" id="g-xp">0</span><span class="stat-lbl">XP</span></div>
       <div class="stat"><span class="stat-val streak" id="g-streak">0🔥</span><span class="stat-lbl">Racha</span></div>
     </div>
   </div>
 
-  <!-- Tabs -->
   <div class="tabs">
     <div class="tab on" onclick="switchTab('skills')">Habilidades</div>
     <div class="tab" onclick="switchTab('log')">Historial</div>
     <div class="tab" onclick="switchTab('stats')">Estadísticas</div>
   </div>
 
-  <!-- TAB: Habilidades -->
   <div id="tab-skills" class="tab-content on">
+    <div class="cloud-banner" id="cloud-banner">
+      <strong>☁ Nube</strong> — Guarda tu progreso y accede desde cualquier dispositivo
+      <button class="btn-cloud" onclick="loginGoogle()">Conectar Google</button>
+    </div>
     <div class="skills-header">
       <span style="font-size:13px;color:var(--muted2)" id="skills-count"></span>
-      <button class="btn-add" onclick="openModal()">+ Añadir habilidad</button>
+      <button class="btn-add" onclick="openModal()">+ Nueva habilidad</button>
     </div>
     <div class="skills-grid" id="skills-grid"></div>
   </div>
 
-  <!-- TAB: Historial -->
   <div id="tab-log" class="tab-content">
-    <div class="log-list" id="log-list">
-      <div class="empty-state"><div class="empty-icon">📜</div><h3>Sin registros aún</h3><p>Tu historial de actividades aparecerá aquí.</p></div>
-    </div>
+    <div class="log-list" id="log-list"></div>
   </div>
 
-  <!-- TAB: Estadísticas -->
   <div id="tab-stats" class="tab-content">
-    <div style="margin-bottom:1.5rem;">
-      <div style="font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:.75rem;">Racha de los últimos 21 días</div>
-      <div class="streak-grid" id="streak-grid"></div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;" id="stat-cards"></div>
+    <div style="font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:.75rem;">Racha — últimos 21 días</div>
+    <div class="streak-grid" id="streak-grid"></div>
+    <div class="stat-cards" id="stat-cards"></div>
   </div>
 </div>
 
-<!-- MODAL: Añadir habilidad -->
+<!-- MODAL añadir habilidad -->
 <div class="modal-bg" id="modal-add">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <h3>Nueva habilidad</h3>
-
     <button class="btn-ai-suggest" onclick="pedirSugerenciaIA()">✦ Sugerir con IA según mi perfil</button>
-
     <div class="ai-suggest" id="ai-suggest" style="display:none;">
       <div class="ai-suggest-title">✦ Sugerencia IA</div>
       <div class="ai-suggest-text" id="ai-suggest-text"></div>
     </div>
-
     <label class="form-label">Nombre de la habilidad</label>
-    <input class="form-input" id="skill-name-input" type="text" placeholder="Ej: Ejercicio diario, Leer 30 min..."/>
-
+    <input class="form-input" id="skill-name-input" type="text" placeholder="Ej: Ejercicio 30 min, Leer, Meditar..."/>
     <label class="form-label">Descripción (opcional)</label>
     <input class="form-input" id="skill-desc-input" type="text" placeholder="¿Qué implica esta habilidad?"/>
-
     <label class="form-label">Tipo</label>
     <div class="skill-types" id="skill-types">
-      <div class="stype on" data-type="Físico" data-color="#e85d30" data-icon="💪">
-        <span class="stype-icon">💪</span><span class="stype-name">Físico</span>
-      </div>
-      <div class="stype" data-type="Mental" data-color="#4db8ff" data-icon="🧠">
-        <span class="stype-icon">🧠</span><span class="stype-name">Mental</span>
-      </div>
-      <div class="stype" data-type="Creativo" data-color="#9b59ff" data-icon="🎨">
-        <span class="stype-icon">🎨</span><span class="stype-name">Creativo</span>
-      </div>
-      <div class="stype" data-type="Social" data-color="#4caf72" data-icon="🤝">
-        <span class="stype-icon">🤝</span><span class="stype-name">Social</span>
-      </div>
-      <div class="stype" data-type="Técnico" data-color="#c9a84c" data-icon="⚙️">
-        <span class="stype-icon">⚙️</span><span class="stype-name">Técnico</span>
-      </div>
-      <div class="stype" data-type="Espiritual" data-color="#4db8ff" data-icon="🌿">
-        <span class="stype-icon">🌿</span><span class="stype-name">Espiritual</span>
-      </div>
+      <div class="stype on" data-type="Físico" data-color="#e85d30" data-icon="💪"><span class="stype-icon">💪</span><span class="stype-name">Físico</span></div>
+      <div class="stype" data-type="Mental" data-color="#4db8ff" data-icon="🧠"><span class="stype-icon">🧠</span><span class="stype-name">Mental</span></div>
+      <div class="stype" data-type="Creativo" data-color="#9b59ff" data-icon="🎨"><span class="stype-icon">🎨</span><span class="stype-name">Creativo</span></div>
+      <div class="stype" data-type="Social" data-color="#4caf72" data-icon="🤝"><span class="stype-icon">🤝</span><span class="stype-name">Social</span></div>
+      <div class="stype" data-type="Técnico" data-color="#c9a84c" data-icon="⚙️"><span class="stype-icon">⚙️</span><span class="stype-name">Técnico</span></div>
+      <div class="stype" data-type="Espiritual" data-color="#4db8ff" data-icon="🌿"><span class="stype-icon">🌿</span><span class="stype-name">Espiritual</span></div>
     </div>
-
     <button class="btn-primary" onclick="addSkill()">Añadir habilidad</button>
   </div>
 </div>
 
-<!-- NOTIFICACIÓN -->
 <div class="notif" id="notif"></div>
 
 <script>
-/* ── ESTADO ── */
-const SAVE_KEY='skillforge_v1';
-let state={
-  hero:{name:'',avatar:'⚔️',hp:100,maxHp:100,xp:0,level:1,streak:0,lastDay:''},
-  skills:[],
-  log:[],
-  streakDays:[]
+/* ══ AVATAR SVG SYSTEM ══ */
+const AV={
+  tipo:'hombre',
+  piel:'#f5c5a3',
+  pelo:'#4a2800',
+  extra:'ninguno'
 };
 
-const API_KEY='';
+const TIPOS={
+  hombre:{label:'Hombre',icon:'♂'},
+  mujer:{label:'Mujer',icon:'♀'},
+  mascota:{label:'Mascota',icon:'🐾'}
+};
+const PIELES=['#f5c5a3','#e8a87c','#c68642','#8d5524','#3d1c02','#fce4d8'];
+const PELOS=['#4a2800','#1a1a1a','#c0a060','#e8c870','#b22222','#6699cc','#4caf72','#9b59ff'];
+const EXTRAS={ninguno:'Ninguno',gafas:'Gafas',sombrero:'Sombrero',corona:'Corona',antenas:'Antenas'};
 
-/* ── PERSISTENCIA ── */
-function save(){localStorage.setItem(SAVE_KEY,JSON.stringify(state));}
-function load(){
-  const raw=localStorage.getItem(SAVE_KEY);
-  if(raw){try{state=JSON.parse(raw);}catch{}}
+let avTab='tipo';
+
+function switchAvTab(tab){
+  avTab=tab;
+  document.querySelectorAll('.av-tab').forEach((t,i)=>{t.classList.toggle('on',['tipo','piel','pelo','extra'][i]===tab);});
+  renderAvOptions();
 }
 
-/* ── INICIO ── */
+function renderAvOptions(){
+  const c=document.getElementById('av-options');
+  if(avTab==='tipo'){
+    c.innerHTML=Object.entries(TIPOS).map(([k,v])=>`
+      <div class="av-opt${AV.tipo===k?' on':''}" onclick="setAv('tipo','${k}')">
+        <svg viewBox="0 0 40 40">${faceForType(k,'#e8a87c','#4a2800','ninguno')}</svg>
+      </div>`).join('');
+  }else if(avTab==='piel'){
+    c.innerHTML=PIELES.map(c=>`<div class="av-color${AV.piel===c?' on':''}" style="background:${c}" onclick="setAv('piel','${c}')"></div>`).join('');
+  }else if(avTab==='pelo'){
+    c.innerHTML=PELOS.map(c=>`<div class="av-color${AV.pelo===c?' on':''}" style="background:${c}" onclick="setAv('pelo','${c}')"></div>`).join('');
+  }else{
+    c.innerHTML=Object.entries(EXTRAS).map(([k,v])=>`
+      <div class="av-opt${AV.extra===k?' on':''}" onclick="setAv('extra','${k}')" style="font-size:10px;color:var(--muted2);flex-direction:column;gap:2px;width:auto;padding:6px 10px;height:auto;">
+        <span style="font-size:18px">${extraIcon(k)}</span>
+        <span>${v}</span>
+      </div>`).join('');
+  }
+}
+
+function setAv(key,val){AV[key]=val;renderAvOptions();renderAvPreview();}
+
+function extraIcon(e){return{ninguno:'—',gafas:'👓',sombrero:'🎩',corona:'👑',antenas:'📡'}[e]||'—';}
+
+function faceForType(tipo,piel,pelo,extra){
+  if(tipo==='mascota'){
+    return `
+      <ellipse cx="20" cy="22" rx="13" ry="12" fill="${piel}"/>
+      <ellipse cx="13" cy="11" rx="5" ry="7" fill="${piel}"/>
+      <ellipse cx="27" cy="11" rx="5" ry="7" fill="${piel}"/>
+      <ellipse cx="13" cy="10" rx="3" ry="4" fill="${pelo}"/>
+      <ellipse cx="27" cy="10" rx="3" ry="4" fill="${pelo}"/>
+      <circle cx="15" cy="22" r="2.5" fill="#333"/>
+      <circle cx="25" cy="22" r="2.5" fill="#333"/>
+      <ellipse cx="20" cy="27" rx="4" ry="2.5" fill="#e8a0a0"/>
+      <path d="M17 25 Q20 28 23 25" stroke="#b06060" stroke-width="1" fill="none"/>`;
+  }
+  const hairY=tipo==='mujer'?6:8;
+  const hairH=tipo==='mujer'?18:12;
+  const extraSvg={
+    gafas:`<rect x="11" y="19" width="7" height="5" rx="2" fill="none" stroke="#aaa" stroke-width="1.2"/><rect x="22" y="19" width="7" height="5" rx="2" fill="none" stroke="#aaa" stroke-width="1.2"/><line x1="18" y1="21.5" x2="22" y2="21.5" stroke="#aaa" stroke-width="1"/>`,
+    sombrero:`<rect x="10" y="6" width="20" height="3" rx="1" fill="${pelo}"/><rect x="13" y="3" width="14" height="6" rx="2" fill="${pelo}"/>`,
+    corona:`<polygon points="20,2 23,8 28,5 26,11 14,11 12,5 17,8" fill="var(--gold)"/>`,
+    antenas:`<line x1="16" y1="8" x2="12" y2="2" stroke="${pelo}" stroke-width="1.5"/><circle cx="12" cy="2" r="2" fill="var(--arcane)"/><line x1="24" y1="8" x2="28" y2="2" stroke="${pelo}" stroke-width="1.5"/><circle cx="28" cy="2" r="2" fill="var(--arcane)"/>`,
+    ninguno:''
+  }[extra]||'';
+  return `
+    <ellipse cx="20" cy="14" rx="${hairH/1.5}" ry="${hairH/2}" fill="${pelo}" transform="translate(0,${hairY-14})"/>
+    ${tipo==='mujer'?`<path d="M8 24 Q8 36 20 36 Q32 36 32 24" fill="${pelo}"/>`:''}
+    <ellipse cx="20" cy="22" rx="12" ry="13" fill="${piel}"/>
+    <ellipse cx="20" cy="${hairY+2}" rx="${hairH/1.5}" ry="6" fill="${pelo}"/>
+    <circle cx="15.5" cy="21" r="2" fill="#333"/>
+    <circle cx="24.5" cy="21" r="2" fill="#333"/>
+    <path d="M16 27 Q20 30 24 27" stroke="#c06060" stroke-width="1.2" fill="none"/>
+    ${extraSvg}`;
+}
+
+function renderAvPreview(){
+  const svg=`<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" style="width:100px;height:100px;filter:drop-shadow(0 0 12px rgba(201,168,76,.3))">
+    ${faceForType(AV.tipo,AV.piel,AV.pelo,AV.extra)}
+  </svg>`;
+  document.getElementById('av-preview').innerHTML=svg;
+}
+
+function getAvatarSvg(){
+  return `<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" style="width:44px;height:44px">${faceForType(AV.tipo,AV.piel,AV.pelo,AV.extra)}</svg>`;
+}
+
+// Inicializar
+renderAvPreview();
+renderAvOptions();
+
+/* ══ ESTADO ══ */
+const SAVE_KEY='skillforge_v2';
+let state={
+  hero:{name:'',avatarData:{...AV},hp:100,maxHp:100,xp:0,level:1,streak:0,lastDay:''},
+  skills:[],log:[],streakDays:[]
+};
+let loggedIn=false;
+
+function save(){localStorage.setItem(SAVE_KEY,JSON.stringify(state));}
+function load(){try{const r=localStorage.getItem(SAVE_KEY);if(r){state=JSON.parse(r);if(state.hero.avatarData)Object.assign(AV,state.hero.avatarData);}}catch{}}
 load();
 
-// Selección de avatar
-document.querySelectorAll('.av').forEach(av=>{
-  av.onclick=()=>{
-    document.querySelectorAll('.av').forEach(a=>a.classList.remove('on'));
-    av.classList.add('on');
-  };
-});
-
-function startGame(){
-  const name=document.getElementById('hero-name').value.trim();
-  if(!name){showNotif('Escribe tu nombre de héroe','red');return;}
-  const av=document.querySelector('.av.on')?.dataset.av||'⚔️';
-  state.hero.name=name;
-  state.hero.avatar=av;
-  state.hero.lastDay=today();
+/* ══ GOOGLE LOGIN (simulado — conectar Firebase para producción) ══ */
+function loginGoogle(){
+  /* Para activar Firebase real:
+     1. Crea proyecto en console.firebase.google.com
+     2. Activa Authentication > Google
+     3. Copia la config SDK y reemplaza este bloque
+     
+     Por ahora simula login guardado en localStorage */
+  const name=prompt('Nombre de usuario (simula login con Google):');
+  if(!name)return;
+  loggedIn=true;
+  state.hero.name=state.hero.name||name;
   save();
-  goGame();
+  showNotif('☁ Guardado en la nube (simulado)','gold');
+  document.getElementById('cloud-banner').style.display='none';
+  document.getElementById('btn-logout').style.display='block';
+  renderChar();
 }
 
-function goGame(){
-  document.getElementById('s-onboard').classList.remove('on');
-  document.getElementById('s-game').classList.add('on');
-  document.getElementById('sf-header').style.display='flex';
-  checkDayReset();
-  renderAll();
+function logout(){
+  loggedIn=false;
+  document.getElementById('btn-logout').style.display='none';
+  document.getElementById('cloud-banner').style.display='flex';
+  showNotif('Sesión cerrada','red');
 }
 
-/* Si ya tiene datos, ir directo al juego */
+/* ══ INICIO ══ */
 if(state.hero.name){
   document.getElementById('s-onboard').classList.remove('on');
   document.getElementById('s-game').classList.add('on');
@@ -519,43 +442,44 @@ if(state.hero.name){
   renderAll();
 }
 
-/* ── DÍA ── */
-function today(){return new Date().toISOString().slice(0,10);}
+function startGame(){
+  const name=document.getElementById('hero-name').value.trim();
+  if(!name){showNotif('Escribe tu nombre de héroe','red');return;}
+  state.hero.name=name;
+  state.hero.avatarData={...AV};
+  state.hero.lastDay=today();
+  save();
+  document.getElementById('s-onboard').classList.remove('on');
+  document.getElementById('s-game').classList.add('on');
+  document.getElementById('sf-header').style.display='flex';
+  checkDayReset();
+  renderAll();
+}
 
+/* ══ DÍA ══ */
+function today(){return new Date().toISOString().slice(0,10);}
 function checkDayReset(){
   const t=today();
   if(state.hero.lastDay&&state.hero.lastDay!==t){
-    // Nuevo día — penalizar skills no completadas
-    let lostHp=0;
     state.skills.forEach(s=>{
-      if(!s.doneToday){
-        const penalty=8;
-        state.hero.hp=Math.max(0,state.hero.hp-penalty);
-        lostHp+=penalty;
-        addLog(`Penalización: "${s.name}" sin completar`,'red',`-${penalty} HP`);
-      }
+      if(!s.doneToday){state.hero.hp=Math.max(0,state.hero.hp-8);addLog(`Sin completar: "${s.name}"`,'red','-8 HP');}
       s.doneToday=false;
     });
-    // Racha
-    if(state.skills.length>0){
-      const allDone=!state.skills.some(s=>!s.doneToday);
-      if(allDone){state.hero.streak++;state.streakDays.push(t);}
-      else if(lostHp>0){state.hero.streak=0;}
-    }
-    state.hero.lastDay=t;
-    save();
+    if(state.skills.length>0&&!state.skills.some(s=>!s.doneToday)){state.hero.streak++;state.streakDays.push(t);}
+    else if(state.skills.some(s=>!s.doneToday)&&state.hero.streak>0){state.hero.streak=0;}
+    state.hero.lastDay=t;save();
   }
   document.getElementById('hdr-day').textContent=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'short'});
 }
 
-/* ── RENDER ── */
+/* ══ RENDER ══ */
 function renderAll(){renderChar();renderSkills();renderLog();renderStats();}
-
-function levelName(l){const n=['','Aprendiz','Iniciado','Guerrero','Campeón','Maestro','Leyenda'];return n[Math.min(l,n.length-1)]||'Dios';}
+function levelName(l){return['','Aprendiz','Iniciado','Guerrero','Campeón','Maestro','Leyenda'][Math.min(l,6)]||'Dios';}
 
 function renderChar(){
   const h=state.hero;
-  document.getElementById('g-avatar').textContent=h.avatar;
+  if(h.avatarData)Object.assign(AV,h.avatarData);
+  document.getElementById('g-avatar').innerHTML=getAvatarSvg();
   document.getElementById('g-name').textContent=h.name;
   document.getElementById('g-level').textContent=`Nivel ${h.level} · ${levelName(h.level)}`;
   document.getElementById('g-hp').textContent=h.hp;
@@ -568,24 +492,16 @@ function renderSkills(){
   const grid=document.getElementById('skills-grid');
   document.getElementById('skills-count').textContent=`${state.skills.length} habilidad${state.skills.length!==1?'es':''}`;
   if(!state.skills.length){
-    grid.innerHTML=`<div class="empty-state" style="grid-column:1/-1">
-      <div class="empty-icon">⚔️</div>
-      <h3>Sin habilidades aún</h3>
-      <p>Añade tu primera habilidad para comenzar tu aventura.<br>La IA puede sugerirte algunas.</p>
-    </div>`;
+    grid.innerHTML=`<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">⚔️</div><h3>Sin habilidades aún</h3><p>Añade tu primera habilidad o pide sugerencias a la IA.</p></div>`;
     return;
   }
   grid.innerHTML=state.skills.map((s,i)=>{
     const pct=Math.min(100,(s.xp/(s.xpToNext||100))*100);
-    const streakTxt=s.streak>0?`<div class="streak-badge">🔥 ${s.streak} días</div>`:'';
     return `<div class="skill-card" style="--skill-color:${s.color}">
-      ${streakTxt}
+      ${s.streak>0?`<div class="streak-badge">🔥 ${s.streak} días</div>`:''}
       <div class="skill-top">
         <div class="skill-icon">${s.icon}</div>
-        <div class="skill-meta">
-          <div class="skill-name">${s.name}</div>
-          <div class="skill-desc">${s.desc||s.type}</div>
-        </div>
+        <div class="skill-meta"><div class="skill-name">${s.name}</div><div class="skill-desc">${s.desc||s.type}</div></div>
         <div class="skill-level">Nv ${s.level}</div>
       </div>
       <div class="xp-wrap">
@@ -593,10 +509,8 @@ function renderSkills(){
         <div class="xp-bar"><div class="xp-fill" style="width:${pct}%"></div></div>
       </div>
       <div class="skill-actions">
-        <button class="btn-done${s.doneToday?' done':''}" ${s.doneToday?'disabled':''} onclick="completeSkill(${i})">
-          ${s.doneToday?'✓ Completado hoy':'Completar hoy'}
-        </button>
-        <button class="btn-skip" onclick="removeSkill(${i})" title="Eliminar">✕</button>
+        <button class="btn-done${s.doneToday?' done':''}" ${s.doneToday?'disabled':''} onclick="completeSkill(${i})">${s.doneToday?'✓ Completado hoy':'Completar hoy'}</button>
+        <button class="btn-del" onclick="removeSkill(${i})">✕</button>
       </div>
     </div>`;
   }).join('');
@@ -604,184 +518,86 @@ function renderSkills(){
 
 function renderLog(){
   const list=document.getElementById('log-list');
-  if(!state.log.length){list.innerHTML=`<div class="empty-state"><div class="empty-icon">📜</div><h3>Sin registros aún</h3><p>Tu historial aparecerá aquí.</p></div>`;return;}
-  list.innerHTML=[...state.log].reverse().slice(0,30).map(l=>`
-    <div class="log-item">
-      <div class="log-icon">${l.type==='red'?'💀':l.type==='green'?'✅':'⭐'}</div>
-      <div class="log-text">${l.text}</div>
-      <div class="log-xp">${l.val||''}</div>
-      <div class="log-time">${l.time}</div>
-    </div>`).join('');
+  if(!state.log.length){list.innerHTML=`<div class="empty-state"><div class="empty-icon">📜</div><h3>Sin registros</h3><p>Tu historial aparecerá aquí.</p></div>`;return;}
+  list.innerHTML=[...state.log].reverse().slice(0,40).map(l=>`<div class="log-item"><div class="log-text">${l.type==='red'?'💀':l.type==='green'?'✅':'⭐'} ${l.text}</div><div class="log-val">${l.val||''}</div><div class="log-time">${l.time}</div></div>`).join('');
 }
 
 function renderStats(){
-  // Racha visual 21 días
-  const grid=document.getElementById('streak-grid');
-  const days=[];
   const t=today();
-  for(let i=20;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);days.push(d.toISOString().slice(0,10));}
-  grid.innerHTML=days.map(d=>{
-    const done=state.streakDays.includes(d);
-    const isToday=d===t;
-    return `<div class="streak-day${done?' done':''}${isToday?' today':''}">${new Date(d+'T12:00').getDate()}</div>`;
-  }).join('');
-
-  // Stat cards
+  const days=[];for(let i=20;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);days.push(d.toISOString().slice(0,10));}
+  document.getElementById('streak-grid').innerHTML=days.map(d=>`<div class="streak-day${state.streakDays.includes(d)?' done':''}${d===t?' today':''}">${new Date(d+'T12:00').getDate()}</div>`).join('');
   const total=state.skills.reduce((a,s)=>a+s.xp,0);
   const done=state.skills.filter(s=>s.doneToday).length;
   document.getElementById('stat-cards').innerHTML=`
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center">
-      <div style="font-family:'Cinzel',serif;font-size:24px;color:var(--gold)">${state.hero.hp}</div>
-      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px">Vida actual</div>
-    </div>
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center">
-      <div style="font-family:'Cinzel',serif;font-size:24px;color:var(--gold)">${total}</div>
-      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px">XP total ganado</div>
-    </div>
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center">
-      <div style="font-family:'Cinzel',serif;font-size:24px;color:var(--nature)">${done}/${state.skills.length}</div>
-      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px">Completadas hoy</div>
-    </div>
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center">
-      <div style="font-family:'Cinzel',serif;font-size:24px;color:var(--fire)">${state.hero.streak}</div>
-      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px">Días de racha</div>
-    </div>`;
+    <div class="stat-card"><div class="stat-card-val" style="color:var(--fire)">${state.hero.hp}</div><div class="stat-card-lbl">Vida</div></div>
+    <div class="stat-card"><div class="stat-card-val" style="color:var(--gold)">${total}</div><div class="stat-card-lbl">XP total</div></div>
+    <div class="stat-card"><div class="stat-card-val" style="color:var(--nature)">${done}/${state.skills.length}</div><div class="stat-card-lbl">Hoy</div></div>
+    <div class="stat-card"><div class="stat-card-val" style="color:var(--fire)">${state.hero.streak}</div><div class="stat-card-lbl">Racha</div></div>`;
 }
 
-/* ── HABILIDADES ── */
+/* ══ HABILIDADES ══ */
 function completeSkill(i){
-  const s=state.skills[i];
-  if(s.doneToday)return;
+  const s=state.skills[i];if(s.doneToday)return;
   s.doneToday=true;
-  const xpGain=20+s.level*5;
-  s.xp+=xpGain;
-  s.streak=(s.streak||0)+1;
-  state.hero.xp+=xpGain;
-  // Subir nivel habilidad
-  if(s.xp>=s.xpToNext){
-    s.level++;s.xp=0;s.xpToNext=Math.round(s.xpToNext*1.5);
-    showNotif(`¡"${s.name}" subió al nivel ${s.level}!`,'gold');
-  }
-  // Subir nivel personaje
+  const xp=20+s.level*5;s.xp+=xp;s.streak=(s.streak||0)+1;state.hero.xp+=xp;
+  if(s.xp>=s.xpToNext){s.level++;s.xp=0;s.xpToNext=Math.round(s.xpToNext*1.5);showNotif(`¡"${s.name}" subió al nivel ${s.level}!`,'gold');}
   const xpNeeded=state.hero.level*150;
   if(state.hero.xp>=xpNeeded){state.hero.level++;state.hero.maxHp+=10;state.hero.hp=Math.min(state.hero.hp+20,state.hero.maxHp);showNotif(`¡Subiste al nivel ${state.hero.level}!`,'gold');}
-  // Recuperar vida
   state.hero.hp=Math.min(state.hero.maxHp,state.hero.hp+5);
-  addLog(`Completaste: "${s.name}"`,'green',`+${xpGain} XP`);
-  save();renderAll();
-  showNotif(`+${xpGain} XP · "${s.name}"`, 'green');
+  addLog(`Completaste: "${s.name}"`,'green',`+${xp} XP`);
+  save();renderAll();showNotif(`+${xp} XP · "${s.name}"`,'green');
 }
+function removeSkill(i){if(!confirm('¿Eliminar esta habilidad?'))return;state.skills.splice(i,1);save();renderSkills();}
+function addLog(text,type,val){state.log.push({text,type,val,time:new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})});if(state.log.length>100)state.log.shift();}
 
-function removeSkill(i){
-  if(!confirm('¿Eliminar esta habilidad?'))return;
-  state.skills.splice(i,1);save();renderSkills();
-}
-
-function addLog(text,type,val){
-  state.log.push({text,type,val,time:new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})});
-  if(state.log.length>100)state.log.shift();
-}
-
-/* ── MODAL ── */
+/* ══ MODAL ══ */
 let selectedType={type:'Físico',color:'#e85d30',icon:'💪'};
-
-document.querySelectorAll('.stype').forEach(st=>{
-  st.onclick=()=>{
-    document.querySelectorAll('.stype').forEach(s=>s.classList.remove('on'));
-    st.classList.add('on');
-    selectedType={type:st.dataset.type,color:st.dataset.color,icon:st.dataset.icon};
-  };
-});
-
-function openModal(){
-  document.getElementById('modal-add').classList.add('open');
-  document.getElementById('ai-suggest').style.display='none';
-  document.getElementById('skill-name-input').value='';
-  document.getElementById('skill-desc-input').value='';
-}
+document.querySelectorAll('.stype').forEach(st=>{st.onclick=()=>{document.querySelectorAll('.stype').forEach(s=>s.classList.remove('on'));st.classList.add('on');selectedType={type:st.dataset.type,color:st.dataset.color,icon:st.dataset.icon};};});
+function openModal(){document.getElementById('modal-add').classList.add('open');document.getElementById('ai-suggest').style.display='none';document.getElementById('skill-name-input').value='';document.getElementById('skill-desc-input').value='';}
 function closeModal(){document.getElementById('modal-add').classList.remove('open');}
 document.getElementById('modal-add').addEventListener('click',e=>{if(e.target===document.getElementById('modal-add'))closeModal();});
-
 function addSkill(){
   const name=document.getElementById('skill-name-input').value.trim();
   if(!name){showNotif('Escribe el nombre de la habilidad','red');return;}
-  state.skills.push({
-    name,
-    desc:document.getElementById('skill-desc-input').value.trim(),
-    type:selectedType.type,
-    color:selectedType.color,
-    icon:selectedType.icon,
-    level:1,xp:0,xpToNext:100,
-    streak:0,doneToday:false
-  });
+  state.skills.push({name,desc:document.getElementById('skill-desc-input').value.trim(),type:selectedType.type,color:selectedType.color,icon:selectedType.icon,level:1,xp:0,xpToNext:100,streak:0,doneToday:false});
   addLog(`Nueva habilidad: "${name}"`,'gold','');
-  save();closeModal();renderSkills();
-  showNotif(`"${name}" añadida al grimorio`,'gold');
+  save();closeModal();renderSkills();showNotif(`"${name}" añadida`,'gold');
 }
 
-/* ── IA SUGERENCIA ── */
+/* ══ IA ══ */
+const API_KEY='';
 async function pedirSugerenciaIA(){
-  const box=document.getElementById('ai-suggest');
-  const txt=document.getElementById('ai-suggest-text');
-  box.style.display='block';
-  txt.className='ai-suggest-text loading';
-  txt.textContent='Consultando el oráculo';
-
-  const skillsActuales=state.skills.map(s=>s.name).join(', ')||'ninguna aún';
-  const nivel=state.hero.level;
-
+  const box=document.getElementById('ai-suggest'),txt=document.getElementById('ai-suggest-text');
+  box.style.display='block';txt.className='ai-suggest-text loading';txt.textContent='Consultando el oráculo';
+  const actuales=state.skills.map(s=>s.name).join(', ')||'ninguna';
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01'},
-      body:JSON.stringify({
-        model:'claude-haiku-4-5-20251001',max_tokens:200,
-        messages:[{role:'user',content:`Eres el oráculo de SkillForge, un juego de desarrollo personal en forma de RPG.
-El héroe "${state.hero.name}" está en nivel ${nivel} y ya practica: ${skillsActuales}.
-Sugiere UNA habilidad nueva que complementaría su desarrollo. 
-Responde SOLO con este formato JSON sin explicación extra:
-{"nombre":"...","descripcion":"...","tipo":"Físico|Mental|Creativo|Social|Técnico|Espiritual"}
-La habilidad debe ser concreta, alcanzable diariamente y útil de verdad.`}]
-      })
-    });
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01'},body:JSON.stringify({model:'claude-haiku-4-5-20251001',max_tokens:200,messages:[{role:'user',content:`Eres el oráculo de SkillForge. El héroe "${state.hero.name}" (nivel ${state.hero.level}) ya practica: ${actuales}. Sugiere UNA habilidad nueva en JSON: {"nombre":"...","descripcion":"...","tipo":"Físico|Mental|Creativo|Social|Técnico|Espiritual"}. Solo el JSON, sin texto extra.`}]})});
     const data=await res.json();
-    const raw=data.content?.[0]?.text||'{}';
-    const clean=raw.replace(/```json|```/g,'').trim();
-    const sug=JSON.parse(clean);
-    txt.className='ai-suggest-text';
-    txt.textContent=`"${sug.nombre}" — ${sug.descripcion}`;
-    // Rellenar el formulario
+    const sug=JSON.parse(data.content?.[0]?.text.replace(/```json|```/g,'').trim()||'{}');
+    txt.className='ai-suggest-text';txt.textContent=`"${sug.nombre}" — ${sug.descripcion}`;
     document.getElementById('skill-name-input').value=sug.nombre||'';
     document.getElementById('skill-desc-input').value=sug.descripcion||'';
-    // Seleccionar tipo
-    const typeEl=[...document.querySelectorAll('.stype')].find(t=>t.dataset.type===sug.tipo);
-    if(typeEl){document.querySelectorAll('.stype').forEach(s=>s.classList.remove('on'));typeEl.classList.add('on');selectedType={type:typeEl.dataset.type,color:typeEl.dataset.color,icon:typeEl.dataset.icon};}
+    const te=[...document.querySelectorAll('.stype')].find(t=>t.dataset.type===sug.tipo);
+    if(te){document.querySelectorAll('.stype').forEach(s=>s.classList.remove('on'));te.classList.add('on');selectedType={type:te.dataset.type,color:te.dataset.color,icon:te.dataset.icon};}
   }catch{
     txt.className='ai-suggest-text';
-    const sugs=['Meditación 10 minutos','Leer 20 páginas','Ejercicio matutino','Aprender algo nuevo','Escribir un diario'];
-    const s=sugs[Math.floor(Math.random()*sugs.length)];
+    const s=['Meditación 10 min','Leer 20 páginas','Ejercicio matutino','Aprender algo nuevo'][Math.floor(Math.random()*4)];
     txt.textContent=s+' — Una práctica diaria que fortalece tu personaje.';
     document.getElementById('skill-name-input').value=s;
   }
 }
 
-/* ── TABS ── */
+/* ══ TABS ══ */
 function switchTab(tab){
   document.querySelectorAll('.tab').forEach((t,i)=>{t.classList.toggle('on',['skills','log','stats'][i]===tab);});
   document.querySelectorAll('.tab-content').forEach(tc=>tc.classList.remove('on'));
   document.getElementById('tab-'+tab).classList.add('on');
-  if(tab==='stats')renderStats();
-  if(tab==='log')renderLog();
+  if(tab==='stats')renderStats();if(tab==='log')renderLog();
 }
 
-/* ── NOTIFICACIÓN ── */
-let notifTimer;
-function showNotif(msg,type=''){
-  const n=document.getElementById('notif');
-  n.textContent=msg;n.className=`notif show ${type}`;
-  clearTimeout(notifTimer);
-  notifTimer=setTimeout(()=>{n.classList.remove('show');},2500);
-}
+/* ══ NOTIF ══ */
+let nt;
+function showNotif(msg,type=''){const n=document.getElementById('notif');n.textContent=msg;n.className=`notif show ${type}`;clearTimeout(nt);nt=setTimeout(()=>n.classList.remove('show'),2500);}
 </script>
 </body>
 </html>
