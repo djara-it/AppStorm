@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SkillForge — Forja tus habilidades</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --void:#04040a;
+  --deep:#08080f;
+  --surface:#0e0e1a;
+  --card:#141428;
+  --border:#1e1e3a;
+  --gold:#c9a84c;
+  --gold2:#e8c870;
+  --fire:#e85d30;
+  --ice:#4db8ff;
+  --nature:#4caf72;
+  --arcane:#9b59ff;
+  --text:#e8e8f0;
+  --muted:#6060a0;
+  --muted2:#9090c0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Crimson Pro',serif;
+  background:var(--void);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* Fondo con partículas estáticas */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 20%,rgba(201,168,76,.04) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 60% at 80% 80%,rgba(155,89,255,.04) 0%,transparent 60%);
+  pointer-events:none;z-index:0;
+}
+
+/* HEADER */
+.sf-header{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.75rem 1.5rem;
+  background:rgba(4,4,10,.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.sf-logo{
+  font-family:'Cinzel',serif;
+  font-size:18px;font-weight:700;
+  color:var(--gold);letter-spacing:2px;
+}
+.sf-logo span{color:var(--text);font-weight:400;}
+.hdr-right{display:flex;align-items:center;gap:10px;}
+
+/* PANTALLAS */
+.screen{display:none;position:relative;z-index:1;}
+.screen.on{display:block;}
+
+/* ═══ ONBOARDING ═══ */
+#s-onboard{
+  min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:2rem 1.5rem;text-align:center;
+}
+.onboard-title{
+  font-family:'Cinzel',serif;
+  font-size:clamp(32px,6vw,56px);
+  font-weight:700;color:var(--gold);
+  line-height:1.1;margin-bottom:.5rem;
+  animation:fadeDown .8s ease forwards;
+}
+.onboard-sub{
+  font-size:18px;color:var(--muted2);
+  margin-bottom:2.5rem;
+  animation:fadeDown .8s .15s ease forwards;opacity:0;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-12px);}to{opacity:1;transform:translateY(0);}}
+
+.onboard-form{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;padding:2rem;
+  max-width:420px;width:100%;
+  animation:fadeDown .8s .3s ease forwards;opacity:0;
+}
+.form-label{font-size:12px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem;display:block;}
+.form-input{
+  width:100%;background:var(--card);border:1px solid var(--border);
+  border-radius:8px;padding:11px 14px;color:var(--text);
+  font-size:15px;font-family:'Crimson Pro',serif;outline:none;
+  transition:border-color .2s;margin-bottom:1.2rem;
+}
+.form-input:focus{border-color:var(--gold);}
+.form-input::placeholder{color:var(--muted);}
+
+/* Avatares */
+.avatar-pick{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem;}
+.av{
+  width:56px;height:56px;border-radius:50%;
+  background:var(--card);border:2px solid var(--border);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:24px;transition:border-color .2s,transform .15s;
+}
+.av:hover{border-color:var(--gold);transform:scale(1.1);}
+.av.on{border-color:var(--gold);box-shadow:0 0 12px rgba(201,168,76,.4);}
+
+.btn-primary{
+  width:100%;padding:12px;border-radius:10px;
+  background:var(--gold);border:none;color:var(--void);
+  font-family:'Cinzel',serif;font-size:14px;font-weight:700;
+  letter-spacing:1px;cursor:pointer;transition:opacity .2s,transform .15s;
+}
+.btn-primary:hover{opacity:.88;transform:translateY(-1px);}
+.btn-primary:disabled{opacity:.4;cursor:default;transform:none;}
+
+/* ═══ MAIN GAME ═══ */
+#s-game{padding:0 0 6rem;}
+
+/* Stats bar del personaje */
+.char-bar{
+  background:var(--surface);border-bottom:1px solid var(--border);
+  padding:1rem 1.5rem;
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+}
+.char-avatar{
+  width:52px;height:52px;border-radius:50%;
+  background:var(--card);border:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;flex-shrink:0;
+}
+.char-info{flex:1;min-width:0;}
+.char-name{font-family:'Cinzel',serif;font-size:16px;color:var(--gold);}
+.char-level{font-size:12px;color:var(--muted2);margin-top:2px;}
+.char-stats{display:flex;gap:1.5rem;align-items:center;}
+.stat{display:flex;flex-direction:column;align-items:center;gap:2px;}
+.stat-val{font-family:'Cinzel',serif;font-size:18px;font-weight:700;}
+.stat-val.hp{color:var(--fire);}
+.stat-val.xp{color:var(--gold);}
+.stat-val.streak{color:var(--nature);}
+.stat-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;}
+
+/* Barra de vida */
+.hp-bar-wrap{width:100%;height:6px;background:var(--border);border-radius:3px;margin-top:4px;}
+.hp-bar{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--fire),#ff9060);transition:width .5s ease;}
+
+/* TABS */
+.tabs{display:flex;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:54px;z-index:50;}
+.tab{flex:1;padding:.75rem;text-align:center;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
+.tab:hover{color:var(--text);}
+.tab.on{color:var(--gold);border-bottom-color:var(--gold);}
+
+.tab-content{display:none;padding:1.5rem;}
+.tab-content.on{display:block;}
+
+/* Sección habilidades */
+.skills-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.2rem;}
+.btn-add{
+  display:flex;align-items:center;gap:6px;
+  background:rgba(201,168,76,.1);border:1px solid var(--gold);
+  border-radius:8px;padding:7px 14px;color:var(--gold);
+  font-size:12px;letter-spacing:1px;cursor:pointer;
+  font-family:'Crimson Pro',serif;transition:background .2s;
+}
+.btn-add:hover{background:rgba(201,168,76,.2);}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;}
+
+/* Tarjeta de habilidad */
+.skill-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:1.1rem;
+  position:relative;overflow:hidden;
+  transition:border-color .2s,transform .15s;
+}
+.skill-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+.skill-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--skill-color,var(--gold));border-radius:12px 12px 0 0;
+}
+.skill-top{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:.75rem;}
+.skill-icon{font-size:28px;line-height:1;flex-shrink:0;}
+.skill-meta{flex:1;min-width:0;}
+.skill-name{font-family:'Cinzel',serif;font-size:14px;color:var(--text);margin-bottom:2px;}
+.skill-desc{font-size:12px;color:var(--muted2);line-height:1.5;}
+.skill-level{
+  font-family:'Cinzel',serif;font-size:11px;
+  color:var(--skill-color,var(--gold));
+  background:rgba(201,168,76,.08);
+  border:1px solid rgba(201,168,76,.2);
+  border-radius:4px;padding:2px 8px;
+  align-self:flex-start;white-space:nowrap;
+}
+
+/* Barra XP */
+.xp-wrap{margin-bottom:.75rem;}
+.xp-header{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:4px;}
+.xp-bar{height:5px;background:var(--border);border-radius:3px;overflow:hidden;}
+.xp-fill{height:100%;border-radius:3px;background:var(--skill-color,var(--gold));transition:width .6s ease;}
+
+.skill-actions{display:flex;gap:8px;}
+.btn-done{
+  flex:1;padding:8px;border-radius:7px;font-size:12px;
+  background:rgba(76,175,114,.12);border:1px solid var(--nature);
+  color:var(--nature);cursor:pointer;font-family:'Crimson Pro',serif;
+  transition:background .2s;
+}
+.btn-done:hover{background:rgba(76,175,114,.25);}
+.btn-done:disabled{opacity:.4;cursor:default;}
+.btn-done.done{background:rgba(76,175,114,.3);color:#fff;}
+.btn-skip{
+  padding:8px 12px;border-radius:7px;font-size:12px;
+  background:rgba(232,93,48,.08);border:1px solid rgba(232,93,48,.3);
+  color:var(--fire);cursor:pointer;font-family:'Crimson Pro',serif;
+  transition:background .2s;
+}
+.btn-skip:hover{background:rgba(232,93,48,.2);}
+
+/* Streak badge */
+.streak-badge{
+  position:absolute;top:.85rem;right:.85rem;
+  font-size:11px;color:var(--nature);
+  background:rgba(76,175,114,.1);
+  border:1px solid rgba(76,175,114,.2);
+  border-radius:4px;padding:2px 7px;
+}
+
+/* EMPTY STATE */
+.empty-state{
+  text-align:center;padding:3rem 1rem;
+  color:var(--muted);
+}
+.empty-icon{font-size:40px;margin-bottom:.75rem;opacity:.4;}
+.empty-state h3{font-family:'Cinzel',serif;font-size:16px;color:var(--muted2);margin-bottom:.5rem;}
+.empty-state p{font-size:14px;line-height:1.6;}
+
+/* MODAL */
+.modal-bg{
+  position:fixed;inset:0;z-index:999;
+  background:rgba(0,0,0,.7);backdrop-filter:blur(4px);
+  display:none;align-items:center;justify-content:center;padding:1rem;
+}
+.modal-bg.open{display:flex;}
+.modal{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;padding:1.75rem;
+  width:100%;max-width:440px;
+  animation:fadeDown .2s ease;
+}
+.modal h3{font-family:'Cinzel',serif;font-size:18px;color:var(--gold);margin-bottom:1.2rem;}
+.modal-close{float:right;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;margin-top:-4px;}
+.modal-close:hover{color:var(--text);}
+
+/* Tipos de habilidad */
+.skill-types{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.2rem;}
+.stype{
+  padding:.6rem;border-radius:8px;border:1px solid var(--border);
+  cursor:pointer;text-align:center;transition:border-color .2s,background .2s;
+}
+.stype:hover{border-color:var(--gold);}
+.stype.on{border-color:var(--gold);background:rgba(201,168,76,.08);}
+.stype-icon{font-size:20px;display:block;margin-bottom:3px;}
+.stype-name{font-size:11px;color:var(--muted2);}
+
+/* IA suggestion */
+.ai-suggest{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:10px;padding:1rem;margin-bottom:1.2rem;
+}
+.ai-suggest-title{font-size:11px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:.5rem;}
+.ai-suggest-text{font-size:13px;color:var(--muted2);line-height:1.6;}
+.ai-suggest-text.loading::after{content:'▌';animation:blink .7s infinite;}
+@keyframes blink{50%{opacity:0;}}
+
+/* HISTORIAL */
+.log-list{display:flex;flex-direction:column;gap:8px;}
+.log-item{
+  display:flex;align-items:center;gap:10px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:8px;padding:.75rem 1rem;
+}
+.log-icon{font-size:16px;flex-shrink:0;}
+.log-text{flex:1;font-size:13px;color:var(--muted2);}
+.log-time{font-size:11px;color:var(--muted);}
+.log-xp{font-size:12px;color:var(--gold);font-family:'Cinzel',serif;}
+
+/* RACHA */
+.streak-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:1.5rem;}
+.streak-day{
+  aspect-ratio:1;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;color:var(--muted);
+  background:var(--card);border:1px solid var(--border);
+}
+.streak-day.done{background:rgba(76,175,114,.2);border-color:var(--nature);color:var(--nature);}
+.streak-day.today{border-color:var(--gold);color:var(--gold);}
+
+/* BTN AI */
+.btn-ai-suggest{
+  width:100%;padding:10px;border-radius:8px;
+  background:rgba(155,89,255,.1);border:1px solid var(--arcane);
+  color:var(--arcane);font-size:13px;cursor:pointer;
+  font-family:'Crimson Pro',serif;transition:background .2s;
+  margin-bottom:1rem;
+}
+.btn-ai-suggest:hover{background:rgba(155,89,255,.2);}
+
+/* NOTIFICACIÓN */
+.notif{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  background:var(--card);border:1px solid var(--border);
+  border-radius:10px;padding:.75rem 1.25rem;
+  font-size:13px;color:var(--text);
+  z-index:9999;opacity:0;transition:opacity .3s;
+  white-space:nowrap;
+}
+.notif.show{opacity:1;}
+.notif.gold{border-color:var(--gold);color:var(--gold);}
+.notif.red{border-color:var(--fire);color:var(--fire);}
+.notif.green{border-color:var(--nature);color:var(--nature);}
+
+@media(max-width:600px){
+  .char-stats{gap:.75rem;}
+  .skills-grid{grid-template-columns:1fr;}
+  .skill-types{grid-template-columns:repeat(3,1fr);}
+  .tab-content{padding:1rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="sf-header" id="sf-header" style="display:none;">
+  <div class="sf-logo">SKILL<span>FORGE</span></div>
+  <div class="hdr-right">
+    <span id="hdr-day" style="font-size:12px;color:var(--muted)"></span>
+  </div>
+</header>
+
+<!-- ONBOARDING -->
+<div id="s-onboard" class="screen on">
+  <div class="onboard-title">SKILL<br>FORGE</div>
+  <p class="onboard-sub">Forja tus habilidades. Gana experiencia real.</p>
+  <div class="onboard-form">
+    <label class="form-label">Tu nombre de héroe</label>
+    <input class="form-input" id="hero-name" type="text" placeholder="¿Cómo te llamas?" maxlength="20"/>
+    <label class="form-label">Elige tu avatar</label>
+    <div class="avatar-pick" id="avatar-pick">
+      <div class="av on" data-av="⚔️">⚔️</div>
+      <div class="av" data-av="🧙">🧙</div>
+      <div class="av" data-av="🏹">🏹</div>
+      <div class="av" data-av="🛡️">🛡️</div>
+      <div class="av" data-av="🔥">🔥</div>
+      <div class="av" data-av="⚡">⚡</div>
+      <div class="av" data-av="🌿">🌿</div>
+      <div class="av" data-av="💎">💎</div>
+    </div>
+    <button class="btn-primary" id="btn-start" onclick="startGame()">Comenzar aventura</button>
+  </div>
+</div>
+
+<!-- JUEGO -->
+<div id="s-game" class="screen">
+  <!-- Stats personaje -->
+  <div class="char-bar">
+    <div class="char-avatar" id="g-avatar">⚔️</div>
+    <div class="char-info">
+      <div class="char-name" id="g-name">Héroe</div>
+      <div class="char-level" id="g-level">Nivel 1 · Aprendiz</div>
+      <div class="hp-bar-wrap"><div class="hp-bar" id="hp-bar" style="width:100%"></div></div>
+    </div>
+    <div class="char-stats">
+      <div class="stat"><span class="stat-val hp" id="g-hp">100</span><span class="stat-lbl">Vida</span></div>
+      <div class="stat"><span class="stat-val xp" id="g-xp">0</span><span class="stat-lbl">XP Total</span></div>
+      <div class="stat"><span class="stat-val streak" id="g-streak">0🔥</span><span class="stat-lbl">Racha</span></div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <div class="tab on" onclick="switchTab('skills')">Habilidades</div>
+    <div class="tab" onclick="switchTab('log')">Historial</div>
+    <div class="tab" onclick="switchTab('stats')">Estadísticas</div>
+  </div>
+
+  <!-- TAB: Habilidades -->
+  <div id="tab-skills" class="tab-content on">
+    <div class="skills-header">
+      <span style="font-size:13px;color:var(--muted2)" id="skills-count"></span>
+      <button class="btn-add" onclick="openModal()">+ Añadir habilidad</button>
+    </div>
+    <div class="skills-grid" id="skills-grid"></div>
+  </div>
+
+  <!-- TAB: Historial -->
+  <div id="tab-log" class="tab-content">
+    <div class="log-list" id="log-list">
+      <div class="empty-state"><div class="empty-icon">📜</div><h3>Sin registros aún</h3><p>Tu historial de actividades aparecerá aquí.</p></div>
+    </div>
+  </div>
+
+  <!-- TAB: Estadísticas -->
+  <div id="tab-stats" class="tab-content">
+    <div style="margin-bottom:1.5rem;">
+      <div style="font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:.75rem;">Racha de los últimos 21 días</div>
+      <div class="streak-grid" id="streak-grid"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;" id="stat-cards"></div>
+  </div>
+</div>
+
+<!-- MODAL: Añadir habilidad -->
+<div class="modal-bg" id="modal-add">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3>Nueva habilidad</h3>
+
+    <button class="btn-ai-suggest" onclick="pedirSugerenciaIA()">✦ Sugerir con IA según mi perfil</button>
+
+    <div class="ai-suggest" id="ai-suggest" style="display:none;">
+      <div class="ai-suggest-title">✦ Sugerencia IA</div>
+      <div class="ai-suggest-text" id="ai-suggest-text"></div>
+    </div>
+
+    <label class="form-label">Nombre de la habilidad</label>
+    <input class="form-input" id="skill-name-input" type="text" placeholder="Ej: Ejercicio diario, Leer 30 min..."/>
+
+    <label class="form-label">Descripción (opcional)</label>
+    <input class="form-input" id="skill-desc-input" type="text" placeholder="¿Qué implica esta habilidad?"/>
+
+    <label class="form-label">Tipo</label>
+    <div class="skill-types" id="skill-types">
+      <div class="stype on" data-type="Físico" data-color="#e85d30" data-icon="💪">
+        <span class="stype-icon">💪</span><span class="stype-name">Físico</span>
+      </div>
+      <div class="stype" data-type="Mental" data-color="#4db8ff" data-icon="🧠">
+        <span class="stype-icon">🧠</span><span class="stype-name">Mental</span>
+      </div>
+      <div class="stype" data-type="Creativo" data-color="#9b59ff" data-icon="🎨">
+        <span class="stype-icon">🎨</span><span class="stype-name">Creativo</span>
+      </div>
+      <div class="stype" data-type="Social" data-color="#4caf72" data-icon="🤝">
+        <span class="stype-icon">🤝</span><span class="stype-name">Social</span>
+      </div>
+      <div class="stype" data-type="Técnico" data-color="#c9a84c" data-icon="⚙️">
+        <span class="stype-icon">⚙️</span><span class="stype-name">Técnico</span>
+      </div>
+      <div class="stype" data-type="Espiritual" data-color="#4db8ff" data-icon="🌿">
+        <span class="stype-icon">🌿</span><span class="stype-name">Espiritual</span>
+      </div>
+    </div>
+
+    <button class="btn-primary" onclick="addSkill()">Añadir habilidad</button>
+  </div>
+</div>
+
+<!-- NOTIFICACIÓN -->
+<div class="notif" id="notif"></div>
+
+<script>
+/* ── ESTADO ── */
+const SAVE_KEY='skillforge_v1';
+let state={
+  hero:{name:'',avatar:'⚔️',hp:100,maxHp:100,xp:0,level:1,streak:0,lastDay:''},
+  skills:[],
+  log:[],
+  streakDays:[]
+};
+
+const API_KEY='';
+
+/* ── PERSISTENCIA ── */
+function save(){localStorage.setItem(SAVE_KEY,JSON.stringify(state));}
+function load(){
+  const raw=localStorage.getItem(SAVE_KEY);
+  if(raw){try{state=JSON.parse(raw);}catch{}}
+}
+
+/* ── INICIO ── */
+load();
+
+// Selección de avatar
+document.querySelectorAll('.av').forEach(av=>{
+  av.onclick=()=>{
+    document.querySelectorAll('.av').forEach(a=>a.classList.remove('on'));
+    av.classList.add('on');
+  };
+});
+
+function startGame(){
+  const name=document.getElementById('hero-name').value.trim();
+  if(!name){showNotif('Escribe tu nombre de héroe','red');return;}
+  const av=document.querySelector('.av.on')?.dataset.av||'⚔️';
+  state.hero.name=name;
+  state.hero.avatar=av;
+  state.hero.lastDay=today();
+  save();
+  goGame();
+}
+
+function goGame(){
+  document.getElementById('s-onboard').classList.remove('on');
+  document.getElementById('s-game').classList.add('on');
+  document.getElementById('sf-header').style.display='flex';
+  checkDayReset();
+  renderAll();
+}
+
+/* Si ya tiene datos, ir directo al juego */
+if(state.hero.name){
+  document.getElementById('s-onboard').classList.remove('on');
+  document.getElementById('s-game').classList.add('on');
+  document.getElementById('sf-header').style.display='flex';
+  checkDayReset();
+  renderAll();
+}
+
+/* ── DÍA ── */
+function today(){return new Date().toISOString().slice(0,10);}
+
+function checkDayReset(){
+  const t=today();
+  if(state.hero.lastDay&&state.hero.lastDay!==t){
+    // Nuevo día — penalizar skills no completadas
+    let lostHp=0;
+    state.skills.forEach(s=>{
+      if(!s.doneToday){
+        const penalty=8;
+        state.hero.hp=Math.max(0,state.hero.hp-penalty);
+        lostHp+=penalty;
+        addLog(`Penalización: "${s.name}" sin completar`,'red',`-${penalty} HP`);
+      }
+      s.doneToday=false;
+    });
+    // Racha
+    if(state.skills.length>0){
+      const allDone=!state.skills.some(s=>!s.doneToday);
+      if(allDone){state.hero.streak++;state.streakDays.push(t);}
+      else if(lostHp>0){state.hero.streak=0;}
+    }
+    state.hero.lastDay=t;
+    save();
+  }
+  document.getElementById('hdr-day').textContent=new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'short'});
+}
+
+/* ── RENDER ── */
+function renderAll(){renderChar();renderSkills();renderLog();renderStats();}
+
+function levelName(l){const n=['','Aprendiz','Iniciado','Guerrero','Campeón','Maestro','Leyenda'];return n[Math.min(l,n.length-1)]||'Dios';}
+
+function renderChar(){
+  const h=state.hero;
+  document.getElementById('g-avatar').textContent=h.avatar;
+  document.getElementById('g-name').textContent=h.name;
+  document.getElementById('g-level').textContent=`Nivel ${h.level} · ${levelName(h.level)}`;
+  document.getElementById('g-hp').textContent=h.hp;
+  document.getElementById('g-xp').textContent=h.xp;
+  document.getElementById('g-streak').textContent=`${h.streak}🔥`;
+  document.getElementById('hp-bar').style.width=(h.hp/h.maxHp*100)+'%';
+}
+
+function renderSkills(){
+  const grid=document.getElementById('skills-grid');
+  document.getElementById('skills-count').textContent=`${state.skills.length} habilidad${state.skills.length!==1?'es':''}`;
+  if(!state.skills.length){
+    grid.innerHTML=`<div class="empty-state" style="grid-column:1/-1">
+      <div class="empty-icon">⚔️</div>
+      <h3>Sin habilidades aún</h3>
+      <p>Añade tu primera habilidad para comenzar tu aventura.<br>La IA puede sugerirte algunas.</p>
+    </div>`;
+    return;
+  }
+  grid.innerHTML=state.skills.map((s,i)=>{
+    const pct=Math.min(100,(s.xp/(s.xpToNext||100))*100);
+    const streakTxt=s.streak>0?`<div class="streak-badge">🔥 ${s.streak} días</div>`:'';
+    return `<div class="skill-card" style="--skill-color:${s.color}">
+      ${streakTxt}
+      <div class="skill-top">
+        <div class="skill-icon">${s.icon}</div>
+        <div class="skill-meta">
+          <div class="skill-name">${s.name}</div>
+          <div class="skill-desc">${s.desc||s.type}</div>
+        </div>
+        <div class="skill-level">Nv ${s.level}</div>
+      </div>
+      <div class="xp-wrap">
+        <div class="xp-header"><span>${s.xp} / ${s.xpToNext} XP</span><span>${Math.round(pct)}%</span></div>
+        <div class="xp-bar"><div class="xp-fill" style="width:${pct}%"></div></div>
+      </div>
+      <div class="skill-actions">
+        <button class="btn-done${s.doneToday?' done':''}" ${s.doneToday?'disabled':''} onclick="completeSkill(${i})">
+          ${s.doneToday?'✓ Completado hoy':'Completar hoy'}
+        </button>
+        <button class="btn-skip" onclick="removeSkill(${i})" title="Eliminar">✕</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderLog(){
+  const list=document.getElementById('log-list');
+  if(!state.log.length){list.innerHTML=`<div class="empty-state"><div class="empty-icon">📜</div><h3>Sin registros aún</h3><p>Tu historial aparecerá aquí.</p></div>`;return;}
+  list.innerHTML=[...state.log].reverse().slice(0,30).map(l=>`
+    <div class="log-item">
+      <div class="log-icon">${l.type==='red'?'💀':l.type==='green'?'✅':'⭐'}</div>
+      <div class="log-text">${l.text}</div>
+      <div class="log-xp">${l.val||''}</div>
+      <div class="log-time">${l.time}</div>
+    </div>`).join('');
+}
+
+function renderStats(){
+  // Racha visual 21 días
+  const grid=document.getElementById('streak-grid');
+  const days=[];
+  const t=today();
+  for(let i=20;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);days.push(d.toISOString().slice(0,10));}
+  grid.innerHTML=days.map(d=>{
+    const done=state.streakDays.includes(d);
+    const isToday=d===t;
+    return `<div class="streak-day${done?' done':''}${isToday?' today':''}">${new Date(d+'T12:00').getDate()}</div>`;
+  }).join('');
+
+  // Stat cards
+  const total=state.skills.reduce((a,s)=>a+s.xp,0);
+  const done=state.skills.filter(s=>s.doneToday).length;
+  document.getElementById('stat-cards').innerHTML=`
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center">
+      <div style="font-family:'Cinzel',serif;font-size:24px;color:var(--gold)">${state.hero.hp}</div>
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px">Vida actual</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center">
+      <div style="font-family:'Cinzel',serif;font-size:24px;color:var(--gold)">${total}</div>
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px">XP total ganado</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center">
+      <div style="font-family:'Cinzel',serif;font-size:24px;color:var(--nature)">${done}/${state.skills.length}</div>
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px">Completadas hoy</div>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center">
+      <div style="font-family:'Cinzel',serif;font-size:24px;color:var(--fire)">${state.hero.streak}</div>
+      <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px">Días de racha</div>
+    </div>`;
+}
+
+/* ── HABILIDADES ── */
+function completeSkill(i){
+  const s=state.skills[i];
+  if(s.doneToday)return;
+  s.doneToday=true;
+  const xpGain=20+s.level*5;
+  s.xp+=xpGain;
+  s.streak=(s.streak||0)+1;
+  state.hero.xp+=xpGain;
+  // Subir nivel habilidad
+  if(s.xp>=s.xpToNext){
+    s.level++;s.xp=0;s.xpToNext=Math.round(s.xpToNext*1.5);
+    showNotif(`¡"${s.name}" subió al nivel ${s.level}!`,'gold');
+  }
+  // Subir nivel personaje
+  const xpNeeded=state.hero.level*150;
+  if(state.hero.xp>=xpNeeded){state.hero.level++;state.hero.maxHp+=10;state.hero.hp=Math.min(state.hero.hp+20,state.hero.maxHp);showNotif(`¡Subiste al nivel ${state.hero.level}!`,'gold');}
+  // Recuperar vida
+  state.hero.hp=Math.min(state.hero.maxHp,state.hero.hp+5);
+  addLog(`Completaste: "${s.name}"`,'green',`+${xpGain} XP`);
+  save();renderAll();
+  showNotif(`+${xpGain} XP · "${s.name}"`, 'green');
+}
+
+function removeSkill(i){
+  if(!confirm('¿Eliminar esta habilidad?'))return;
+  state.skills.splice(i,1);save();renderSkills();
+}
+
+function addLog(text,type,val){
+  state.log.push({text,type,val,time:new Date().toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'})});
+  if(state.log.length>100)state.log.shift();
+}
+
+/* ── MODAL ── */
+let selectedType={type:'Físico',color:'#e85d30',icon:'💪'};
+
+document.querySelectorAll('.stype').forEach(st=>{
+  st.onclick=()=>{
+    document.querySelectorAll('.stype').forEach(s=>s.classList.remove('on'));
+    st.classList.add('on');
+    selectedType={type:st.dataset.type,color:st.dataset.color,icon:st.dataset.icon};
+  };
+});
+
+function openModal(){
+  document.getElementById('modal-add').classList.add('open');
+  document.getElementById('ai-suggest').style.display='none';
+  document.getElementById('skill-name-input').value='';
+  document.getElementById('skill-desc-input').value='';
+}
+function closeModal(){document.getElementById('modal-add').classList.remove('open');}
+document.getElementById('modal-add').addEventListener('click',e=>{if(e.target===document.getElementById('modal-add'))closeModal();});
+
+function addSkill(){
+  const name=document.getElementById('skill-name-input').value.trim();
+  if(!name){showNotif('Escribe el nombre de la habilidad','red');return;}
+  state.skills.push({
+    name,
+    desc:document.getElementById('skill-desc-input').value.trim(),
+    type:selectedType.type,
+    color:selectedType.color,
+    icon:selectedType.icon,
+    level:1,xp:0,xpToNext:100,
+    streak:0,doneToday:false
+  });
+  addLog(`Nueva habilidad: "${name}"`,'gold','');
+  save();closeModal();renderSkills();
+  showNotif(`"${name}" añadida al grimorio`,'gold');
+}
+
+/* ── IA SUGERENCIA ── */
+async function pedirSugerenciaIA(){
+  const box=document.getElementById('ai-suggest');
+  const txt=document.getElementById('ai-suggest-text');
+  box.style.display='block';
+  txt.className='ai-suggest-text loading';
+  txt.textContent='Consultando el oráculo';
+
+  const skillsActuales=state.skills.map(s=>s.name).join(', ')||'ninguna aún';
+  const nivel=state.hero.level;
+
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01'},
+      body:JSON.stringify({
+        model:'claude-haiku-4-5-20251001',max_tokens:200,
+        messages:[{role:'user',content:`Eres el oráculo de SkillForge, un juego de desarrollo personal en forma de RPG.
+El héroe "${state.hero.name}" está en nivel ${nivel} y ya practica: ${skillsActuales}.
+Sugiere UNA habilidad nueva que complementaría su desarrollo. 
+Responde SOLO con este formato JSON sin explicación extra:
+{"nombre":"...","descripcion":"...","tipo":"Físico|Mental|Creativo|Social|Técnico|Espiritual"}
+La habilidad debe ser concreta, alcanzable diariamente y útil de verdad.`}]
+      })
+    });
+    const data=await res.json();
+    const raw=data.content?.[0]?.text||'{}';
+    const clean=raw.replace(/```json|```/g,'').trim();
+    const sug=JSON.parse(clean);
+    txt.className='ai-suggest-text';
+    txt.textContent=`"${sug.nombre}" — ${sug.descripcion}`;
+    // Rellenar el formulario
+    document.getElementById('skill-name-input').value=sug.nombre||'';
+    document.getElementById('skill-desc-input').value=sug.descripcion||'';
+    // Seleccionar tipo
+    const typeEl=[...document.querySelectorAll('.stype')].find(t=>t.dataset.type===sug.tipo);
+    if(typeEl){document.querySelectorAll('.stype').forEach(s=>s.classList.remove('on'));typeEl.classList.add('on');selectedType={type:typeEl.dataset.type,color:typeEl.dataset.color,icon:typeEl.dataset.icon};}
+  }catch{
+    txt.className='ai-suggest-text';
+    const sugs=['Meditación 10 minutos','Leer 20 páginas','Ejercicio matutino','Aprender algo nuevo','Escribir un diario'];
+    const s=sugs[Math.floor(Math.random()*sugs.length)];
+    txt.textContent=s+' — Una práctica diaria que fortalece tu personaje.';
+    document.getElementById('skill-name-input').value=s;
+  }
+}
+
+/* ── TABS ── */
+function switchTab(tab){
+  document.querySelectorAll('.tab').forEach((t,i)=>{t.classList.toggle('on',['skills','log','stats'][i]===tab);});
+  document.querySelectorAll('.tab-content').forEach(tc=>tc.classList.remove('on'));
+  document.getElementById('tab-'+tab).classList.add('on');
+  if(tab==='stats')renderStats();
+  if(tab==='log')renderLog();
+}
+
+/* ── NOTIFICACIÓN ── */
+let notifTimer;
+function showNotif(msg,type=''){
+  const n=document.getElementById('notif');
+  n.textContent=msg;n.className=`notif show ${type}`;
+  clearTimeout(notifTimer);
+  notifTimer=setTimeout(()=>{n.classList.remove('show');},2500);
+}
+</script>
+</body>
+</html>
