@@ -166,13 +166,107 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .pl-ai-out{margin-top:10px;font-size:13px;color:var(--muted2);min-height:18px;line-height:1.7;}
 
 /* TUTORIALES */
-.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;}
-.tc{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:1.1rem;transition:border-color .2s;}
-.tc:hover{border-color:var(--accent);}
-.tn{font-family:'Rajdhani',sans-serif;font-size:26px;font-weight:700;color:rgba(42,159,255,.18);margin-bottom:5px;}
-.tc h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:4px;}
-.tc p{font-size:12px;color:var(--muted2);line-height:1.6;}
-.tc-tag{display:inline-block;font-size:10px;color:var(--accent);background:rgba(42,159,255,.08);border-radius:4px;padding:2px 6px;margin-top:8px;}
+/* Filtros de categoría */
+.tut-filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1.25rem;}
+
+/* Grid de tarjetas */
+.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;}
+
+/* Tarjeta tutorial — diseño con imagen/vídeo + contenido */
+.tc{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+  transition:border-color .2s,transform .15s,box-shadow .2s;
+  cursor:pointer;
+  display:flex;flex-direction:column;
+}
+.tc:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 24px rgba(42,159,255,.08);}
+.tc.open{border-color:var(--accent);}
+
+/* Zona de media (imagen o vídeo embed) */
+.tc-media{
+  width:100%;aspect-ratio:16/9;
+  background:var(--bg3);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;position:relative;flex-shrink:0;
+}
+.tc-media img{width:100%;height:100%;object-fit:cover;display:block;}
+.tc-media iframe{width:100%;height:100%;border:none;display:block;}
+/* Placeholder cuando no hay media */
+.tc-media-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;width:100%;height:100%;
+  background:linear-gradient(135deg,var(--bg3),var(--bg2));
+}
+.tc-media-placeholder .tc-num{
+  font-family:'Rajdhani',sans-serif;font-size:38px;font-weight:700;
+  color:rgba(42,159,255,.15);line-height:1;
+}
+.tc-media-placeholder .tc-ico{font-size:28px;}
+/* Botón de play encima de imagen (para YouTube) */
+.tc-play-btn{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.35);opacity:0;transition:opacity .2s;
+}
+.tc-media:hover .tc-play-btn{opacity:1;}
+.tc-play-circle{
+  width:50px;height:50px;border-radius:50%;
+  background:rgba(42,159,255,.85);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;color:#fff;
+}
+
+/* Cuerpo de la tarjeta */
+.tc-body{padding:.9rem 1rem;flex:1;display:flex;flex-direction:column;gap:5px;}
+.tc-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:2px;}
+.tc-tag{
+  display:inline-block;font-size:10px;color:var(--accent);
+  background:rgba(42,159,255,.08);border-radius:4px;
+  padding:2px 7px;
+}
+.tc-tag.secundario{color:#a855f7;background:rgba(168,85,247,.08);}
+.tc-tag.avanzado{color:#f59e0b;background:rgba(245,158,11,.08);}
+.tc h4{font-size:14px;font-weight:600;color:var(--text);line-height:1.4;}
+.tc-desc{font-size:12px;color:var(--muted2);line-height:1.6;}
+.tc-duration{font-size:11px;color:var(--muted);margin-top:auto;padding-top:6px;}
+
+/* Panel expandible debajo de la tarjeta */
+.tc-panel{
+  display:none;
+  background:var(--bg2);border:1px solid var(--accent);
+  border-radius:12px;padding:1.1rem;
+  margin-top:-6px;
+  animation:panIn .2s ease;
+  grid-column:1/-1;
+}
+.tc-panel.on{display:block;}
+@keyframes panIn{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:translateY(0);}}
+.tc-panel h4{font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;color:var(--text);margin-bottom:.6rem;}
+.tc-panel p{font-size:13px;color:var(--muted2);line-height:1.8;margin-bottom:.85rem;}
+/* Pasos del tutorial */
+.tut-steps{display:flex;flex-direction:column;gap:8px;margin-bottom:.85rem;}
+.tut-step{display:flex;gap:.75rem;align-items:flex-start;}
+.tut-step-num{
+  width:24px;height:24px;border-radius:50%;flex-shrink:0;
+  background:rgba(42,159,255,.12);border:1px solid var(--bord2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;color:var(--accent);font-weight:700;margin-top:1px;
+}
+.tut-step-txt{font-size:13px;color:var(--muted2);line-height:1.6;}
+/* Vídeo embed en el panel */
+.tc-panel-video{width:100%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;margin-bottom:.85rem;border:1px solid var(--border);}
+.tc-panel-video iframe{width:100%;height:100%;border:none;}
+/* Imagen en el panel */
+.tc-panel-img{width:100%;border-radius:8px;margin-bottom:.85rem;border:1px solid var(--border);display:block;object-fit:cover;}
+/* Link externo */
+.tc-ext-link{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(42,159,255,.08);border:1px solid var(--bord2);
+  border-radius:8px;padding:8px 14px;
+  color:var(--accent);font-size:13px;text-decoration:none;
+  transition:background .2s;
+}
+.tc-ext-link:hover{background:rgba(42,159,255,.16);}
 
 /* CONTACTO */
 .ct-wrap{max-width:460px;}
@@ -346,15 +440,13 @@ footer strong{color:var(--accent);}
 <div id="sec-tutoriales" class="sec">
   <div class="block">
     <div class="block-title">Tutoriales</div>
-    <div class="block-desc">Guías paso a paso para sacar el máximo partido a tu Android.</div>
-    <div class="tg">
-      <div class="tc"><div class="tn">01</div><h4>Cómo instalar un APK en Android</h4><p>Habilita fuentes desconocidas e instala cualquier APK de forma segura.</p><span class="tc-tag">Básico</span></div>
-      <div class="tc"><div class="tn">02</div><h4>Personalizar con Smart Launcher</h4><p>Iconos, widgets y pantallas de inicio a tu gusto desde cero.</p><span class="tc-tag">Personalización</span></div>
-      <div class="tc"><div class="tn">03</div><h4>Editar vídeos con CapCut</h4><p>Cortes, efectos, música y exportación en HD para principiantes.</p><span class="tc-tag">Edición</span></div>
-      <div class="tc"><div class="tn">04</div><h4>Fondos 4K con Wallcraft</h4><p>Cómo encontrar y aplicar los mejores fondos en resolución 4K.</p><span class="tc-tag">Personalización</span></div>
-      <div class="tc"><div class="tn">05</div><h4>Música sin conexión en Spotify</h4><p>Descarga listas y gestiona el espacio de almacenamiento.</p><span class="tc-tag">Música</span></div>
-      <div class="tc"><div class="tn">06</div><h4>Editar fotos con IA en PicsArt</h4><p>Eliminación de fondo, retoques y efectos con inteligencia artificial.</p><span class="tc-tag">Fotografía</span></div>
-    </div>
+    <div class="block-desc">Guías paso a paso para sacar el máximo partido a tu Android. Pulsa cualquier tarjeta para ver el tutorial completo.</div>
+
+    <!-- Filtros por categoría -->
+    <div class="tut-filters" id="tut-filters"></div>
+
+    <!-- Grid de tutoriales — renderizado desde JS -->
+    <div class="tg" id="tut-grid"></div>
   </div>
 </div>
 
@@ -365,7 +457,7 @@ footer strong{color:var(--accent);}
     <div class="ct-wrap">
       <p>¿Quieres sugerir una app, reportar un enlace roto o simplemente saludar? Respondo a todos los mensajes.</p>
       <div class="ct-links">
-        <a class="ct-link" href="mailto:tu@email.com"><span class="ci">📧</span> Email — tu@email.com</a>
+        <a class="ct-link" href="/cdn-cgi/l/email-protection#77030237121a161e1b5914181a"><span class="ci">📧</span> Email — <span class="__cf_email__" data-cfemail="3c48497c59515d5550125f5351">[email&#160;protected]</span></a>
         <a class="ct-link" href="https://instagram.com/tuusuario" target="_blank"><span class="ci">📱</span> Instagram — @tuusuario</a>
         <a class="ct-link" href="https://youtube.com/@tucanal" target="_blank"><span class="ci">▶&#xFE0E;</span> YouTube — AppStorm</a>
         <a class="ct-link" href="https://t.me/tuusuario" target="_blank"><span class="ci">💬</span> Telegram — @tuusuario</a>
@@ -394,7 +486,7 @@ footer strong{color:var(--accent);}
 </div>
 <footer><strong>APPSTORM</strong> &nbsp;·&nbsp; Apps y personalización para Android</footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('splash').classList.add('hide');setTimeout(()=>{document.getElementById('splash').style.display='none';document.getElementById('app').classList.add('visible');},650);},2900);});
 function toggleTheme(){const h=document.documentElement,d=h.getAttribute('data-theme')==='dark';h.setAttribute('data-theme',d?'light':'dark');document.getElementById('tbtn').textContent=d?'☀️':'🌙';localStorage.setItem('ast',d?'light':'dark');}
 (()=>{const t=localStorage.getItem('ast')||'dark';document.documentElement.setAttribute('data-theme',t);document.getElementById('tbtn').textContent=t==='dark'?'🌙':'☀️';})();
@@ -409,7 +501,7 @@ let apps=[],playlists=[],activeStory=null,activeCat=null,activeGenre=null,active
 async function init(){
   try{const r=await fetch('apps.json');apps=await r.json();}catch{apps=fallback();}
   try{const r=await fetch('playlists.json');playlists=await r.json();}catch{playlists=fallbackPl();}
-  renderStories();renderCatTiles();renderFilters();renderGrid('Todos');renderGenreTiles();
+  renderStories();renderCatTiles();renderFilters();renderGrid('Todos');renderGenreTiles();renderTutoriales();
 }
 
 function buscarRapido(q){document.getElementById('srch').value=q;buscarIA();}
@@ -486,14 +578,246 @@ function toggleGenre(g){
 function buscarMusica(){const q=document.getElementById('pl-srch').value.trim();const out=document.getElementById('pl-ai-out');if(!q)return;out.innerHTML=`Resultados para "<strong style="color:var(--accent)">${q}</strong>":<br><a href="https://www.youtube.com/results?search_query=${encodeURIComponent(q)}" target="_blank" style="color:var(--accent);display:inline-flex;align-items:center;gap:6px;margin-top:6px;text-decoration:none;font-weight:500;">▶&#xFE0E; YouTube</a>&nbsp;&nbsp;<a href="https://music.youtube.com/search?q=${encodeURIComponent(q)}" target="_blank" style="color:#22c55e;display:inline-flex;align-items:center;gap:6px;margin-top:6px;text-decoration:none;font-weight:500;">♫&#xFE0E; YouTube Music</a>`;}
 document.getElementById('pl-srch')?.addEventListener('keydown',e=>{if(e.key==='Enter')buscarMusica();});
 
+/* ══════════════════════════════════════════
+   TUTORIALES — datos y renderizado
+   ══════════════════════════════════════════
+   CÓMO EDITAR:
+   Cada tutorial tiene estos campos:
+   - id:       número único
+   - num:      "01", "02"... (se muestra en el placeholder)
+   - titulo:   texto del encabezado de la tarjeta
+   - desc:     descripción corta (se ve en la tarjeta)
+   - tags:     array de etiquetas — la primera es la principal
+   - duracion: texto libre, ej. "5 min" o "10 min lectura"
+   - imagen:   URL de imagen de portada (o '' para placeholder)
+   - youtube:  ID del vídeo de YouTube (ej. "dQw4w9WgXcQ") o ''
+               — si pones youtube, la tarjeta muestra miniatura
+               — si en el panel también hay youtube, incrusta el player
+   - contenido: {
+       intro:  párrafo introductorio
+       pasos:  array de strings — cada uno es un paso numerado
+       imagen: URL de imagen adicional dentro del panel (o '')
+       link:   { texto: "...", url: "https://..." } o null
+     }
+═══════════════════════════════════════════ */
+const TUTORIALES=[
+  {
+    id:1,num:"01",
+    titulo:"Cómo instalar un APK en Android",
+    desc:"Activa fuentes desconocidas e instala cualquier APK de forma segura en pocos pasos.",
+    tags:["Básico","Android"],
+    duracion:"5 min",
+    imagen:"",
+    youtube:"",
+    contenido:{
+      intro:"Instalar un APK fuera de la Play Store es más sencillo de lo que parece. Solo tienes que activar una opción en los ajustes y seguir estos pasos.",
+      pasos:[
+        "Ve a Ajustes → Seguridad (o Privacidad en Android 12+).",
+        "Activa la opción 'Fuentes desconocidas' o 'Instalar apps desconocidas'.",
+        "Descarga el APK desde AppStorm usando el botón 'Descargar APK'.",
+        "Abre el archivo desde la carpeta Descargas.",
+        "Pulsa 'Instalar' y espera a que termine.",
+        "Ya puedes abrir la app directamente."
+      ],
+      imagen:"",
+      link:{texto:"Ver guía oficial de Google",url:"https://support.google.com/android"}
+    }
+  },
+  {
+    id:2,num:"02",
+    titulo:"Personalizar con Smart Launcher 6",
+    desc:"Iconos, widgets y pantallas de inicio completamente a tu gusto desde cero.",
+    tags:["Personalización","Launcher"],
+    duracion:"8 min",
+    imagen:"",
+    youtube:"",
+    contenido:{
+      intro:"Smart Launcher agrupa tus apps por categoría automáticamente y ofrece un nivel de personalización difícilmente igualable.",
+      pasos:[
+        "Descarga Smart Launcher 6 desde AppStorm o la Play Store.",
+        "Al abrir, selecciónalo como launcher predeterminado.",
+        "Mantén pulsado el escritorio para acceder al menú de personalización.",
+        "Desde 'Temas' puedes cambiar iconos, fuentes y colores.",
+        "Los widgets se añaden desde el menú largo en el escritorio.",
+        "En Ajustes → Categorías puedes reorganizar las apps."
+      ],
+      imagen:"",
+      link:null
+    }
+  },
+  {
+    id:3,num:"03",
+    titulo:"Editar vídeos con CapCut",
+    desc:"Cortes, efectos, música y exportación en HD para principiantes absolutos.",
+    tags:["Edición","Vídeo"],
+    duracion:"10 min",
+    imagen:"",
+    youtube:"",
+    contenido:{
+      intro:"CapCut es gratuito y tiene todo lo que necesitas para crear Reels y vídeos de calidad profesional desde el móvil.",
+      pasos:[
+        "Descarga CapCut e importa tu vídeo desde la galería.",
+        "Usa la línea de tiempo para cortar arrastrando los extremos del clip.",
+        "Añade música desde 'Sonidos' — hay miles de temas gratuitos.",
+        "Los efectos de texto se añaden desde el botón 'Texto'.",
+        "Aplica filtros desde el icono de varita mágica.",
+        "Exporta en 1080p pulsando la flecha arriba en la esquina."
+      ],
+      imagen:"",
+      link:null
+    }
+  },
+  {
+    id:4,num:"04",
+    titulo:"Fondos 4K con Wallcraft",
+    desc:"Cómo encontrar, aplicar y programar los mejores fondos en resolución 4K.",
+    tags:["Personalización","Fondos"],
+    duracion:"3 min",
+    imagen:"",
+    youtube:"",
+    contenido:{
+      intro:"Wallcraft tiene más de 50.000 fondos en 4K organizados por categoría. También permite fondos animados (Live Wallpapers) y cambio automático.",
+      pasos:[
+        "Abre Wallcraft y navega por categorías o busca un tema.",
+        "Pulsa el fondo que te guste para ver la previsualización.",
+        "Elige si aplicarlo en pantalla de inicio, bloqueo o ambas.",
+        "Para fondos animados, selecciona los marcados con el símbolo de reproducción.",
+        "En Ajustes activa el cambio automático cada X horas si quieres variedad."
+      ],
+      imagen:"",
+      link:null
+    }
+  },
+  {
+    id:5,num:"05",
+    titulo:"Música sin conexión en Spotify",
+    desc:"Descarga listas de reproducción enteras y gestiona el espacio de almacenamiento.",
+    tags:["Música","Spotify"],
+    duracion:"4 min",
+    imagen:"",
+    youtube:"",
+    contenido:{
+      intro:"Con Spotify Premium puedes descargar cualquier lista para escucharla sin datos. Sin Premium, solo funciona en modo aleatorio.",
+      pasos:[
+        "Abre la lista de reproducción que quieras descargar.",
+        "Activa el interruptor 'Descargar' en la parte superior.",
+        "Espera a que la flecha de descarga se ponga verde.",
+        "En Ajustes → Almacenamiento puedes mover las descargas a la tarjeta SD.",
+        "Para liberar espacio borra descargas desde Ajustes → Almacenamiento."
+      ],
+      imagen:"",
+      link:null
+    }
+  },
+  {
+    id:6,num:"06",
+    titulo:"Editar fotos con IA en PicsArt",
+    desc:"Eliminación de fondo, retoques automáticos y efectos con inteligencia artificial.",
+    tags:["Fotografía","IA"],
+    duracion:"6 min",
+    imagen:"",
+    youtube:"",
+    contenido:{
+      intro:"PicsArt tiene una de las herramientas de IA más potentes para móvil. Destacan el recorte automático, el cambio de fondo y los filtros generativos.",
+      pasos:[
+        "Abre una foto desde la galería o toma una nueva.",
+        "Pulsa 'Herramientas' y luego 'Recorte de fondo' para eliminar el fondo con IA.",
+        "Con 'Reemplazar fondo' puedes poner cualquier imagen o color detrás.",
+        "Los 'Efectos IA' están en la sección 'Estilo' — prueba el estilo anime.",
+        "Retoca imperfecciones desde 'Retocar' → 'Suavizar'.",
+        "Exporta en máxima calidad desde el botón de flecha arriba."
+      ],
+      imagen:"",
+      link:null
+    }
+  }
+];
+
+let tutFiltro='Todos',tutAbierto=null;
+
+function renderTutoriales(){
+  // Recoger todas las tags únicas
+  const allTags=['Todos',...new Set(TUTORIALES.flatMap(t=>t.tags))];
+  document.getElementById('tut-filters').innerHTML=allTags.map(tag=>
+    `<button class="fbtn${tutFiltro===tag?' on':''}" onclick="filtrarTut('${tag}')">${tag}</button>`
+  ).join('');
+
+  const lista=tutFiltro==='Todos'?TUTORIALES:TUTORIALES.filter(t=>t.tags.includes(tutFiltro));
+  const grid=document.getElementById('tut-grid');
+  grid.innerHTML='';
+
+  lista.forEach(t=>{
+    // Media zone: YouTube thumbnail > imagen > placeholder
+    let mediaHtml;
+    if(t.youtube){
+      const thumb=`https://img.youtube.com/vi/${t.youtube}/mqdefault.jpg`;
+      mediaHtml=`<div class="tc-media">
+        <img src="${thumb}" alt="${t.titulo}" loading="lazy"/>
+        <div class="tc-play-btn"><div class="tc-play-circle">▶</div></div>
+      </div>`;
+    }else if(t.imagen){
+      mediaHtml=`<div class="tc-media"><img src="${t.imagen}" alt="${t.titulo}" loading="lazy"/></div>`;
+    }else{
+      mediaHtml=`<div class="tc-media">
+        <div class="tc-media-placeholder">
+          <div class="tc-num">${t.num}</div>
+          <div class="tc-ico">${t.tags[0]==='Básico'?'📱':t.tags[0]==='Personalización'?'⬡':t.tags[0]==='Edición'?'✦':t.tags[0]==='Fotografía'?'◈':t.tags[0]==='Música'?'♫':'▶'}</div>
+        </div>
+      </div>`;
+    }
+
+    const tagsHtml=t.tags.map((tag,i)=>`<span class="tc-tag${i>0?' secundario':''}">${tag}</span>`).join('');
+
+    const card=document.createElement('div');
+    card.className='tc';
+    card.id='tc-'+t.id;
+    card.innerHTML=`
+      ${mediaHtml}
+      <div class="tc-body">
+        <div class="tc-tags">${tagsHtml}</div>
+        <h4>${t.titulo}</h4>
+        <p class="tc-desc">${t.desc}</p>
+        <div class="tc-duration">⏱ ${t.duracion}</div>
+      </div>`;
+    card.addEventListener('click',()=>toggleTut(t.id));
+    grid.appendChild(card);
+
+    // Panel expandible
+    const panel=document.createElement('div');
+    panel.className='tc-panel';
+    panel.id='tp-'+t.id;
+    const c=t.contenido;
+    const pasosHtml=c.pasos.map((p,i)=>`<div class="tut-step"><div class="tut-step-num">${i+1}</div><div class="tut-step-txt">${p}</div></div>`).join('');
+    const videoEmbed=t.youtube?`<div class="tc-panel-video"><iframe src="https://www.youtube.com/embed/${t.youtube}" allowfullscreen loading="lazy"></iframe></div>`:'';
+    const imgPanel=c.imagen?`<img class="tc-panel-img" src="${c.imagen}" alt="${t.titulo}" loading="lazy"/>`:'';
+    const linkHtml=c.link?`<a class="tc-ext-link" href="${c.link.url}" target="_blank">↗ ${c.link.texto}</a>`:'';
+    panel.innerHTML=`<h4>${t.titulo}</h4><p>${c.intro}</p>${videoEmbed}${imgPanel}<div class="tut-steps">${pasosHtml}</div>${linkHtml}`;
+    grid.appendChild(panel);
+  });
+}
+
+function filtrarTut(tag){tutFiltro=tag;tutAbierto=null;renderTutoriales();}
+
+function toggleTut(id){
+  const panel=document.getElementById('tp-'+id);
+  const card=document.getElementById('tc-'+id);
+  if(tutAbierto===id){
+    panel.classList.remove('on');card.classList.remove('open');tutAbierto=null;return;
+  }
+  // Cerrar el anterior
+  if(tutAbierto){
+    document.getElementById('tp-'+tutAbierto)?.classList.remove('on');
+    document.getElementById('tc-'+tutAbierto)?.classList.remove('open');
+  }
+  tutAbierto=id;
+  panel.classList.add('on');card.classList.add('open');
+  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
 let chatHistory=[];
 function chatQuick(q){document.getElementById('cin').value=q;chatSend();}
 function chatSend(){const inp=document.getElementById('cin'),msgs=document.getElementById('cmsgs'),q=inp.value.trim();if(!q)return;document.getElementById('chat-sugs').style.display='none';msgs.innerHTML+=`<div class="msg user">${q}</div>`;inp.value='';const t=document.createElement('div');t.className='msg bot';const found=apps.filter(a=>matchApp(a,q));t.textContent=found.length?'Te sugiero: '+found.slice(0,3).map(a=>a.name).join(', ')+'. Pulsa en destacados para ver detalles.':'Prueba con: música, edición, fotos, fondos, launcher o entretenimiento.';msgs.appendChild(t);msgs.scrollTop=msgs.scrollHeight;}
 function toggleChat(){document.getElementById('chat-win').classList.toggle('open');}
 
 function fallback(){return[{id:1,icon:"▶",name:"YouTube",desc:"La plataforma de vídeo más grande.",descLarga:"YouTube con 2.000M usuarios.",cat:"Entretenimiento",ver:"19.45",size:"120MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.google.android.youtube",tags:["video","streaming"],capturas:[]},{id:2,icon:"✦",name:"CapCut",desc:"Editor de vídeo profesional.",descLarga:"Reels con efectos IA.",cat:"Edición",ver:"11.2",size:"98MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.lemon.lvoverseas",tags:["edicion","video"],capturas:[]},{id:3,icon:"◈",name:"PicsArt",desc:"Editor de fotos con IA.",descLarga:"Edición con recorte IA.",cat:"Fotografía",ver:"24.1",size:"85MB",android:"6.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.picsart.studio",tags:["fotos","edicion"],capturas:[]},{id:4,icon:"♫",name:"YouTube Music",desc:"Música con catálogo YouTube.",descLarga:"Toda la música de YouTube.",cat:"Música",ver:"6.51",size:"45MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music",tags:["musica","streaming"],capturas:[]},{id:5,icon:"●",name:"Spotify",desc:"Streaming de música líder.",descLarga:"100M canciones.",cat:"Música",ver:"8.9",size:"38MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.spotify.music",tags:["musica","podcasts"],capturas:[]},{id:6,icon:"⬡",name:"Wallcraft",desc:"Fondos 4K.",descLarga:"Miles de fondos en 4K.",cat:"Personalización",ver:"3.8",size:"22MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=com.wallcraft.app",tags:["fondos","4K"],capturas:[]},{id:7,icon:"◉",name:"Smart Launcher",desc:"Launcher minimalista.",descLarga:"Agrupa apps por categoría.",cat:"Personalización",ver:"6.3",size:"19MB",android:"5.0+",mega:"#",play:"https://play.google.com/store/apps/details?id=ginlemon.flowerpro",tags:["launcher","personalizacion"],capturas:[]},{id:8,icon:"▣",name:"PPCine",desc:"Películas online.",descLarga:"Streaming HD.",cat:"Entretenimiento",ver:"2.1",size:"31MB",android:"5.0+",mega:"#",play:"#",tags:["peliculas","series"],capturas:[]}];}
-function fallbackPl(){return[{id:1,titulo:"Trap & Urban 2025",descripcion:"Los mejores temas de trap y urban.",genero:"Trap",tags:["Trap","Urban"],videos:[{titulo:"Ejemplo",youtube:"#"}]},{id:2,titulo:"Lo-Fi / Estudio",descripcion:"Música instrumental.",genero:"Lo-Fi",tags:["Lo-Fi","Chill"],videos:[{titulo:"Ejemplo",youtube:"#"}]}];}
-init();
-</script>
-</body>
-</html>
+function fallbackPl(){return[{id:1,titulo:"Trap & Urban 2025",descripcion:"Los mejores temas de trap y urban.",genero:"Trap",tags:["Trap","Urb
