@@ -487,7 +487,16 @@ footer strong{color:var(--accent);}
 <footer><strong>APPSTORM</strong> &nbsp;·&nbsp; Apps y personalización para Android</footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('splash').classList.add('hide');setTimeout(()=>{document.getElementById('splash').style.display='none';document.getElementById('app').classList.add('visible');},650);},2900);});
+window.addEventListener('load',()=>{
+  init();
+  setTimeout(()=>{
+    document.getElementById('splash').classList.add('hide');
+    setTimeout(()=>{
+      document.getElementById('splash').style.display='none';
+      document.getElementById('app').classList.add('visible');
+    },650);
+  },2900);
+});
 function toggleTheme(){const h=document.documentElement,d=h.getAttribute('data-theme')==='dark';h.setAttribute('data-theme',d?'light':'dark');document.getElementById('tbtn').textContent=d?'☀️':'🌙';localStorage.setItem('ast',d?'light':'dark');}
 (()=>{const t=localStorage.getItem('ast')||'dark';document.documentElement.setAttribute('data-theme',t);document.getElementById('tbtn').textContent=t==='dark'?'🌙':'☀️';})();
 const SECS=['inicio','apps','playlists','tutoriales','contacto'];
