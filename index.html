@@ -342,12 +342,25 @@ document.getElementById('tbtn').textContent=t==='dark'?'🌙':'☀️';
 function toggleTheme(){var h=document.documentElement,d=h.getAttribute('data-theme')==='dark';h.setAttribute('data-theme',d?'light':'dark');document.getElementById('tbtn').textContent=d?'☀️':'🌙';localStorage.setItem('ast',d?'light':'dark');}
 
 /* SPLASH */
-window.addEventListener('load',function(){
-  init();
+window.addEventListener('load', async function(){
+  try {
+    await init();
+  } catch(e) {
+    console.error("INIT ERROR:", e);
+  }
+
   setTimeout(function(){
-    document.getElementById('splash').classList.add('hide');
-    setTimeout(function(){document.getElementById('splash').style.display='none';document.getElementById('app').classList.add('visible');},650);
-  },2900);
+    const splash = document.getElementById('splash');
+    const app = document.getElementById('app');
+
+    if (splash) splash.classList.add('hide');
+
+    setTimeout(function(){
+      if (splash) splash.style.display='none';
+      if (app) app.classList.add('visible');
+    }, 500);
+
+  }, 1200);
 });
 
 /* NAV */
@@ -360,10 +373,27 @@ function matchApp(a,q){var nq=norm(q);var words=nq.split(/\s+/).filter(Boolean);
 
 /* DATOS */
 var apps=[],playlists=[],activeStory=null,activeCat=null,activeGenre=null,activeCard=null;
-function init(){
-  apps=fallback();
-  playlists=fallbackPl();
-  renderStories();renderCatTiles();renderFilters();renderGrid('Todos');renderGenreTiles();renderTutoriales();
+async function init() {
+  try {
+    const resApps = await fetch('./apps.json');
+    const resPl = await fetch('./playlists.json');
+
+    apps = resApps.ok ? await resApps.json() : [];
+    playlists = resPl.ok ? await resPl.json() : [];
+
+  } catch (e) {
+    console.error("Error cargando datos:", e);
+    apps = [];
+    playlists = [];
+  }
+
+  renderStories();
+  renderCatTiles();
+  renderFilters();
+  renderGrid('Todos');
+  renderGenreTiles();
+  renderTutoriales();
+} renderStories();renderCatTiles();renderFilters();renderGrid('Todos');renderGenreTiles();renderTutoriales();
   /* Intentar cargar JSONs externos si hay servidor */
   fetch('apps.json').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}).then(function(a){if(a&&Array.isArray(a)){apps=a;renderStories();renderCatTiles();renderFilters();renderGrid('Todos');}});
   fetch('playlists.json').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;}).then(function(p){if(p&&Array.isArray(p)){playlists=p;renderGenreTiles();}});
