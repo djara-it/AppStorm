@@ -57,13 +57,18 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .block-t{font-family:'Rajdhani',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;color:var(--ac);text-transform:uppercase;margin-bottom:1.1rem;}
 .block-d{font-size:14px;color:var(--mu2);line-height:1.8;margin-bottom:1.4rem;}
 .divider{height:1px;background:var(--bd);margin:0 1.5rem;}
+
+/* STORIES — fix: sin sombra cuadrada al seleccionar */
 .stories{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;padding-bottom:6px;}
 .story{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:5px;cursor:pointer;}
 .s-ring{width:60px;height:60px;border-radius:50%;border:2px solid var(--bd2);padding:3px;transition:border-color .2s,transform .2s;}
-.story:hover .s-ring,.story.on .s-ring{border-color:var(--ac);transform:scale(1.06);}
+.story:hover .s-ring{border-color:var(--ac);transform:scale(1.06);}
+.story.on .s-ring{border-color:var(--ac);transform:scale(1.06);}
 .s-inner{width:100%;height:100%;border-radius:50%;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:21px;}
 .s-lbl{font-size:10px;color:var(--mu2);max-width:64px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .story.on .s-lbl{color:var(--ac);}
+
+/* PANEL */
 .panel{background:var(--bg2);border:1px solid var(--bd2);border-radius:14px;padding:1.25rem;margin-top:1rem;display:none;animation:panIn .2s ease;}
 .panel.on{display:block;}
 @keyframes panIn{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
@@ -80,13 +85,17 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .pan-btns{display:flex;gap:9px;flex-wrap:wrap;}
 .btn-dl{flex:1;min-width:130px;padding:11px 14px;border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;text-align:center;background:var(--ac);border:none;color:#fff;font-family:'Inter',sans-serif;text-decoration:none;display:inline-block;transition:opacity .2s;}
 .btn-dl:hover{opacity:.85;}
+.btn-mg{flex:1;min-width:130px;padding:11px 14px;border-radius:9px;font-size:13px;font-weight:500;cursor:pointer;text-align:center;background:#1a7a3a;border:1px solid #22aa55;color:#fff;font-family:'Inter',sans-serif;text-decoration:none;display:inline-block;transition:opacity .2s;}
+.btn-mg:hover{opacity:.85;}
 .btn-ps{flex:1;min-width:130px;padding:11px 14px;border-radius:9px;font-size:13px;cursor:pointer;text-align:center;background:transparent;border:1px solid var(--bd2);color:var(--mu2);font-family:'Inter',sans-serif;text-decoration:none;display:inline-block;transition:border-color .2s,color .2s;}
 .btn-ps:hover{border-color:var(--ac);color:var(--ac);}
+
+/* TILES — cada categoria con su propio color via variable --tc */
 .tile-grid{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:1rem;}
-.tile{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:1rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:110px;transition:border-color .2s,transform .15s;position:relative;overflow:hidden;text-align:center;}
+.tile{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;padding:1rem;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:110px;transition:border-color .2s,transform .15s,background .2s;position:relative;overflow:hidden;text-align:center;}
 .tile::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--tc,var(--ac));border-radius:12px 12px 0 0;}
 .tile:hover{border-color:var(--ac);transform:translateY(-3px);}
-.tile.on{border-color:var(--ac);background:rgba(42,159,255,.06);}
+.tile.on{border-color:var(--ac);background:rgba(42,159,255,.05);}
 .tile-icon{font-size:26px;line-height:1;}
 .tile-name{font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;color:var(--tx);}
 .tile-count{font-size:10px;color:var(--mu);}
@@ -98,6 +107,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .ca-ico{font-size:22px;}
 .ca-nm{font-size:12px;font-weight:500;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .ca-ver{font-size:10px;color:var(--mu);}
+
+/* APPS GRID */
 .filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1.1rem;}
 .fbtn{font-size:12px;padding:5px 13px;border-radius:20px;cursor:pointer;background:var(--bg3);border:1px solid var(--bd);color:var(--mu2);font-family:'Inter',sans-serif;transition:all .2s;}
 .fbtn:hover,.fbtn.on{background:rgba(42,159,255,.11);border-color:var(--ac);color:var(--ac);}
@@ -109,6 +120,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .card h4{font-size:13px;font-weight:500;color:var(--tx);margin-bottom:3px;}
 .card p{font-size:11px;color:var(--mu);line-height:1.4;margin-bottom:6px;}
 .ctag{font-size:10px;color:var(--ac);background:rgba(42,159,255,.08);border-radius:4px;padding:2px 6px;display:inline-block;}
+
+/* PLAYLISTS */
 .pl-videos{display:flex;flex-direction:column;gap:8px;margin-top:.75rem;}
 .pl-video{display:flex;align-items:center;gap:10px;background:var(--bg3);border:1px solid var(--bd);border-radius:8px;padding:8px 10px;text-decoration:none;color:var(--tx);transition:border-color .2s;}
 .pl-video:hover{border-color:var(--ac);}
@@ -127,6 +140,8 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .btn-pl{background:var(--ac2);border:1px solid var(--ac);border-radius:8px;padding:10px 14px;color:#fff;font-size:13px;cursor:pointer;white-space:nowrap;transition:background .2s;flex-shrink:0;}
 .btn-pl:hover{background:var(--ac);}
 .pl-ao{margin-top:10px;font-size:13px;color:var(--mu2);min-height:18px;line-height:1.7;}
+
+/* TUTORIALES */
 .tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;}
 .tc{background:var(--bg2);border:1px solid var(--bd);border-radius:12px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:border-color .2s,transform .15s;}
 .tc:hover{border-color:var(--ac);transform:translateY(-3px);}
@@ -152,16 +167,22 @@ nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-co
 .tc-link-ext{display:inline-flex;align-items:center;gap:7px;background:rgba(42,159,255,.08);border:1px solid var(--bd2);border-radius:8px;padding:8px 14px;color:var(--ac);font-size:13px;text-decoration:none;}
 .tc-link-ext:hover{background:rgba(42,159,255,.16);}
 .tut-filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:1.25rem;}
+
+/* CONTACTO */
 .ct-wrap{max-width:460px;}
 .ct-wrap p{font-size:14px;color:var(--mu2);line-height:1.8;margin-bottom:1.4rem;}
 .ct-links{display:flex;flex-direction:column;gap:9px;}
 .ct-lnk{display:flex;align-items:center;gap:12px;background:var(--bg2);border:1px solid var(--bd);border-radius:10px;padding:11px 15px;text-decoration:none;color:var(--tx);font-size:14px;transition:border-color .2s;}
 .ct-lnk:hover{border-color:var(--ac);}
 .ct-lnk .ci{font-size:17px;width:22px;text-align:center;}
+
+/* LIGHTBOX */
 #lb{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;padding:1rem;}
 #lb.open{display:flex;}
 #lb img{max-width:90vw;max-height:85vh;border-radius:10px;}
 #lb-x{position:absolute;top:16px;right:20px;font-size:24px;color:#fff;cursor:pointer;background:none;border:none;opacity:.7;}
+
+/* CHAT */
 .chat-fab{position:fixed;bottom:20px;right:18px;z-index:500;}
 .chat-btn{width:48px;height:48px;border-radius:50%;background:var(--ac);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;color:#fff;box-shadow:0 4px 16px rgba(42,159,255,.35);transition:transform .2s;}
 .chat-btn:hover{transform:scale(1.08);}
@@ -214,6 +235,7 @@ footer strong{color:var(--ac);}
   <a id="ml-tutoriales" onclick="goTo('tutoriales');closeBurger()">Tutoriales</a>
   <a id="ml-contacto" onclick="goTo('contacto');closeBurger()">Contacto</a>
 </div>
+
 <div id="sec-inicio" class="sec on">
   <div class="hero">
     <div class="hero-logo">APP<svg class="bsvg" width="24" height="36" viewBox="0 0 38 58" fill="none" style="margin:0 2px;"><text x="2" y="50" font-family="Rajdhani,sans-serif" font-weight="700" font-size="50" fill="currentColor">S</text><polygon points="23,4 13,26 20,26 15,54 27,28 19,28" fill="#2a9fff"/></svg>TORM</div>
@@ -240,7 +262,11 @@ footer strong{color:var(--ac);}
     <div class="panel" id="pan-inicio">
       <div class="pan-top"><div class="pan-ico" id="pi-ico"></div><div class="pan-info"><div class="pan-cat" id="pi-cat"></div><h3 id="pi-name"></h3><p id="pi-desc"></p></div></div>
       <div class="pan-meta" id="pi-meta"></div><p class="pan-full" id="pi-full"></p>
-      <div class="pan-btns"><a class="btn-dl" id="pi-mega" target="_blank">Descargar APK</a><a class="btn-ps" id="pi-play" target="_blank">Play Store</a></div>
+      <div class="pan-btns">
+        <a class="btn-dl" id="pi-mega" target="_blank">&#x2B07; Descargar APK</a>
+        <a class="btn-mg" id="pi-mgapk" target="_blank">&#x2B07; Micro G</a>
+        <a class="btn-ps" id="pi-play" target="_blank">&#x25B6; Play Store</a>
+      </div>
     </div>
   </div>
   <div class="divider"></div>
@@ -251,10 +277,15 @@ footer strong{color:var(--ac);}
     <div class="panel" id="pan-cat" style="margin-top:.8rem;">
       <div class="pan-top"><div class="pan-ico" id="pc-ico"></div><div class="pan-info"><div class="pan-cat" id="pc-cat"></div><h3 id="pc-name"></h3><p id="pc-desc"></p></div></div>
       <div class="pan-meta" id="pc-meta"></div><p class="pan-full" id="pc-full"></p>
-      <div class="pan-btns"><a class="btn-dl" id="pc-mega" target="_blank">Descargar APK</a><a class="btn-ps" id="pc-play" target="_blank">Play Store</a></div>
+      <div class="pan-btns">
+        <a class="btn-dl" id="pc-mega" target="_blank">&#x2B07; Descargar APK</a>
+        <a class="btn-mg" id="pc-mgapk" target="_blank">&#x2B07; Micro G</a>
+        <a class="btn-ps" id="pc-play" target="_blank">&#x25B6; Play Store</a>
+      </div>
     </div>
   </div>
 </div>
+
 <div id="sec-apps" class="sec">
   <div class="block">
     <div class="block-t">Todas las aplicaciones</div>
@@ -263,10 +294,15 @@ footer strong{color:var(--ac);}
     <div class="panel" id="pan-apps" style="margin-top:1rem;">
       <div class="pan-top"><div class="pan-ico" id="pa-ico"></div><div class="pan-info"><div class="pan-cat" id="pa-cat"></div><h3 id="pa-name"></h3><p id="pa-desc"></p></div></div>
       <div class="pan-meta" id="pa-meta"></div><p class="pan-full" id="pa-full"></p>
-      <div class="pan-btns"><a class="btn-dl" id="pa-mega" target="_blank">Descargar APK</a><a class="btn-ps" id="pa-play" target="_blank">Play Store</a></div>
+      <div class="pan-btns">
+        <a class="btn-dl" id="pa-mega" target="_blank">&#x2B07; Descargar APK</a>
+        <a class="btn-mg" id="pa-mgapk" target="_blank">&#x2B07; Micro G</a>
+        <a class="btn-ps" id="pa-play" target="_blank">&#x25B6; Play Store</a>
+      </div>
     </div>
   </div>
 </div>
+
 <div id="sec-playlists" class="sec">
   <div class="block">
     <div class="block-t">Playlists y Musica</div>
@@ -277,6 +313,7 @@ footer strong{color:var(--ac);}
     <div class="exp" id="pl-panel"></div>
   </div>
 </div>
+
 <div id="sec-tutoriales" class="sec">
   <div class="block">
     <div class="block-t">Tutoriales</div>
@@ -285,6 +322,7 @@ footer strong{color:var(--ac);}
     <div class="tg" id="tut-grid"></div>
   </div>
 </div>
+
 <div id="sec-contacto" class="sec">
   <div class="block">
     <div class="block-t">Contacto</div>
@@ -300,6 +338,7 @@ footer strong{color:var(--ac);}
   </div>
 </div>
 </div>
+
 <div class="chat-fab">
   <div class="chat-win" id="chat-win">
     <div class="chat-head"><span>Asistente AppStorm</span><small>Busqueda de apps</small></div>
@@ -340,23 +379,34 @@ document.addEventListener('DOMContentLoaded',function(){
 function norm(s){return(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9\s]/g,' ').trim();}
 function matchApp(a,q){var words=norm(q).split(/\s+/).filter(Boolean);var hay=[norm(a.name),norm(a.desc),norm(a.cat)].concat(a.tags.map(function(t){return norm(t);})).join(' ');return words.some(function(w){return hay.includes(w);});}
 var apps=[],playlists=[],activeStory=null,activeCat=null,activeGenre=null,activeCard=null;
+/* ==============================================================
+   APPS_DATA — edita aqui las apps del catalogo
+   Campos: id, icon(emoji), name, desc, descLarga, cat, ver,
+           size, android, mega(URL APK), mgapk(URL Micro G),
+           play(URL Play Store), tags[]
+   ============================================================== */
 var APPS_DATA=[
-  {id:1,icon:'\u25B6',name:'YouTube',desc:'La plataforma de video mas grande.',descLarga:'YouTube con 2.000M de usuarios. Videos HD, 4K y Shorts.',cat:'Entretenimiento',ver:'19.45',size:'120MB',android:'5.0+',mega:'#',play:'https://play.google.com/store/apps/details?id=com.google.android.youtube',tags:['video','streaming']},
-  {id:2,icon:'\u2726',name:'CapCut',desc:'Editor de video profesional gratuito.',descLarga:'Crea Reels con efectos IA, musica y plantillas.',cat:'Edicion',ver:'11.2',size:'98MB',android:'5.0+',mega:'#',play:'https://play.google.com/store/apps/details?id=com.lemon.lvoverseas',tags:['edicion','video','reels']},
-  {id:3,icon:'\u25C8',name:'PicsArt',desc:'Editor de fotos con IA.',descLarga:'Recorte IA, cambio de fondo y efectos generativos.',cat:'Fotografia',ver:'24.1',size:'85MB',android:'6.0+',mega:'#',play:'https://play.google.com/store/apps/details?id=com.picsart.studio',tags:['fotos','edicion','ia']},
-  {id:4,icon:'\u266B',name:'YouTube Music',desc:'Musica con el catalogo de YouTube.',descLarga:'Toda la musica de YouTube en un reproductor optimizado.',cat:'Musica',ver:'6.51',size:'45MB',android:'5.0+',mega:'#',play:'https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music',tags:['musica','streaming']},
-  {id:5,icon:'\u25CF',name:'Spotify',desc:'Streaming de musica lider mundial.',descLarga:'100M de canciones y podcasts. Descarga sin conexion.',cat:'Musica',ver:'8.9',size:'38MB',android:'5.0+',mega:'#',play:'https://play.google.com/store/apps/details?id=com.spotify.music',tags:['musica','podcasts']},
-  {id:6,icon:'\u2B21',name:'Wallcraft',desc:'Fondos de pantalla en 4K.',descLarga:'50.000 fondos en 4K. Fondos animados y cambio automatico.',cat:'Personalizacion',ver:'3.8',size:'22MB',android:'5.0+',mega:'#',play:'https://play.google.com/store/apps/details?id=com.wallcraft.app',tags:['fondos','4K','personalizacion']},
-  {id:7,icon:'\u25C9',name:'Smart Launcher',desc:'Launcher minimalista.',descLarga:'Agrupa apps por categoria. Altamente personalizable.',cat:'Personalizacion',ver:'6.3',size:'19MB',android:'5.0+',mega:'#',play:'https://play.google.com/store/apps/details?id=ginlemon.flowerpro',tags:['launcher','personalizacion']},
-  {id:8,icon:'\u25A3',name:'PPCine',desc:'Peliculas y series online en HD.',descLarga:'Streaming gratuito de peliculas y series en HD.',cat:'Entretenimiento',ver:'2.1',size:'31MB',android:'5.0+',mega:'#',play:'#',tags:['peliculas','series']}
+  {id:1,icon:'\u25B6',name:'YouTube',desc:'La plataforma de video mas grande.',descLarga:'YouTube con 2.000M de usuarios. Videos HD, 4K y Shorts.',cat:'Entretenimiento',ver:'19.45',size:'120MB',android:'5.0+',mega:'#',mgapk:'#',play:'https://play.google.com/store/apps/details?id=com.google.android.youtube',tags:['video','streaming']},
+  {id:2,icon:'\u2726',name:'CapCut',desc:'Editor de video profesional gratuito.',descLarga:'Crea Reels con efectos IA, musica y plantillas.',cat:'Edicion',ver:'11.2',size:'98MB',android:'5.0+',mega:'#',mgapk:'#',play:'https://play.google.com/store/apps/details?id=com.lemon.lvoverseas',tags:['edicion','video','reels']},
+  {id:3,icon:'\u25C8',name:'PicsArt',desc:'Editor de fotos con IA.',descLarga:'Recorte IA, cambio de fondo y efectos generativos.',cat:'Fotografia',ver:'24.1',size:'85MB',android:'6.0+',mega:'#',mgapk:'#',play:'https://play.google.com/store/apps/details?id=com.picsart.studio',tags:['fotos','edicion','ia']},
+  {id:4,icon:'\u266B',name:'YouTube Music',desc:'Musica con el catalogo de YouTube.',descLarga:'Toda la musica de YouTube en un reproductor optimizado.',cat:'Musica',ver:'6.51',size:'45MB',android:'5.0+',mega:'#',mgapk:'#',play:'https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.music',tags:['musica','streaming']},
+  {id:5,icon:'\u25CF',name:'Spotify',desc:'Streaming de musica lider mundial.',descLarga:'100M de canciones y podcasts. Descarga sin conexion.',cat:'Musica',ver:'8.9',size:'38MB',android:'5.0+',mega:'#',mgapk:'#',play:'https://play.google.com/store/apps/details?id=com.spotify.music',tags:['musica','podcasts']},
+  {id:6,icon:'\u2B21',name:'Wallcraft',desc:'Fondos de pantalla en 4K.',descLarga:'50.000 fondos en 4K. Fondos animados y cambio automatico.',cat:'Personalizacion',ver:'3.8',size:'22MB',android:'5.0+',mega:'#',mgapk:'#',play:'https://play.google.com/store/apps/details?id=com.wallcraft.app',tags:['fondos','4K','personalizacion']},
+  {id:7,icon:'\u25C9',name:'Smart Launcher',desc:'Launcher minimalista y potente.',descLarga:'Agrupa apps por categoria. Altamente personalizable.',cat:'Personalizacion',ver:'6.3',size:'19MB',android:'5.0+',mega:'#',mgapk:'#',play:'https://play.google.com/store/apps/details?id=ginlemon.flowerpro',tags:['launcher','personalizacion']},
+  {id:8,icon:'\u25A3',name:'PPCine',desc:'Peliculas y series online en HD.',descLarga:'Streaming gratuito en HD.',cat:'Entretenimiento',ver:'2.1',size:'31MB',android:'5.0+',mega:'#',mgapk:'#',play:'#',tags:['peliculas','series']}
 ];
+/* ==============================================================
+   PL_DATA — edita aqui las playlists
+   Campos: id, titulo, descripcion, genero, tags[],
+           videos[{titulo, youtube(ID o URL)}]
+   ============================================================== */
 var PL_DATA=[
-  {id:1,titulo:'Trap & Urban 2025',descripcion:'Los mejores temas de trap y urban.',genero:'Trap',tags:['Trap','Urban'],videos:[{titulo:'Anade videos en playlists.json',youtube:'#'}]},
-  {id:2,titulo:'Lo-Fi Estudio',descripcion:'Musica instrumental para concentrarse.',genero:'Lo-Fi',tags:['Lo-Fi','Chill'],videos:[{titulo:'Anade videos en playlists.json',youtube:'#'}]},
-  {id:3,titulo:'Reggaeton Clasico',descripcion:'Los himnos del reggaeton.',genero:'Reggaeton',tags:['Reggaeton'],videos:[{titulo:'Anade videos en playlists.json',youtube:'#'}]},
-  {id:4,titulo:'Gym & Workout',descripcion:'Energia maxima para entrenar.',genero:'Gym',tags:['Gym','Electronica'],videos:[{titulo:'Anade videos en playlists.json',youtube:'#'}]},
-  {id:5,titulo:'Hits Verano',descripcion:'Los temas del verano.',genero:'Pop',tags:['Pop','Verano'],videos:[{titulo:'Anade videos en playlists.json',youtube:'#'}]},
-  {id:6,titulo:'Rock en Espanol',descripcion:'De Soda Stereo a Mana.',genero:'Rock',tags:['Rock'],videos:[{titulo:'Anade videos en playlists.json',youtube:'#'}]}
+  {id:1,titulo:'Trap & Urban 2025',descripcion:'Los mejores temas de trap y urban.',genero:'Trap',tags:['Trap','Urban'],videos:[{titulo:'Anade el ID de YouTube aqui',youtube:'#'}]},
+  {id:2,titulo:'Lo-Fi Estudio',descripcion:'Musica instrumental para concentrarse.',genero:'Lo-Fi',tags:['Lo-Fi','Chill'],videos:[{titulo:'Anade el ID de YouTube aqui',youtube:'#'}]},
+  {id:3,titulo:'Reggaeton Clasico',descripcion:'Los himnos del reggaeton.',genero:'Reggaeton',tags:['Reggaeton'],videos:[{titulo:'Anade el ID de YouTube aqui',youtube:'#'}]},
+  {id:4,titulo:'Gym & Workout',descripcion:'Energia maxima para entrenar.',genero:'Gym',tags:['Gym','Electronica'],videos:[{titulo:'Anade el ID de YouTube aqui',youtube:'#'}]},
+  {id:5,titulo:'Hits Verano',descripcion:'Los temas del verano.',genero:'Pop',tags:['Pop','Verano'],videos:[{titulo:'Anade el ID de YouTube aqui',youtube:'#'}]},
+  {id:6,titulo:'Rock en Espanol',descripcion:'De Soda Stereo a Mana.',genero:'Rock',tags:['Rock'],videos:[{titulo:'Anade el ID de YouTube aqui',youtube:'#'}]}
 ];
 function init(){
   apps=APPS_DATA;playlists=PL_DATA;
@@ -368,31 +418,76 @@ function buscarR(q){document.getElementById('srch').value=q;buscarIA();}
 function buscarIA(){var q=document.getElementById('srch').value.trim();var out=document.getElementById('ao');if(!q){out.innerHTML='';return;}var found=apps.filter(function(a){return matchApp(a,q);});out.innerHTML=found.length?'Encontrado: '+found.map(function(a){return '<strong style="cursor:pointer;color:var(--ac)" onclick="toggleStory('+a.id+')">'+a.name+'</strong>';}).join(', '):'Sin resultados exactos';}
 function openLB(src){document.getElementById('lb-img').src=src;document.getElementById('lb').classList.add('open');}
 function closeLB(){document.getElementById('lb').classList.remove('open');}
-function fillPan(px,a){document.getElementById(px+'-ico').textContent=a.icon;document.getElementById(px+'-cat').textContent=a.cat;document.getElementById(px+'-name').textContent=a.name;document.getElementById(px+'-desc').textContent=a.desc;document.getElementById(px+'-full').textContent=a.descLarga||a.desc;document.getElementById(px+'-meta').innerHTML='<div class="m-item"><span class="m-lbl">Version</span><span class="m-val">'+a.ver+'</span></div><div class="m-item"><span class="m-lbl">Tamano</span><span class="m-val">'+a.size+'</span></div><div class="m-item"><span class="m-lbl">Android</span><span class="m-val">'+a.android+'</span></div><div class="m-item"><span class="m-lbl">Categoria</span><span class="m-val">'+a.cat+'</span></div>';document.getElementById(px+'-mega').href=a.mega;document.getElementById(px+'-play').href=a.play;}
+function fillPan(px,a){
+  document.getElementById(px+'-ico').textContent=a.icon;
+  document.getElementById(px+'-cat').textContent=a.cat;
+  document.getElementById(px+'-name').textContent=a.name;
+  document.getElementById(px+'-desc').textContent=a.desc;
+  document.getElementById(px+'-full').textContent=a.descLarga||a.desc;
+  document.getElementById(px+'-meta').innerHTML='<div class="m-item"><span class="m-lbl">Version</span><span class="m-val">'+a.ver+'</span></div><div class="m-item"><span class="m-lbl">Tamano</span><span class="m-val">'+a.size+'</span></div><div class="m-item"><span class="m-lbl">Android</span><span class="m-val">'+a.android+'</span></div><div class="m-item"><span class="m-lbl">Categoria</span><span class="m-val">'+a.cat+'</span></div>';
+  document.getElementById(px+'-mega').href=a.mega;
+  document.getElementById(px+'-play').href=a.play;
+  var mg=document.getElementById(px+'-mgapk');
+  if(mg){mg.href=a.mgapk||'#';mg.style.display=(a.mgapk&&a.mgapk!=='#')?'inline-block':'none';}
+}
 function renderStories(){document.getElementById('stories').innerHTML=apps.map(function(a){return '<div class="story" id="st-'+a.id+'" onclick="toggleStory('+a.id+')"><div class="s-ring"><div class="s-inner">'+a.icon+'</div></div><div class="s-lbl">'+a.name+'</div></div>';}).join('');}
 function toggleStory(id){var p=document.getElementById('pan-inicio');if(activeStory===id){activeStory=null;p.classList.remove('on');document.querySelectorAll('.story').forEach(function(s){s.classList.remove('on');});return;}activeStory=id;var a=apps.find(function(x){return x.id===id;});if(!a)return;document.querySelectorAll('.story').forEach(function(s){s.classList.remove('on');});document.getElementById('st-'+id).classList.add('on');fillPan('pi',a);p.classList.remove('on');void p.offsetWidth;p.classList.add('on');p.scrollIntoView({behavior:'smooth',block:'nearest'});}
+
+/* Colores unicos por categoria — mismo sistema que generos */
 var CAT_I={'Entretenimiento':'&#x25B6;','Edicion':'&#x2726;','Fotografia':'&#x25C8;','Musica':'&#x266B;','Personalizacion':'&#x2B21;'};
 var CAT_C={'Entretenimiento':'#e94560','Edicion':'#2a9fff','Fotografia':'#a855f7','Musica':'#22c55e','Personalizacion':'#f59e0b'};
-function renderCatTiles(){var cats=[...new Set(apps.map(function(a){return a.cat;}))];document.getElementById('cat-tiles').innerHTML=cats.map(function(cat){var n=apps.filter(function(a){return a.cat===cat;}).length;return '<div class="tile" id="ct-'+cat+'" style="--tc:'+(CAT_C[cat]||'var(--ac)')+'" onclick="toggleCat(\''+cat+'\')"><div class="tile-icon">'+(CAT_I[cat]||'&#x25B6;')+'</div><div class="tile-name">'+cat+'</div><div class="tile-count">'+n+' app'+(n>1?'s':'')+'</div></div>';}).join('');}
+function renderCatTiles(){
+  var cats=[...new Set(apps.map(function(a){return a.cat;}))];
+  document.getElementById('cat-tiles').innerHTML=cats.map(function(cat){
+    var n=apps.filter(function(a){return a.cat===cat;}).length;
+    var col=CAT_C[cat]||'#2a9fff';
+    return '<div class="tile" id="ct-'+cat+'" style="--tc:'+col+'" onclick="toggleCat(\''+cat+'\')">'
+      +'<div class="tile-icon" style="color:'+col+'">'+(CAT_I[cat]||'&#x25B6;')+'</div>'
+      +'<div class="tile-name">'+cat+'</div>'
+      +'<div class="tile-count">'+n+' app'+(n>1?'s':'')+'</div>'
+      +'</div>';
+  }).join('');
+}
 function toggleCat(cat){var panel=document.getElementById('cat-panel'),pd=document.getElementById('pan-cat');if(activeCat===cat){activeCat=null;panel.classList.remove('on');pd.classList.remove('on');document.querySelectorAll('#cat-tiles .tile').forEach(function(t){t.classList.remove('on');});return;}activeCat=cat;document.querySelectorAll('#cat-tiles .tile').forEach(function(t){t.classList.remove('on');});var ct=document.getElementById('ct-'+cat);if(ct)ct.classList.add('on');pd.classList.remove('on');document.getElementById('cat-grid').innerHTML=apps.filter(function(a){return a.cat===cat;}).map(function(a){return '<div class="ca-card" onclick="openCatP('+a.id+')"><div class="ca-ico">'+a.icon+'</div><div class="ca-nm">'+a.name+'</div><div class="ca-ver">v'+a.ver+'</div></div>';}).join('');panel.classList.add('on');panel.scrollIntoView({behavior:'smooth',block:'nearest'});}
 function openCatP(id){var a=apps.find(function(x){return x.id===id;});if(!a)return;fillPan('pc',a);var p=document.getElementById('pan-cat');p.classList.remove('on');void p.offsetWidth;p.classList.add('on');p.scrollIntoView({behavior:'smooth',block:'nearest'});}
 function renderFilters(){var cats=['Todos',...new Set(apps.map(function(a){return a.cat;}))];document.getElementById('filters').innerHTML=cats.map(function(c){return '<button class="fbtn'+(c==='Todos'?' on':'')+'" onclick="filterBy(\''+c+'\')">'+c+'</button>';}).join('');}
 function filterBy(cat){document.querySelectorAll('#filters .fbtn').forEach(function(b){b.classList.remove('on');});[...document.querySelectorAll('#filters .fbtn')].find(function(b){return b.textContent===cat;}).classList.add('on');renderGrid(cat);activeCard=null;document.getElementById('pan-apps').classList.remove('on');}
 function renderGrid(cat){var list=cat==='Todos'?apps:apps.filter(function(a){return a.cat===cat;});document.getElementById('grid-apps').innerHTML=list.map(function(a){return '<div class="card" id="card-'+a.id+'" onclick="toggleCard('+a.id+')"><div class="card-ico">'+a.icon+'</div><h4>'+a.name+'</h4><p>'+a.desc+'</p><span class="ctag">'+a.cat+'</span></div>';}).join('');}
 function toggleCard(id){var panel=document.getElementById('pan-apps');var card=document.getElementById('card-'+id);if(activeCard===id){activeCard=null;panel.classList.remove('on');document.querySelectorAll('#grid-apps .card').forEach(function(c){c.classList.remove('on');});return;}activeCard=id;document.querySelectorAll('#grid-apps .card').forEach(function(c){c.classList.remove('on');});if(card)card.classList.add('on');var a=apps.find(function(x){return x.id===id;});if(!a)return;fillPan('pa',a);panel.classList.remove('on');void panel.offsetWidth;panel.classList.add('on');panel.scrollIntoView({behavior:'smooth',block:'nearest'});}
+
+/* Generos playlist con colores propios */
 var GI={'Trap':'&#x1F3A7;','Lo-Fi':'&#x1F319;','Reggaeton':'&#x1F525;','Gym':'&#x26A1;','Pop':'&#x1F305;','Rock':'&#x1F3B8;'};
 var GC={'Trap':'#e94560','Lo-Fi':'#4db8ff','Reggaeton':'#f59e0b','Gym':'#4caf72','Pop':'#a855f7','Rock':'#ff6b35'};
 function ytId(url){if(!url||url==='#')return null;var m=url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);return m?m[1]:null;}
-function renderGenreTiles(){var genres=[...new Set(playlists.map(function(p){return p.genero;}))];document.getElementById('genre-tiles').innerHTML=genres.map(function(g){var n=playlists.filter(function(p){return p.genero===g;}).length;return '<div class="tile" id="gt-'+g+'" style="--tc:'+(GC[g]||'var(--ac)')+'" onclick="toggleGenre(\''+g+'\')"><div class="tile-icon">'+(GI[g]||'&#x1F3B5;')+'</div><div class="tile-name">'+g+'</div><div class="tile-count">'+n+' playlist'+(n>1?'s':'')+'</div></div>';}).join('');}
+function renderGenreTiles(){
+  var genres=[...new Set(playlists.map(function(p){return p.genero;}))];
+  document.getElementById('genre-tiles').innerHTML=genres.map(function(g){
+    var n=playlists.filter(function(p){return p.genero===g;}).length;
+    var col=GC[g]||'#2a9fff';
+    return '<div class="tile" id="gt-'+g+'" style="--tc:'+col+'" onclick="toggleGenre(\''+g+'\')">'
+      +'<div class="tile-icon" style="color:'+col+'">'+(GI[g]||'&#x1F3B5;')+'</div>'
+      +'<div class="tile-name">'+g+'</div>'
+      +'<div class="tile-count">'+n+' playlist'+(n>1?'s':'')+'</div>'
+      +'</div>';
+  }).join('');
+}
 function toggleGenre(g){var panel=document.getElementById('pl-panel');if(activeGenre===g){activeGenre=null;panel.classList.remove('on');document.querySelectorAll('#genre-tiles .tile').forEach(function(t){t.classList.remove('on');});return;}activeGenre=g;document.querySelectorAll('#genre-tiles .tile').forEach(function(t){t.classList.remove('on');});var gt=document.getElementById('gt-'+g);if(gt)gt.classList.add('on');var list=playlists.filter(function(p){return p.genero===g;});panel.innerHTML=list.map(function(pl){var vh=(pl.videos||[]).map(function(v){var vid=ytId(v.youtube);return '<a class="pl-video" href="'+v.youtube+'" target="_blank"><div class="pv-thumb">'+(vid?'<img src="https://img.youtube.com/vi/'+vid+'/mqdefault.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:5px" onerror="this.style.display=\'none\'"/>':'&#x25B6;')+'</div><span class="pv-title">'+v.titulo+'</span><span class="pv-play">&#x25B6;</span></a>';}).join('');return '<div style="margin-bottom:1.2rem;"><div style="font-family:\'Rajdhani\',sans-serif;font-size:15px;font-weight:700;color:var(--tx);margin-bottom:.4rem;">'+pl.titulo+'</div><div class="pl-tags-r">'+pl.tags.map(function(t){return '<span class="pt">'+t+'</span>';}).join('')+'</div><p class="pl-desc-t">'+pl.descripcion+'</p><div class="pl-videos">'+vh+'</div></div>';}).join('<hr style="border-color:var(--bd);margin:1rem 0"/>');panel.classList.add('on');panel.scrollIntoView({behavior:'smooth',block:'nearest'});}
 function buscarMusica(){var q=document.getElementById('pl-srch').value.trim();if(!q)return;document.getElementById('pl-ao').innerHTML='Resultados para "<strong style="color:var(--ac)">'+q+'</strong>":<br><a href="https://www.youtube.com/results?search_query='+encodeURIComponent(q)+'" target="_blank" style="color:var(--ac);display:inline-flex;align-items:center;gap:6px;margin-top:6px;text-decoration:none;font-weight:500;">&#x25B6; YouTube</a>&nbsp;&nbsp;<a href="https://music.youtube.com/search?q='+encodeURIComponent(q)+'" target="_blank" style="color:#22c55e;display:inline-flex;align-items:center;gap:6px;margin-top:6px;text-decoration:none;font-weight:500;">&#x266B; YouTube Music</a>';}
+
+/* ==============================================================
+   TUTORIALES — edita cada objeto para cambiar contenido
+   Campos: id, num("01"), titulo, desc, tags[], duracion,
+           imagen(URL o ''), pasos[], link({texto,url}) o null
+   Para anadir imagen pon la URL en "imagen"
+   Para anadir video de YouTube pon el ID en "youtube"
+   ============================================================== */
 var TUTS=[
-  {id:1,num:'01',titulo:'Como instalar un APK en Android',desc:'Activa fuentes desconocidas e instala cualquier APK de forma segura.',tags:['Basico','Android'],duracion:'5 min',pasos:['Ve a Ajustes y Seguridad.','Activa Fuentes desconocidas.','Descarga el APK desde AppStorm.','Abre el archivo desde Descargas.','Pulsa Instalar y espera.','Ya puedes abrir la app.'],link:{texto:'Guia oficial Google',url:'https://support.google.com/android'}},
-  {id:2,num:'02',titulo:'Personalizar con Smart Launcher 6',desc:'Iconos, widgets y pantallas de inicio a tu gusto.',tags:['Personalizacion','Launcher'],duracion:'8 min',pasos:['Descarga Smart Launcher.','Seleccionalo como launcher.','Manten pulsado el escritorio.','En Temas cambia iconos y colores.','Los widgets desde menu largo.','En Ajustes reorganiza las apps.'],link:null},
-  {id:3,num:'03',titulo:'Editar videos con CapCut',desc:'Cortes, efectos, musica y exportacion en HD.',tags:['Edicion','Video'],duracion:'10 min',pasos:['Importa tu video en CapCut.','Usa la linea de tiempo para cortar.','Anade musica desde Sonidos.','Efectos de texto desde Texto.','Aplica filtros desde la varita.','Exporta en 1080p.'],link:null},
-  {id:4,num:'04',titulo:'Fondos 4K con Wallcraft',desc:'Encuentra y aplica los mejores fondos en 4K.',tags:['Personalizacion','Fondos'],duracion:'3 min',pasos:['Navega por categorias en Wallcraft.','Pulsa el fondo que te guste.','Elige inicio, bloqueo o ambos.','Para animados busca el icono de play.','Activa el cambio automatico en Ajustes.'],link:null},
-  {id:5,num:'05',titulo:'Musica sin conexion en Spotify',desc:'Descarga listas enteras y gestiona el almacenamiento.',tags:['Musica','Spotify'],duracion:'4 min',pasos:['Abre la lista que quieras descargar.','Activa el interruptor Descargar.','Espera a que la flecha sea verde.','Mueve descargas a la SD en Ajustes.','Borra descargas para liberar espacio.'],link:null},
-  {id:6,num:'06',titulo:'Editar fotos con IA en PicsArt',desc:'Eliminacion de fondo, retoques y efectos con IA.',tags:['Fotografia','IA'],duracion:'6 min',pasos:['Abre una foto desde la galeria.','Pulsa Herramientas y Recorte de fondo.','Con Reemplazar fondo cambia el entorno.','Los Efectos IA estan en Estilo.','Retoca con Retocar y Suavizar.','Exporta en maxima calidad.'],link:null}
+  {id:1,num:'01',titulo:'Como instalar un APK en Android',desc:'Activa fuentes desconocidas e instala cualquier APK de forma segura.',tags:['Basico','Android'],duracion:'5 min',imagen:'',pasos:['Ve a Ajustes y luego a Seguridad o Privacidad.','Activa la opcion Fuentes desconocidas o Instalar apps desconocidas.','Descarga el APK desde AppStorm usando el boton Descargar APK.','Abre el archivo descargado desde la carpeta Descargas.','Pulsa Instalar y espera a que termine el proceso.','Pulsa Abrir para lanzar la app directamente.'],link:{texto:'Guia oficial de Google',url:'https://support.google.com/android'}},
+  {id:2,num:'02',titulo:'Personalizar con Smart Launcher 6',desc:'Iconos, widgets y pantallas de inicio completamente a tu gusto.',tags:['Personalizacion','Launcher'],duracion:'8 min',imagen:'',pasos:['Descarga Smart Launcher desde AppStorm.','La primera vez que lo abras, seleccionalo como launcher predeterminado.','Manten pulsado cualquier zona vacia del escritorio para el menu de personalizacion.','Desde la seccion Temas puedes cambiar iconos, fuentes y colores.','Los widgets se anaden manteniendo pulsado el escritorio y tocando Widget.','En Ajustes, Categorias puedes reorganizar como se agrupan las apps.'],link:null},
+  {id:3,num:'03',titulo:'Editar videos con CapCut',desc:'Cortes, efectos, musica y exportacion en HD para principiantes.',tags:['Edicion','Video'],duracion:'10 min',imagen:'',pasos:['Abre CapCut y pulsa Nuevo proyecto para importar tu video.','En la linea de tiempo arrastra los extremos del clip para cortarlo.','Pulsa Sonidos para anadir musica de la libreria gratuita.','Los efectos de texto se anaden desde el boton Texto en la barra inferior.','Aplica filtros de color pulsando el icono de varita magica.','Cuando termines pulsa la flecha arriba a la derecha para exportar en 1080p.'],link:null},
+  {id:4,num:'04',titulo:'Fondos 4K con Wallcraft',desc:'Como encontrar y aplicar los mejores fondos en 4K.',tags:['Personalizacion','Fondos'],duracion:'3 min',imagen:'',pasos:['Abre Wallcraft y navega por las categorias principales.','Pulsa el fondo que te guste para ver la previsualizacion a pantalla completa.','Elige si quieres aplicarlo en la pantalla de inicio, bloqueo o ambas.','Para fondos animados busca los que tienen el icono de reproduccion.','En Ajustes puedes activar el cambio automatico cada cierto tiempo.'],link:null},
+  {id:5,num:'05',titulo:'Musica sin conexion en Spotify',desc:'Descarga listas de reproduccion y gestiona el almacenamiento.',tags:['Musica','Spotify'],duracion:'4 min',imagen:'',pasos:['Abre la lista de reproduccion que quieras descargar.','Activa el interruptor Descargar que aparece debajo del nombre.','Espera a que la flecha de descarga se ponga de color verde.','En Ajustes, Almacenamiento puedes mover las descargas a la tarjeta SD.','Para liberar espacio ve a Ajustes, Almacenamiento y borra las descargas.'],link:null},
+  {id:6,num:'06',titulo:'Editar fotos con IA en PicsArt',desc:'Eliminacion de fondo, retoques automaticos y efectos con IA.',tags:['Fotografia','IA'],duracion:'6 min',imagen:'',pasos:['Abre PicsArt y selecciona una foto desde tu galeria.','Pulsa Herramientas en la barra inferior y luego Recorte de fondo.','Con la herramienta Reemplazar fondo pon cualquier imagen o color detras.','Los Efectos IA estan en la seccion Estilo, prueba el efecto anime.','Para retoques de piel ve a Retocar y usa la opcion Suavizar.','Exporta en la maxima calidad pulsando la flecha arriba en la esquina.'],link:null}
 ];
 var tutF='Todos',tutAb=null;
 function renderTuts(){
@@ -402,7 +497,8 @@ function renderTuts(){
   var grid=document.getElementById('tut-grid');grid.innerHTML='';
   lista.forEach(function(t){
     var card=document.createElement('div');card.className='tc';card.id='tc-'+t.id;
-    card.innerHTML='<div class="tc-media"><div class="tc-ph"><div class="tc-n">'+t.num+'</div></div></div><div class="tc-body"><div class="tc-tags">'+t.tags.map(function(tag,i){return '<span class="tc-tag'+(i>0?' s':'')+'">'+tag+'</span>';}).join('')+'</div><h4>'+t.titulo+'</h4><p class="tc-desc">'+t.desc+'</p><div class="tc-dur">&#x23F1; '+t.duracion+'</div></div>';
+    var media=t.imagen?'<div class="tc-media"><img src="'+t.imagen+'" alt="'+t.titulo+'" style="width:100%;height:100%;object-fit:cover;" loading="lazy"/></div>':'<div class="tc-media"><div class="tc-ph"><div class="tc-n">'+t.num+'</div></div></div>';
+    card.innerHTML=media+'<div class="tc-body"><div class="tc-tags">'+t.tags.map(function(tag,i){return '<span class="tc-tag'+(i>0?' s':'')+'">'+tag+'</span>';}).join('')+'</div><h4>'+t.titulo+'</h4><p class="tc-desc">'+t.desc+'</p><div class="tc-dur">&#x23F1; '+t.duracion+'</div></div>';
     card.addEventListener('click',function(){toggleTut(t.id);});grid.appendChild(card);
     var panel=document.createElement('div');panel.className='tc-panel';panel.id='tp-'+t.id;
     panel.innerHTML='<h4>'+t.titulo+'</h4><p>Sigue estos pasos:</p><div class="tut-steps">'+t.pasos.map(function(p,i){return '<div class="tut-step"><div class="tut-step-n">'+(i+1)+'</div><div class="tut-step-t">'+p+'</div></div>';}).join('')+'</div>'+(t.link?'<a class="tc-link-ext" href="'+t.link.url+'" target="_blank">&#x2197; '+t.link.texto+'</a>':'');
