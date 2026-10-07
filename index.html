@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <!-- 2. BARRA DE NAVEGACIÓN (ADAPTATIVA: PC VS MÓVIL) -->
+  <!-- 2. BARRA DE NAVEGACIÓN -->
   <nav class="as-nav">
     <div class="as-logo-wrap" onclick="window.scrollTo({top:0, behavior:'smooth'})">
       <svg class="as-lightning-logo" viewBox="0 0 24 24" fill="none">
@@ -53,7 +53,6 @@
       <div class="as-logo">APP<span>STORM</span></div>
     </div>
     
-    <!-- ENLACES DE ESCRITORIO (SIEMPRE VISIBLES EN PC) -->
     <div class="as-nav-links" id="nav-links">
       <a class="active" onclick="window.scrollTo({top:0, behavior:'smooth'})">Inicio</a>
       <a onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">Catálogo</a>
@@ -65,13 +64,11 @@
         <span>❤️</span> (<span id="fav-count">0</span>)
       </button>
 
-      <!-- BOTÓN HAMBURGUESA (SÓLO VISIBLE EN MÓVILES/TABLETAS <= 768px) -->
       <button class="as-hamburger-btn" id="hamburger-btn" onclick="toggleMobileMenu(event)" aria-label="Abrir menú" title="Menú">
         ☰
       </button>
     </div>
 
-    <!-- MENÚ DESPLEGABLE MÓVIL (SÓLO SE ACTIVA EN MÓVILES) -->
     <div class="as-mobile-menu" id="mobile-menu">
       <div class="as-mobile-menu-header">
         <span class="as-mobile-menu-title">Navegación</span>
@@ -85,12 +82,11 @@
     </div>
   </nav>
 
-  <!-- 3. HERO & BUSCADOR LIMPIO CON TAGS POPULARES -->
+  <!-- 3. HERO & BUSCADOR -->
   <header class="as-hero">
     <h1>Encuentra tu próxima <span>app favorita</span></h1>
     <p>Explora herramientas de edición, entretenimiento y personalización móvil de alto rendimiento.</p>
 
-    <!-- CAJA DE BÚSQUEDA LIMPIA CON PLACEHOLDER -->
     <div class="as-search-clean-box">
       <svg class="as-search-clean-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="11" cy="11" r="8"></circle>
@@ -100,7 +96,6 @@
       <button id="clear-search-btn" class="as-search-clear-btn" onclick="limpiarBusqueda()" title="Limpiar búsqueda">✕</button>
     </div>
 
-    <!-- ETIQUETAS DE BÚSQUEDA RÁPIDA (TAGS POPULARES) -->
     <div class="as-quick-tags">
       <button class="as-tag-pill" onclick="buscarPorTag('Populares')">🔥 Populares</button>
       <button class="as-tag-pill" onclick="buscarPorTag('Cine')">🎬 Cine & Series</button>
@@ -113,7 +108,7 @@
   <!-- CONTENIDO PRINCIPAL -->
   <main class="as-container">
 
-    <!-- HISTORIAS CENTRADAS (DESTACADOS DEL MES) -->
+    <!-- HISTORIAS CENTRADAS -->
     <section class="as-stories-section">
       <div class="as-section-header as-header-centered">
         <div class="as-section-title-wrap as-centered-text">
@@ -127,7 +122,7 @@
       </div>
     </section>
 
-    <!-- 4. CATÁLOGO REDISEÑADO: SELECCIÓN EXCLUSIVA (TARJETAS COMPACTAS) -->
+    <!-- 4. CATÁLOGO -->
     <section id="catalogo" style="margin-top: 2.75rem;">
       <div class="as-section-header">
         <div class="as-section-title-wrap">
@@ -136,7 +131,6 @@
         </div>
       </div>
 
-      <!-- GRID COMPACTO DE TARJETAS DIRECTO -->
       <div class="as-grid" id="catalog-grid"></div>
     </section>
 
@@ -150,27 +144,53 @@
       </div>
 
       <div class="as-guias-grid">
-        <div class="as-guia-card">
+        <!-- GUÍA 01 -->
+        <div class="as-guia-card" onclick="openGuiaPanel(1)">
           <div class="as-guia-number">01</div>
           <h3>Instalación Segura de APKs</h3>
-          <p>Activa orígenes desconocidos sólo por aplicación para instalar herramientas libres manteniendo protegido tu dispositivo.</p>
+          <div class="as-guia-img-wrap">
+            <img src="https://via.placeholder.com/400x200?text=Instalacion+APK" alt="Instalación de APK" class="as-guia-img" loading="lazy">
+          </div>
+          <ol class="as-guia-steps">
+            <li><strong>Paso 1:</strong> Descarga el archivo APK desde tu servidor o fuente confiable.</li>
+            <li><strong>Paso 2:</strong> Ve a Ajustes > Seguridad > Orígenes desconocidos.</li>
+            <li><strong>Paso 3:</strong> Concede permiso solo a la aplicación o gestor necesario.</li>
+          </ol>
         </div>
-        <div class="as-guia-card">
+
+        <!-- GUÍA 02 -->
+        <div class="as-guia-card" onclick="openGuiaPanel(2)">
           <div class="as-guia-number">02</div>
           <h3>Ahorro de Batería y RAM</h3>
-          <p>Restringe procesos en segundo plano y desactiva animaciones innecesarias para alargar la autonomía diaria hasta un 30%.</p>
+          <div class="as-guia-img-wrap">
+            <img src="https://via.placeholder.com/400x200?text=Ahorro+Bateria" alt="Ahorro de Batería" class="as-guia-img" loading="lazy">
+          </div>
+          <ol class="as-guia-steps">
+            <li><strong>Paso 1:</strong> Restringe las aplicaciones en segundo plano que no uses.</li>
+            <li><strong>Paso 2:</strong> Desactiva las animaciones desde Opciones de desarrollador.</li>
+            <li><strong>Paso 3:</strong> Ajusta el brillo automático y activa el modo oscuro.</li>
+          </ol>
         </div>
-        <div class="as-guia-card">
+
+        <!-- GUÍA 03 -->
+        <div class="as-guia-card" onclick="openGuiaPanel(3)">
           <div class="as-guia-number">03</div>
           <h3>Personalización Minimalista</h3>
-          <p>Combina launchers inteligentes con fondos adaptativos en 4K y widgets limpios para una interfaz visual futurista.</p>
+          <div class="as-guia-img-wrap">
+            <img src="https://via.placeholder.com/400x200?text=Personalizacion" alt="Personalización" class="as-guia-img" loading="lazy">
+          </div>
+          <ol class="as-guia-steps">
+            <li><strong>Paso 1:</strong> Instala un launcher ligero como Smart Launcher.</li>
+            <li><strong>Paso 2:</strong> Aplica fondos de pantalla AMOLED o 4K adaptativos.</li>
+            <li><strong>Paso 3:</strong> Configura un paquete de iconos limpios y widgets mínimos.</li>
+          </ol>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- MODAL OVERLAY DE DETALLE DE APLICACIÓN (CIERRE CON CLICK FUERA Y ESC) -->
+  <!-- MODAL DE APLICACIÓN (ABRIR / CERRAR) -->
   <div class="as-modal-overlay" id="app-modal-overlay" onclick="handleModalOverlayClick(event)">
     <div class="as-app-panel" id="app-panel" onclick="event.stopPropagation()">
       <button class="as-panel-close" onclick="closePanel()" title="Cerrar panel">✕</button>
@@ -192,6 +212,19 @@
     </div>
   </div>
 
+  <!-- MODAL DE GUÍAS (ABRIR / CERRAR) -->
+  <div class="as-modal-overlay" id="guia-modal-overlay" onclick="handleGuiaOverlayClick(event)">
+    <div class="as-app-panel" onclick="event.stopPropagation()">
+      <button class="as-panel-close" onclick="closeGuiaPanel()" title="Cerrar panel">✕</button>
+      <div style="font-size: 2.5rem; text-align: center; margin-bottom: 0.5rem;" id="guia-panel-icon">💡</div>
+      <h2 id="guia-panel-title" style="text-align: center; margin-bottom: 0.5rem; font-size: 1.4rem;">Título de la Guía</h2>
+      <div class="as-guia-img-wrap" style="margin: 1rem 0;">
+        <img id="guia-panel-img" src="" alt="Guía" class="as-guia-img">
+      </div>
+      <ol class="as-guia-steps" id="guia-panel-steps" style="margin-top: 1rem;"></ol>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer class="as-footer">
     <p><strong>AppStorm</strong> &copy; 2025. Todos los derechos reservados.</p>
@@ -203,7 +236,7 @@
     </div>
   </footer>
 
-  <!-- 6. WIDGET FLOTANTE CONSOLIDADO (ASISTENTE IA + REPRODUCTOR DE MÚSICA) -->
+  <!-- WIDGET FLOTANTE (IA + MÚSICA) -->
   <div class="as-fab-trigger-wrap">
     <button class="as-fab-main-btn" onclick="toggleDock(event)" title="Abrir Asistente IA y Música">
       <svg class="as-fab-bolt-svg" viewBox="0 0 24 24" fill="none">
@@ -213,9 +246,8 @@
     </button>
   </div>
 
-  <!-- VENTANA DOCK CONSOLIDADA FLOTANTE -->
+  <!-- VENTANA DOCK FLOTANTE -->
   <div class="as-dock-window" id="dock-win">
-    <!-- PESTAÑAS: ASISTENTE IA | MÚSICA -->
     <div class="as-dock-tabs">
       <button class="as-dock-tab active" id="tab-btn-ia" onclick="switchDockTab('ia')">
         <span>🤖</span> Asistente IA
@@ -227,7 +259,6 @@
     </div>
 
     <div class="as-dock-body">
-      <!-- PANE 1: ASISTENTE IA -->
       <div class="as-dock-panel active" id="pane-ia">
         <div class="as-chat-msgs" id="chat-msgs">
           <div class="as-msg bot">¡Hola! Soy tu asistente de AppStorm. Puedo recomendarte aplicaciones, resolver dudas sobre APKs o buscar herramientas. ¿Qué necesitas?</div>
@@ -238,7 +269,6 @@
         </div>
       </div>
 
-      <!-- PANE 2: REPRODUCTOR DE MÚSICA CON ENLACE EMBED LIMPIO Y VÁLIDO -->
       <div class="as-dock-panel" id="pane-music">
         <div class="as-dock-music-content">
           <div class="as-dock-player-box" id="dock-player-box">
@@ -254,6 +284,8 @@
           <div class="as-dock-playlist-list" id="dock-playlist-list"></div>
         </div>
       </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
