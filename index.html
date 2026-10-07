@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AppStorm — Tu Hub de Aplicaciones y Música Android</title>
+  <meta name="description" content="Descubre las mejores apps para Android, selección exclusiva, optimización y herramientas con AppStorm." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="inicio">
+
+  <!-- 1. PANTALLA DE CARGA (SPLASH SCREEN) -->
+  <div id="as-splash" class="as-splash-screen">
+    <div class="as-splash-content">
+      <div class="as-splash-icon-wrap">
+        <div class="as-splash-ring"></div>
+        <svg class="as-splash-lightning" viewBox="0 0 24 24" fill="none">
+          <defs>
+            <linearGradient id="splash-bolt-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#38bdf8" />
+              <stop offset="100%" stop-color="#818cf8" />
+            </linearGradient>
+          </defs>
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="url(#splash-bolt-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="rgba(56, 189, 248, 0.15)" />
+        </svg>
+      </div>
+      <div class="as-splash-brand">APP<span>STORM</span></div>
+      <div class="as-splash-loader-bar">
+        <div class="as-splash-bar-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. BARRA DE NAVEGACIÓN (ADAPTATIVA: PC VS MÓVIL) -->
+  <nav class="as-nav">
+    <div class="as-logo-wrap" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+      <svg class="as-lightning-logo" viewBox="0 0 24 24" fill="none">
+        <defs>
+          <linearGradient id="nav-bolt-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#38bdf8" />
+            <stop offset="100%" stop-color="#818cf8" />
+          </linearGradient>
+          <linearGradient id="nav-bolt-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="rgba(56, 189, 248, 0.12)" />
+            <stop offset="100%" stop-color="rgba(129, 140, 248, 0.22)" />
+          </linearGradient>
+        </defs>
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="url(#nav-bolt-stroke)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="url(#nav-bolt-fill)" />
+      </svg>
+      <div class="as-logo">APP<span>STORM</span></div>
+    </div>
+    
+    <!-- ENLACES DE ESCRITORIO (SIEMPRE VISIBLES EN PC) -->
+    <div class="as-nav-links" id="nav-links">
+      <a class="active" onclick="window.scrollTo({top:0, behavior:'smooth'})">Inicio</a>
+      <a onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">Catálogo</a>
+      <a onclick="document.getElementById('guias').scrollIntoView({behavior:'smooth'})">Guías</a>
+    </div>
+
+    <div class="as-nav-cta">
+      <button class="as-btn-favs" onclick="mostrarFavoritos()">
+        <span>❤️</span> (<span id="fav-count">0</span>)
+      </button>
+
+      <!-- BOTÓN HAMBURGUESA (SÓLO VISIBLE EN MÓVILES/TABLETAS <= 768px) -->
+      <button class="as-hamburger-btn" id="hamburger-btn" onclick="toggleMobileMenu(event)" aria-label="Abrir menú" title="Menú">
+        ☰
+      </button>
+    </div>
+
+    <!-- MENÚ DESPLEGABLE MÓVIL (SÓLO SE ACTIVA EN MÓVILES) -->
+    <div class="as-mobile-menu" id="mobile-menu">
+      <div class="as-mobile-menu-header">
+        <span class="as-mobile-menu-title">Navegación</span>
+        <button class="as-mobile-close-btn" onclick="closeMobileMenu()" aria-label="Cerrar menú">✕</button>
+      </div>
+      <div class="as-mobile-nav-links">
+        <a onclick="navigateMobile('inicio')">🏠 Inicio</a>
+        <a onclick="navigateMobile('catalogo')">📦 Catálogo</a>
+        <a onclick="navigateMobile('guias')">📚 Guías</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 3. HERO & BUSCADOR LIMPIO CON TAGS POPULARES -->
+  <header class="as-hero">
+    <h1>Encuentra tu próxima <span>app favorita</span></h1>
+    <p>Explora herramientas de edición, entretenimiento y personalización móvil de alto rendimiento.</p>
+
+    <!-- CAJA DE BÚSQUEDA LIMPIA CON PLACEHOLDER -->
+    <div class="as-search-clean-box">
+      <svg class="as-search-clean-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input id="hero-input" type="text" placeholder="Buscar aplicaciones por nombre..." oninput="buscarEnTiempoReal(this.value)" />
+      <button id="clear-search-btn" class="as-search-clear-btn" onclick="limpiarBusqueda()" title="Limpiar búsqueda">✕</button>
+    </div>
+
+    <!-- ETIQUETAS DE BÚSQUEDA RÁPIDA (TAGS POPULARES) -->
+    <div class="as-quick-tags">
+      <button class="as-tag-pill" onclick="buscarPorTag('Populares')">🔥 Populares</button>
+      <button class="as-tag-pill" onclick="buscarPorTag('Cine')">🎬 Cine & Series</button>
+      <button class="as-tag-pill" onclick="buscarPorTag('Edición')">✂️ Edición IA</button>
+      <button class="as-tag-pill" onclick="buscarPorTag('Música')">🎧 Música Free</button>
+      <button class="as-tag-pill" onclick="buscarPorTag('Optimización')">⚡ Optimización</button>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="as-container">
+
+    <!-- HISTORIAS CENTRADAS (DESTACADOS DEL MES) -->
+    <section class="as-stories-section">
+      <div class="as-section-header as-header-centered">
+        <div class="as-section-title-wrap as-centered-text">
+          <span class="as-section-badge">Tendencias</span>
+          <h2 class="as-section-title">Destacados del Mes</h2>
+        </div>
+      </div>
+
+      <div class="as-stories-wrapper as-stories-centered">
+        <div class="as-stories" id="stories-row"></div>
+      </div>
+    </section>
+
+    <!-- 4. CATÁLOGO REDISEÑADO: SELECCIÓN EXCLUSIVA (TARJETAS COMPACTAS) -->
+    <section id="catalogo" style="margin-top: 2.75rem;">
+      <div class="as-section-header">
+        <div class="as-section-title-wrap">
+          <span class="as-section-badge">Catálogo</span>
+          <h2 class="as-section-title">Selección Exclusiva</h2>
+        </div>
+      </div>
+
+      <!-- GRID COMPACTO DE TARJETAS DIRECTO -->
+      <div class="as-grid" id="catalog-grid"></div>
+    </section>
+
+    <!-- 5. SECCIÓN DE GUÍAS -->
+    <section id="guias" style="margin-top: 3.5rem;">
+      <div class="as-section-header">
+        <div class="as-section-title-wrap">
+          <span class="as-section-badge">Aprende & Optimiza</span>
+          <h2 class="as-section-title">Guías Rápidas para Android</h2>
+        </div>
+      </div>
+
+      <div class="as-guias-grid">
+        <div class="as-guia-card">
+          <div class="as-guia-number">01</div>
+          <h3>Instalación Segura de APKs</h3>
+          <p>Activa orígenes desconocidos sólo por aplicación para instalar herramientas libres manteniendo protegido tu dispositivo.</p>
+        </div>
+        <div class="as-guia-card">
+          <div class="as-guia-number">02</div>
+          <h3>Ahorro de Batería y RAM</h3>
+          <p>Restringe procesos en segundo plano y desactiva animaciones innecesarias para alargar la autonomía diaria hasta un 30%.</p>
+        </div>
+        <div class="as-guia-card">
+          <div class="as-guia-number">03</div>
+          <h3>Personalización Minimalista</h3>
+          <p>Combina launchers inteligentes con fondos adaptativos en 4K y widgets limpios para una interfaz visual futurista.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL OVERLAY DE DETALLE DE APLICACIÓN (CIERRE CON CLICK FUERA Y ESC) -->
+  <div class="as-modal-overlay" id="app-modal-overlay" onclick="handleModalOverlayClick(event)">
+    <div class="as-app-panel" id="app-panel" onclick="event.stopPropagation()">
+      <button class="as-panel-close" onclick="closePanel()" title="Cerrar panel">✕</button>
+      <div class="as-panel-top">
+        <div class="as-panel-icon" id="panel-icon"></div>
+        <div class="as-panel-info">
+          <h3 id="panel-name"></h3>
+          <p id="panel-desc"></p>
+        </div>
+      </div>
+      
+      <div class="as-panel-meta" id="panel-meta"></div>
+
+      <div class="as-panel-btns">
+        <button class="as-btn-dl" id="panel-mega">⬇️ Descargar APK</button>
+        <button class="as-btn-play" id="panel-play">Google Play ↗</button>
+        <button class="as-btn-fav-toggle" id="panel-fav-btn" onclick="togglePanelFav()">❤️ Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="as-footer">
+    <p><strong>AppStorm</strong> &copy; 2025. Todos los derechos reservados.</p>
+    <p>Plataforma de descubrimiento y recomendaciones de software para Android.</p>
+    <div class="as-footer-links">
+      <a onclick="window.scrollTo({top:0, behavior:'smooth'})">Inicio</a>
+      <a onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})">Catálogo</a>
+      <a onclick="document.getElementById('guias').scrollIntoView({behavior:'smooth'})">Guías</a>
+    </div>
+  </footer>
+
+  <!-- 6. WIDGET FLOTANTE CONSOLIDADO (ASISTENTE IA + REPRODUCTOR DE MÚSICA) -->
+  <div class="as-fab-trigger-wrap">
+    <button class="as-fab-main-btn" onclick="toggleDock(event)" title="Abrir Asistente IA y Música">
+      <svg class="as-fab-bolt-svg" viewBox="0 0 24 24" fill="none">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="rgba(56, 189, 248, 0.2)" />
+      </svg>
+      <div class="as-fab-music-dot" title="Música disponible"></div>
+    </button>
+  </div>
+
+  <!-- VENTANA DOCK CONSOLIDADA FLOTANTE -->
+  <div class="as-dock-window" id="dock-win">
+    <!-- PESTAÑAS: ASISTENTE IA | MÚSICA -->
+    <div class="as-dock-tabs">
+      <button class="as-dock-tab active" id="tab-btn-ia" onclick="switchDockTab('ia')">
+        <span>🤖</span> Asistente IA
+      </button>
+      <button class="as-dock-tab" id="tab-btn-music" onclick="switchDockTab('music')">
+        <span>🎵</span> Música
+      </button>
+      <button class="as-dock-close" onclick="closeDock()" title="Cerrar">✕</button>
+    </div>
+
+    <div class="as-dock-body">
+      <!-- PANE 1: ASISTENTE IA -->
+      <div class="as-dock-panel active" id="pane-ia">
+        <div class="as-chat-msgs" id="chat-msgs">
+          <div class="as-msg bot">¡Hola! Soy tu asistente de AppStorm. Puedo recomendarte aplicaciones, resolver dudas sobre APKs o buscar herramientas. ¿Qué necesitas?</div>
+        </div>
+        <div class="as-chat-input-row">
+          <input type="text" id="chat-in" placeholder="Pregunta algo (ej. mejor editor, música...)" onkeydown="if(event.key==='Enter')enviarChat()" />
+          <button class="as-chat-send" onclick="enviarChat()">Enviar</button>
+        </div>
+      </div>
+
+      <!-- PANE 2: REPRODUCTOR DE MÚSICA CON ENLACE EMBED LIMPIO Y VÁLIDO -->
+      <div class="as-dock-panel" id="pane-music">
+        <div class="as-dock-music-content">
+          <div class="as-dock-player-box" id="dock-player-box">
+            <iframe 
+              src="https://www.youtube.com/embed/V7q1jN7k5lg" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="autoplay; encrypted-media" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="as-dock-now-playing" id="dock-now-playing">Reproduciendo: <strong>Lo-Fi Beats Oficial</strong></div>
+          <div class="as-dock-playlist-list" id="dock-playlist-list"></div>
+        </div>
+      </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

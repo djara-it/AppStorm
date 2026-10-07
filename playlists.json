@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "titulo": "Lo-Fi Beats Oficial",
+    "genero": "Lo-Fi",
+    "url": "https://www.youtube.com/embed/Ve0fd1_h7X8"
+  },
+  {
+    "id": 2,
+    "titulo": "Trap & Urban",
+    "genero": "Trap",
+    "url": "https://www.youtube.com/embed/j3Ivcxn3UcU"
+  },
+  {
+    "id": 4,
+    "titulo": "Chillhop & Study Beats",
+    "genero": "Chill",
+    "url": "https://www.youtube.com/embed/-j1I4MtcNTo"
+  },
+  {
+    "id": 5,
+    "titulo": "Synthwave & Retro Chill",
+    "genero": "Synthwave",
+    "url": "https://www.youtube.com/embed/KvMY1uzSC1E"
+  },
+  {
+    "id": 6,
+    "titulo": "Electro, PoP , Relax",
+    "genero": "Acústico",
+    "url": "https://www.youtube.com/embed/SvRGzdOVKos"
+  }
+]
