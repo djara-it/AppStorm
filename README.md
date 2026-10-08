@@ -37,6 +37,7 @@ AppStorm/
 ├── package.json       # Development dependencies
 └── .gitignore         # Excluded files and directories
 
+```
 ---
 
 ## 📄 License
