@@ -26,6 +26,8 @@ A modern, fast, and interactive platform designed to explore, customize, and enj
 ---
 
 ## 📂 Project Structure
+
+```text
 AppStorm/
 ├── index.html         # Main web page structure
 ├── style.css          # Core styles and visual design
